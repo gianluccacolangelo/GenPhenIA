@@ -81,14 +81,14 @@ demos,y genera n_samples por gen tomando de la db genes_to_phenotype.txt.
     simulated_data = []
     n=0
     for gene, phenotypes in gene_phenotype_dict.items():
+        missing_num = int(np.round(len(phenotypes) * missing_phens))
+        incorrect_num = int(np.round(len(phenotypes) * incorrect_phens))
         for i in range(n_samples_per_gene):
 
             # Generate incomplete phenotypes
-            missing_num = np.round(len(phenotypes) * missing_phens)
             missing_phenotypes = random.sample(phenotypes, missing_num)
 
             # Generate incorrect phenotypes
-            incorrect_num = np.round(len(phenotypes) * incorrect_phens)
             incorrect_phenotypes = generate_incorrect_phenotypes(phenotypes,
                     incorrect_num,
                     all_phenotypes)
@@ -99,9 +99,9 @@ demos,y genera n_samples por gen tomando de la db genes_to_phenotype.txt.
 
             # Add modified phenotype list and associated gene to the simulated dataset
             simulated_data.append((gene, simulated_phenotypes))
-        print(f'Generando base: {n/4800*100}%')
+        print(f'Generando base: {n/4921*100}%')
         n+=1
 
     with open(f'{PATH}/data/simulated/simulated_set.json','w') as file:
-        json.dump(gene_phenotype_dict, file)
+        json.dump(simulated_data, file)
 ## }}}
