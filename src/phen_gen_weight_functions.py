@@ -5,6 +5,7 @@ tanto en general, como para los pacientes en particular.
 
 ## {{{ IMPORTACIONES
 import numpy as np
+import json
 PATH = '/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/'
 ## }}}
 
@@ -40,7 +41,6 @@ Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     return len(fenotipos_observados.intersection(
         fenotipos_del_gen))/len(fenotipos_observados)
 
-## }}}
 
 def similaridad_del_gen(fenotipos_observados,fenotipos_del_gen):
     """
@@ -51,6 +51,52 @@ Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     """
     return len(fenotipos_observados.intersection(
         fenotipos_del_gen))/len(fenotipos_observados.union(fenotipos_del_gen))
+
+
+## }}}
+
+
+## {{{ funciones que toman los conj de fen. observados y fen. reales
+"""
+Hay dos formas de hacer esto, una es la propuesta abajo, que es tomar los
+fenotipos "observados" con los sets simulados con ruido
+
+La otra es no usar los sets ruidosos y usar el archivo
+phenotype_to_genes, que tiene la ventaja de que es más amplio, en el sentido
+que hay links entre fenotipos muuuy generales y los genes, que es algo que
+suele suceder entre los médicos, que a veces te tiran "anomalía de
+crecimiento", y puede ser básicamente cualq cosa.
+
+La tercera opción sería combinar ambas cosas. Pero paso a paso.
+"""
+
+
+def fen_reales_del_gen(gen_id,
+        db=f'{PATH}data/simulated/gene_phenotype_dict.json'):
+    # gene_id = str(gen_id)
+    with open(db,'r') as file:
+        gene_phenotype_dict = json.load(file)
+    fen_reales = gene_phenotype_dict[str(gen_id)]
+    return set(fen_reales)
+
+def fen_observados_con_ruido(gen_id,
+        mph=0.1,
+        iph=0.1):
+    """
+mph e iph corresponden a los dos parámetros de ruido: missing phenotypes e
+incorrect phenotypes, respectivamente, el que elijamos ahí va a ser tomado de
+la base de datos.
+    """
+    db=f'{PATH}data/simulated/simulated_set_mph{mph}_iph{iph}.json'
+    with open(db,'r') as file:
+        noised_gene_phenotype_dict = json.load(file)
+    fen_observados = dict(noised_gene_phenotype_dict)[str(gen_id)]
+    return set(fen_observados)
+
+
+## }}}
+
+
 
 
 def pacient_gene_score(pacient_genes_list):
