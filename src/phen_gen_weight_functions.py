@@ -1,10 +1,11 @@
 """
-Este modulo almacena las funciones que le dan métrica a fenotipos y genotipos,
+Este modulo almacena las funciones que le dan peso a fenotipos y genotipos,
 tanto en general, como para los pacientes en particular.
 """
 
 ## {{{ IMPORTACIONES
 import numpy as np
+PATH = '/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/'
 ## }}}
 
 
@@ -17,6 +18,40 @@ candidatos. No pesa los fenotipos, no pesa los genes. Simplemente devuelve la
 unión de los genes asociados a los fenotipos dados.
 Para eso recorre la base de datos phenotype_to_genes.
     """
+
+## {{{ funciones de peso de genes candidatos
+def especificidad_del_gen(fenotipos_observados,fenotipos_del_gen):
+    """
+fenotipos_observados y fenotipos_del_gen tienen que ser sets (conjuntos), esta
+función devolverá la fracción de fenotiops_del_gen que están en fenotipos_observados
+
+Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
+    """
+    return len(fenotipos_observados.intersection(
+        fenotipos_del_gen))/len(fenotipos_del_gen)
+
+
+def capitalidad_del_gen(fenotipos_observados,fenotipos_del_gen):
+    """
+esta función fevolverá la fracción de fenotiops_observados que están en fenotipos_del_gen
+
+Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
+    """
+    return len(fenotipos_observados.intersection(
+        fenotipos_del_gen))/len(fenotipos_observados)
+
+## }}}
+
+def similaridad_del_gen(fenotipos_observados,fenotipos_del_gen):
+    """
+Esta función devolverá la intersección de fenotipos observados y fenotipos del
+gen sobre la unión de ambos.
+
+Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
+    """
+    return len(fenotipos_observados.intersection(
+        fenotipos_del_gen))/len(fenotipos_observados.union(fenotipos_del_gen))
+
 
 def pacient_gene_score(pacient_genes_list):
     """
