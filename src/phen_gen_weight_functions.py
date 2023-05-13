@@ -89,7 +89,7 @@ mph e iph corresponden a los dos parámetros de ruido: missing phenotypes e
 incorrect phenotypes, respectivamente, el que elijamos ahí va a ser tomado de
 la base de datos.
     """
-    db=f'{PATH}data/simulated/normal_simulations/simulated_set_mph{mph}_iph{iph}.json'
+    db=f'{PATH}data/simulated/simulated_set.json'
     with open(db,'r') as file:
         noised_gene_phenotype_dict = json.load(file)
     fen_observados = dict(noised_gene_phenotype_dict)[str(gen_id)]
@@ -111,11 +111,11 @@ def corrida_de_pesos():
 
     lista = lista_de_genes()
 
-    df = pd.DataFrame(columns=['gen', 'especificidad', 'capitalidad', 'similaridad'])
+    list_of_df = []
     i=0
     for gen in lista:
         fen_reales = fen_reales_del_gen(gen)
-        fen_observados = fen_observados_con_ruido(gen,0.3,0.2)
+        fen_observados = fen_observados_con_ruido(gen)
         especificidad = especificidad_del_gen(fen_observados,fen_reales)
         capitalidad = capitalidad_del_gen(fen_observados,fen_reales)
         similaridad = similaridad_del_gen(fen_observados,fen_reales)
@@ -123,16 +123,22 @@ def corrida_de_pesos():
         And now we will save the results in a matrix where the columns are
         gen and the rows are especificidad, capitalidad and similaridad
         """
-        df = df.append({
+        # Create a DataFrame for each gene and append it to the list
+        df = pd.DataFrame([{
             'gen': gen,
             'especificidad': especificidad,
             'capitalidad': capitalidad,
             'similaridad': similaridad
-        }, ignore_index=True)
+            }])
+
+        list_of_df.append(df)
         print(f'Calculando...{i/4992*100:.2f}%', end='\r')
         i+=1
 
-    return df
+    # Concatenate all the DataFrames in the list
+    result_df = pd.concat(list_of_df, ignore_index=True)
+
+    return result_df
 
 ## }}}
 
