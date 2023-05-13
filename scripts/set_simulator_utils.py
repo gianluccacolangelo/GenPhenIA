@@ -64,8 +64,8 @@ devuelve: una lista de {num incorrect} fenotipos incorrectos
 
 ## {{{ genphen_simulator
 
-def genphen_simulator(missing_phens=0.1,
-        incorrect_phens=0.1,
+def genphen_simulator(missing_phens=[0.1,0.2,0.3,0.4,0.5],
+        incorrect_phens=[0.1,0.2,0.3],
         n_samples_per_gene=10,
         genphen_db=f'{PATH}/data/simulated/genes_to_phenotype.txt'):
     """
@@ -81,8 +81,10 @@ demos,y genera n_samples por gen tomando de la db genes_to_phenotype.txt.
     simulated_data = []
     n=0
     for gene, phenotypes in gene_phenotype_dict.items():
-        missing_num = int(np.round(len(phenotypes) * missing_phens))
-        incorrect_num = int(np.round(len(phenotypes) * incorrect_phens))
+        missing_num = int(np.round(len(phenotypes) *
+            np.random.choice(missing_phens,1)))
+        incorrect_num = int(np.round(len(phenotypes) *
+            np.random.choice(incorrect_phens,1)))
         for i in range(n_samples_per_gene):
 
             # Generate incomplete phenotypes

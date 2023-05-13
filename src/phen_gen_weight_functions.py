@@ -89,7 +89,7 @@ mph e iph corresponden a los dos parámetros de ruido: missing phenotypes e
 incorrect phenotypes, respectivamente, el que elijamos ahí va a ser tomado de
 la base de datos.
     """
-    db=f'{PATH}data/simulated/simulated_set_mph{mph}_iph{iph}.json'
+    db=f'{PATH}data/simulated/normal_simulations/simulated_set_mph{mph}_iph{iph}.json'
     with open(db,'r') as file:
         noised_gene_phenotype_dict = json.load(file)
     fen_observados = dict(noised_gene_phenotype_dict)[str(gen_id)]
@@ -115,7 +115,7 @@ def corrida_de_pesos():
     i=0
     for gen in lista:
         fen_reales = fen_reales_del_gen(gen)
-        fen_observados = fen_observados_con_ruido(gen,0.2,0.1)
+        fen_observados = fen_observados_con_ruido(gen,0.3,0.2)
         especificidad = especificidad_del_gen(fen_observados,fen_reales)
         capitalidad = capitalidad_del_gen(fen_observados,fen_reales)
         similaridad = similaridad_del_gen(fen_observados,fen_reales)

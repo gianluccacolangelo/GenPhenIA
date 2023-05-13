@@ -34,5 +34,4 @@ simulado con una distribución normal de esos errores.
             iph,
             n_samples_per_gene=1)
     with open(f'{PATH}/data/simulated/simulated_set_mph{mph_mean}_iph{iph_mean}.json','w') as file:
-        json.dump(simulated_data, file)
-
+        kkkkkkkkkkkkkkkkkkkkkkkkkkkkk
