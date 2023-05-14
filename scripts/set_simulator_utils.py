@@ -8,6 +8,7 @@ import numpy as np
 import random
 import csv
 import json
+import scipy.stats as stats
 ## }}}
 
 
@@ -15,6 +16,7 @@ import json
 
 #REEMPLAZAR POR EL PATH DONDE TENES TU REPOSITORIO GenPhenIA
 PATH = '/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/'
+
 
 def txt_to_dict(filename):
     """
@@ -66,13 +68,20 @@ devuelve: una lista de {num incorrect} fenotipos incorrectos
 
 def genphen_simulator(missing_phens=[0.1,0.2,0.3,0.4,0.5],
         incorrect_phens=[0.1,0.2,0.3],
-        n_samples_per_gene=10,
+        n_samples_per_gene=1,
+        type_of_noise = "random",
         genphen_db=f'{PATH}/data/simulated/genes_to_phenotype.txt'):
     """
 Esta función toma la base de datos genes_to_phenotype.txt y genera un set
-simulado a partir del porcentaje de missing_phns e incorrect_phens que le
-demos,y genera n_samples por gen tomando de la db genes_to_phenotype.txt.
+simulado con los porcentajes de ruidos de missing_phens e incorrect_phens.
+Para el cual tenemos tres opciones de distribución:
+
+    - constant: Siempre un mismo porcentaje de ruido (e.g. mph=0.2, iph=0.1).
+    - normal: Elije entre la lista con una distribución normal.
+    - random: Elije entre la lista de manera aleatoria (uniforme).
     """
+
+
     all_phenotypes = set()
     for phenlist in gene_phenotype_dict.values():
         for phen in phenlist:
@@ -80,31 +89,116 @@ demos,y genera n_samples por gen tomando de la db genes_to_phenotype.txt.
 
     simulated_data = []
     n=0
-    for gene, phenotypes in gene_phenotype_dict.items():
-        missing_num = int(np.round(len(phenotypes) *
-            np.random.choice(missing_phens,1)))
-        incorrect_num = int(np.round(len(phenotypes) *
-            np.random.choice(incorrect_phens,1)))
-        for i in range(n_samples_per_gene):
 
-            # Generate incomplete phenotypes
-            missing_phenotypes = random.sample(phenotypes, missing_num)
 
-            # Generate incorrect phenotypes
-            incorrect_phenotypes = generate_incorrect_phenotypes(phenotypes,
-                    incorrect_num,
-                    all_phenotypes)
 
-            # Create modified phenotype list
-            simulated_phenotypes = [p for p in phenotypes if p not in missing_phenotypes] + incorrect_phenotypes
-            random.shuffle(simulated_phenotypes)
+    if type_of_noise == "random":
+        for gene, phenotypes in gene_phenotype_dict.items():
+            missing_num = int(np.round(len(phenotypes) *
+                np.random.choice(missing_phens,1)))
+            incorrect_num = int(np.round(len(phenotypes) *
+                np.random.choice(incorrect_phens,1)))
+            for i in range(n_samples_per_gene):
 
-            # Add modified phenotype list and associated gene to the simulated dataset
-            simulated_data.append((gene, simulated_phenotypes))
-        print(f'Generando base: {n/4921*100}%')
-        n+=1
-    return simulated_data
+                # Generate incomplete phenotypes
+                missing_phenotypes = random.sample(phenotypes, missing_num)
 
+                # Generate incorrect phenotypes
+                incorrect_phenotypes = generate_incorrect_phenotypes(phenotypes,
+                        incorrect_num,
+                        all_phenotypes)
+
+                # Create modified phenotype list
+                simulated_phenotypes = [p for p in phenotypes if p not in missing_phenotypes] + incorrect_phenotypes
+                random.shuffle(simulated_phenotypes)
+
+                # Add modified phenotype list and associated gene to the simulated dataset
+                simulated_data.append((gene, simulated_phenotypes))
+
+            print(f'Generando set: {n/4921*100}%\n Ruido aleatorio',end='\r')
+            n+=1
+        with open(f'{PATH}data/simulated/{type_of_noise}_simulations/random_simulated_data.json', 'w') as file:
+            json.dump(simulated_data, file)
+
+
+    elif type_of_noise == "normal":
+        #Preguntamos qué media std queremos
+        mph_std = float(input("missing_phens desvío estándar: "))
+        mph_mean = float(input("missing phens media: "))
+        iph_std = float(input("incorrect phens desvío estándar: "))
+        iph_mean = float(input("incorrect phens media: "))
+
+        #Aplicamos la media y el desvío estándar a la distribución dada
+        mph_dist = stats.norm(mph_mean, mph_std)
+        mph_probs = mph_dist.pdf(missing_phens)
+        iph_dist = stats.norm(iph_mean, iph_std)
+        iph_probs = iph_dist.pdf(incorrect_phens)
+
+        #Normalizamos las probabilidades
+        mph_probs /= mph_probs.sum()
+        iph_probs /= iph_probs.sum()
+
+        for gene, phenotypes in gene_phenotype_dict.items():
+
+            #Tomamos un porcentaje con la distribución de probabilidad normal
+            missing_num = int(np.round(len(phenotypes) *
+                np.random.choice(missing_phens,p=mph_probs)))
+            incorrect_num = int(np.round(len(phenotypes) *
+                np.random.choice(incorrect_phens,p=iph_probs)))
+            for i in range(n_samples_per_gene):
+
+                # Generate incomplete phenotypes
+                missing_phenotypes = random.sample(phenotypes, missing_num)
+
+                # Generate incorrect phenotypes
+                incorrect_phenotypes = generate_incorrect_phenotypes(phenotypes,
+                        incorrect_num,
+                        all_phenotypes)
+
+                # Create modified phenotype list
+                simulated_phenotypes = [p for p in phenotypes if p not in missing_phenotypes] + incorrect_phenotypes
+                random.shuffle(simulated_phenotypes)
+
+                # Add modified phenotype list and associated gene to the simulated dataset
+                simulated_data.append((gene, simulated_phenotypes))
+
+            print(f'Generando set: {n/4921*100}%\n Ruido con distribución normal \n Missing phens: media={mph_mean} y std={mph_std}\n Incorrect phens: media={iph_mean} y std={iph_std}',end='\r')
+            n+=1
+        with open(f'{PATH}data/simulated/{type_of_noise}_simulations/mph_mean_{mph_mean}_mph_std{mph_std}_iph_mean{iph_mean}_iph_std_{iph_std}.txt','w') as file:
+            json.dump(simulated_data,file)
+
+
+    elif type_of_noise == "constant":
+        mph_ratio = float(input("missing_phens ratio: "))
+        iph_ratio = float(input("incorrect_phens ratio: "))
+
+        for gene, phenotypes in gene_phenotype_dict.items():
+            missing_num = int(np.round(len(phenotypes) * mph_ratio))
+            incorrect_num = int(np.round(len(phenotypes) * iph_ratio))
+            for i in range(n_samples_per_gene):
+
+                # Generate incomplete phenotypes
+                missing_phenotypes = random.sample(phenotypes, missing_num)
+
+                # Generate incorrect phenotypes
+                incorrect_phenotypes = generate_incorrect_phenotypes(phenotypes,
+                        incorrect_num,
+                        all_phenotypes)
+
+                # Create modified phenotype list
+                simulated_phenotypes = [p for p in phenotypes if p not in missing_phenotypes] + incorrect_phenotypes
+                random.shuffle(simulated_phenotypes)
+
+                # Add modified phenotype list and associated gene to the simulated dataset
+                simulated_data.append((gene, simulated_phenotypes))
+            print(f'Generando set: {n/4921*100}%\nRuido constante, mph={mph_ratio},iph={iph_ratio}',
+                    end='\r')
+            n+=1
+
+        with open(f'{PATH}data/simulated/{type_of_noise}_simulations/mph_{mph_ratio}_iph_{iph_ratio}.txt','w') as file:
+            json.dump(simulated_data,file)
+
+    return print("Completado")
 
 ## }}}
 
