@@ -14,13 +14,6 @@ PATH = '/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/'
 
 ## {{{ functions
 
-def raw_phen_to_genes(pacient_phen_list,phenotype_to_genes):
-    """
-Esta función toma una lista de fenotipos y devuelve una lista de todos los genes
-candidatos. No pesa los fenotipos, no pesa los genes. Simplemente devuelve la
-unión de los genes asociados a los fenotipos dados.
-Para eso recorre la base de datos phenotype_to_genes.
-    """
 
 ## {{{ funciones de peso de genes candidatos
 def especificidad_del_gen(fenotipos_observados,fenotipos_del_gen):
@@ -83,16 +76,40 @@ def fen_reales_del_gen(gen_id,
 
 def fen_observados_con_ruido(gen_id,
         mph=0.1,
-        iph=0.1):
+        iph=0.1,
+        db='normal'):
     """
 mph e iph corresponden a los dos parámetros de ruido: missing phenotypes e
 incorrect phenotypes, respectivamente, el que elijamos ahí va a ser tomado de
-la base de datos.
+la base de datos, ya sea:
+
+-normal
+-constante
+-random
     """
-    db=f'{PATH}data/simulated/simulated_set.json'
-    with open(db,'r') as file:
-        noised_gene_phenotype_dict = json.load(file)
-    fen_observados = dict(noised_gene_phenotype_dict)[str(gen_id)]
+    if db == 'normal':
+        filename = f'{PATH}data/simulated/{db}_simulations/mph_mean_{mph}_mph_std0.1_iph_mean{iph}_iph_std_0.1.txt'
+        with open(filename,'r') as file:
+            noised_gene_phenotype_dict = json.load(file)
+
+        fen_observados = dict(noised_gene_phenotype_dict)[str(gen_id)]
+
+    elif db == 'constant':
+        filename = f'{PATH}data/simulated/{db}_simulations/mph_{mph}_iph_{iph}.txt'
+        with open(filename,'r') as file:
+            noised_gene_phenotype_dict = json.load(file)
+
+        fen_observados = dict(noised_gene_phenotype_dict)[str(gen_id)]
+
+
+    elif db == 'random':
+        filename = f'{PATH}data/simulated/{db}_simulations/random_simulated_data.json'
+        with open(filename,'r') as file:
+            noised_gene_phenotype_dict = json.load(file)
+
+        fen_observados = dict(noised_gene_phenotype_dict)[str(gen_id)]
+
+
     return set(fen_observados)
 
 
@@ -140,8 +157,6 @@ def corrida_de_pesos():
 
     return result_df
 
-## }}}
-
 def plot_correlations(df):
     parameters = ['especificidad', 'capitalidad', 'similaridad']
     n = len(parameters)
@@ -164,6 +179,18 @@ def plot_correlations(df):
 
     plt.tight_layout()
     plt.show()
+
+## }}}
+
+
+
+# def raw_phen_to_genes(pacient_phen_list,phenotype_to_genes):
+    # """
+# Esta función toma una lista de fenotipos y devuelve una lista de todos los genes
+# candidatos. No pesa los fenotipos, no pesa los genes. Simplemente devuelve la
+# unión de los genes asociados a los fenotipos dados.
+# Para eso recorre la base de datos phenotype_to_genes.
+    # """
 
 
 # def pacient_gene_score(pacient_genes_list):
