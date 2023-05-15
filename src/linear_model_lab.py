@@ -13,9 +13,6 @@ PATH = "/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/"
 
 
 ## {{{
-fen_observados = pgw.fen_observados_con_ruido(16,mph=0.3,iph=0.2,type_of_noise='normal')
-
-
 
 def union_de_genes(set_of_phens):
     """
@@ -43,6 +40,8 @@ def calculate_gene_parameters(set_of_phens):
     i = 0
 
     for gene in genes:
+        i+=1
+
         real_gene_phens = pgw.fen_reales_del_gen(gene)
         # calculate the parameters for this gene
         especificidad = pgw.especificidad_del_gen(set_of_phens,real_gene_phens)
@@ -53,15 +52,55 @@ def calculate_gene_parameters(set_of_phens):
         data.append({'gene': gene,
                      'especificidad': especificidad,
                      'capitalidad': capitalidad,
-                     'similaridad': similaridad})
-        print(f"Calculando {i/len(genes)*100:.2f}%",end="\r")
-        i+=1
+                     'similaridad': similaridad,
+                     'total':(especificidad+capitalidad+similaridad)/3})
+        print(f"Calculando {i/len(genes)*100:.1f}%",end="\r")
 
     df = pd.DataFrame(data)
 
-    df['total'] = df['especificidad'] + df['capitalidad'] + df['similaridad']
-
     # ordenamos el dataframe en orden descendente por el total
     df = df.sort_values('total', ascending=False)
+    # Reseteamos el índice
+    df = df.reset_index(drop=True)
     return df
+## }}}
+
+
+## {{{ Evaluando para todos los genes
+
+def model_evaluating(mph,iph,type_of_noise):
+    """
+A esta función le damos un mph y un iph y evalúa el modelo para ese set
+simulado, calculando el ranking en la importancia para el gen real dado un
+conjunto de fenotipos.
+    """
+    list_of_genes = pgw.lista_de_genes()
+    #metrics va a almacenar la posición en el ranking de importancia del gen
+    # real en nuestro modelo
+    metrics = []
+    i=1
+    for gene in list_of_genes:
+        print(f"\nCalculando para gen {i} de {len(list_of_genes)}  ")
+        #Los fenotipos observados con ruido para un dado gen
+        fen_observados = pgw.fen_observados_con_ruido(gene,
+                mph = mph,
+                iph = iph,
+                type_of_noise = type_of_noise)
+
+        #Calculamos los parámetros esp. cap. y sim. para la unión de genes
+        # posibles que causan esos fenotipos
+        df = calculate_gene_parameters(fen_observados)
+
+        #Esto agrega a metrics la posición en el índice rankeado del gen real
+        # entre los miles posibles
+        metrics.append(df.loc[df['gene']==int(gene)].index[0])
+
+        print(f"                      ranking = {metrics[i-1]+1}\n")
+        i+=1
+
+
+    return metrics
+
+
+
 ## }}}
