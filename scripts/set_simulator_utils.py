@@ -115,7 +115,7 @@ Para el cual tenemos tres opciones de distribución:
                 # Add modified phenotype list and associated gene to the simulated dataset
                 simulated_data.append((gene, simulated_phenotypes))
 
-            print(f'Generando set: {n/4921*100}%\n Ruido aleatorio',end='\r')
+            print(f'Generando set: {n/4921*100:.2f}% | Ruido aleatorio',end='\r')
             n+=1
         with open(f'{PATH}data/simulated/{type_of_noise}_simulations/random_simulated_data.json', 'w') as file:
             json.dump(simulated_data, file)
@@ -162,7 +162,7 @@ Para el cual tenemos tres opciones de distribución:
                 # Add modified phenotype list and associated gene to the simulated dataset
                 simulated_data.append((gene, simulated_phenotypes))
 
-            print(f'Generando set: {n/4921*100}%\n Ruido con distribución normal \n Missing phens: media={mph_mean} y std={mph_std}\n Incorrect phens: media={iph_mean} y std={iph_std}',end='\r')
+            print(f'Generando set: {n/4921*100:.2f}% | Ruido con distribución normal | Missing phens: media={mph_mean} y std={mph_std} | Incorrect phens: media={iph_mean} y std={iph_std}   ',end="\r")
             n+=1
         with open(f'{PATH}data/simulated/{type_of_noise}_simulations/mph_mean_{mph_mean}_mph_std{mph_std}_iph_mean{iph_mean}_iph_std_{iph_std}.txt','w') as file:
             json.dump(simulated_data,file)
@@ -191,7 +191,7 @@ Para el cual tenemos tres opciones de distribución:
 
                 # Add modified phenotype list and associated gene to the simulated dataset
                 simulated_data.append((gene, simulated_phenotypes))
-            print(f'Generando set: {n/4921*100}%\nRuido constante, mph={mph_ratio},iph={iph_ratio}',
+            print(f'Generando set: {n/4921*100:.2f}%\nRuido constante, mph={mph_ratio},iph={iph_ratio}',
                     end='\r')
             n+=1
 

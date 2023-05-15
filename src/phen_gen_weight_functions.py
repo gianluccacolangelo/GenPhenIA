@@ -12,7 +12,6 @@ PATH = '/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/'
 ## }}}
 
 
-## {{{ functions
 
 
 ## {{{ funciones de peso de genes candidatos
@@ -77,7 +76,7 @@ def fen_reales_del_gen(gen_id,
 def fen_observados_con_ruido(gen_id,
         mph=0.1,
         iph=0.1,
-        db='normal'):
+        type_of_noise='normal'):
     """
 mph e iph corresponden a los dos parámetros de ruido: missing phenotypes e
 incorrect phenotypes, respectivamente, el que elijamos ahí va a ser tomado de
@@ -87,23 +86,23 @@ la base de datos, ya sea:
 -constante
 -random
     """
-    if db == 'normal':
-        filename = f'{PATH}data/simulated/{db}_simulations/mph_mean_{mph}_mph_std0.1_iph_mean{iph}_iph_std_0.1.txt'
+    if type_of_noise == 'normal':
+        filename = f'{PATH}data/simulated/{type_of_noise}_simulations/mph_mean_{mph}_mph_std0.1_iph_mean{iph}_iph_std_0.1.txt'
         with open(filename,'r') as file:
             noised_gene_phenotype_dict = json.load(file)
 
         fen_observados = dict(noised_gene_phenotype_dict)[str(gen_id)]
 
-    elif db == 'constant':
-        filename = f'{PATH}data/simulated/{db}_simulations/mph_{mph}_iph_{iph}.txt'
+    elif type_of_noise == 'constant':
+        filename = f'{PATH}data/simulated/{type_of_noise}_simulations/mph_{mph}_iph_{iph}.txt'
         with open(filename,'r') as file:
             noised_gene_phenotype_dict = json.load(file)
 
         fen_observados = dict(noised_gene_phenotype_dict)[str(gen_id)]
 
 
-    elif db == 'random':
-        filename = f'{PATH}data/simulated/{db}_simulations/random_simulated_data.json'
+    elif type_of_noise == 'random':
+        filename = f'{PATH}data/simulated/{type_of_noise}_simulations/random_simulated_data.json'
         with open(filename,'r') as file:
             noised_gene_phenotype_dict = json.load(file)
 
@@ -124,7 +123,7 @@ def lista_de_genes(db=f'{PATH}data/simulated/gene_phenotype_dict.json'):
     lista = [i for i in gene_phenotype_dict.keys()]
     return lista
 
-def corrida_de_pesos():
+def corrida_de_pesos(type_of_noise="normal",mph=0.1,iph=0.1):
 
     lista = lista_de_genes()
 
@@ -132,7 +131,12 @@ def corrida_de_pesos():
     i=0
     for gen in lista:
         fen_reales = fen_reales_del_gen(gen)
-        fen_observados = fen_observados_con_ruido(gen)
+        fen_observados = fen_observados_con_ruido(gen,
+                type_of_noise=type_of_noise) if type_of_noise == "random" else fen_observados_con_ruido(gen,
+                        mph=mph,
+                        iph=iph,
+                        type_of_noise=type_of_noise)
+
         especificidad = especificidad_del_gen(fen_observados,fen_reales)
         capitalidad = capitalidad_del_gen(fen_observados,fen_reales)
         similaridad = similaridad_del_gen(fen_observados,fen_reales)
@@ -221,4 +225,3 @@ def plot_correlations(df):
 
 
 
-## }}}
