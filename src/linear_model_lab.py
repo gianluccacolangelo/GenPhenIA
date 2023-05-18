@@ -14,6 +14,7 @@ PATH = "/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/"
 
 ## {{{
 
+df_phen_to_gen = pd.read_csv(f"{PATH}/data/phenotype_to_genes.txt",delimiter="\t")
 def union_de_genes(set_of_phens):
     """
 Esta función toma un conjunto de fenotipos y devuelvue la unión de todos los
@@ -24,14 +25,9 @@ Y para cada fenotipo scrappea en phenotypes_to_genes.txt para obtener los genes
 que lo causan.
 
     """
-
-    gene_ids = []
-    df = pd.read_csv(f"{PATH}/data/phenotype_to_genes.txt",delimiter="\t")
-    for hpo in set_of_phens:
-        selected_rows = df[df["hpo_id"]==hpo]
-        gene_ids.extend(selected_rows['ncbi_gene_id'].tolist())
+    selected_rows = df_phen_to_gen[df_phen_to_gen["hpo_id"].isin(set_of_phens)]
+    gene_ids = selected_rows['ncbi_gene_id'].tolist()
     return set(gene_ids)
-
 
 def calculate_gene_parameters(set_of_phens):
 
@@ -79,13 +75,12 @@ conjunto de fenotipos.
     # real en nuestro modelo
     metrics = []
     i=1
+    noised_set = pgw.whats_your_set(mph,iph,"normal")
     for gene in list_of_genes:
         print(f"\nCalculando para gen {i} de {len(list_of_genes)}  ")
         #Los fenotipos observados con ruido para un dado gen
         fen_observados = pgw.fen_observados_con_ruido(gene,
-                mph = mph,
-                iph = iph,
-                type_of_noise = type_of_noise)
+                noised_set)
 
         #Calculamos los parámetros esp. cap. y sim. para la unión de genes
         # posibles que causan esos fenotipos
@@ -93,10 +88,12 @@ conjunto de fenotipos.
 
         #Esto agrega a metrics la posición en el índice rankeado del gen real
         # entre los miles posibles
-        metrics.append(df.loc[df['gene']==int(gene)].index[0])
-
-        print(f"                      ranking = {metrics[i-1]+1}\n")
-        i+=1
+        try:
+            metrics.append(df.loc[df['gene']==int(gene)].index[0])
+            print(f"                      ranking = {metrics[i-1]+1}\n")
+            i+=1
+        except:
+            continue
 
 
     return metrics
@@ -104,3 +101,5 @@ conjunto de fenotipos.
 
 
 ## }}}
+
+

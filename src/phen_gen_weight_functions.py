@@ -65,40 +65,31 @@ La tercera opción sería combinar ambas cosas. Pero paso a paso.
 """
 
 
-def fen_reales_del_gen(gen_id,
-        db=f'{PATH}data/simulated/gene_phenotype_dict.json'):
-    # gene_id = str(gen_id)
-    with open(db,'r') as file:
-        gene_phenotype_dict = json.load(file)
+# Abrimos gene_phenotype_dict
+db=f'{PATH}data/simulated/gene_phenotype_dict.json'
+with open(db,'r') as file:
+    gene_phenotype_dict = json.load(file)
+
+def fen_reales_del_gen(gen_id):
     fen_reales = gene_phenotype_dict[str(gen_id)]
     return set(fen_reales)
 
-def fen_observados_con_ruido(gen_id,
-        mph=0.1,
-        iph=0.1,
-        type_of_noise='normal'):
-    """
-mph e iph corresponden a los dos parámetros de ruido: missing phenotypes e
-incorrect phenotypes, respectivamente, el que elijamos ahí va a ser tomado de
-la base de datos, ya sea:
 
--normal
--constante
--random
+def whats_your_set(mph=0.5,iph=0.5,type_of_noise="normal"):
+    """
+Esta función es para elegir el set simulado de la base de datos, le das un
+parámetro de mph e iph y el tipo de distribución de ruido que quieras, y te
+devuelve el set
     """
     if type_of_noise == 'normal':
         filename = f'{PATH}data/simulated/{type_of_noise}_simulations/mph_mean_{mph}_mph_std0.1_iph_mean{iph}_iph_std_0.1.txt'
         with open(filename,'r') as file:
             noised_gene_phenotype_dict = json.load(file)
 
-        fen_observados = dict(noised_gene_phenotype_dict)[str(gen_id)]
-
     elif type_of_noise == 'constant':
         filename = f'{PATH}data/simulated/{type_of_noise}_simulations/mph_{mph}_iph_{iph}.txt'
         with open(filename,'r') as file:
             noised_gene_phenotype_dict = json.load(file)
-
-        fen_observados = dict(noised_gene_phenotype_dict)[str(gen_id)]
 
 
     elif type_of_noise == 'random':
@@ -106,20 +97,32 @@ la base de datos, ya sea:
         with open(filename,'r') as file:
             noised_gene_phenotype_dict = json.load(file)
 
-        fen_observados = dict(noised_gene_phenotype_dict)[str(gen_id)]
+    return noised_gene_phenotype_dict
 
 
+def fen_observados_con_ruido(gen_id,
+        noised_set):
+
+    """
+mph e iph corresponden a los dos parámetros de ruido: missing phenotypes e
+incorrect phenotypes, respectivamente, el que elijamos ahí va a ser tomado de
+la base de datos.
+    """
+
+    fen_observados = dict(noised_set)[str(gen_id)]
     return set(fen_observados)
-
 
 ## }}}
 
 
 
 ## {{{
-def lista_de_genes(db=f'{PATH}data/simulated/gene_phenotype_dict.json'):
-    with open(db,'r') as file:
-        gene_phenotype_dict = json.load(file)
+
+db_gene_to_phenotype = f'{PATH}data/simulated/gene_phenotype_dict.json'
+with open(db_gene_to_phenotype,'r') as file:
+    gene_phenotype_dict = json.load(file)
+
+def lista_de_genes():
     lista = [i for i in gene_phenotype_dict.keys()]
     return lista
 
