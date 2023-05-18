@@ -8,6 +8,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import phen_gen_weight_functions as pgw
 import pandas as pd
+import random
+import scienceplots
 PATH = "/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/"
 ## }}}
 
@@ -64,23 +66,27 @@ def calculate_gene_parameters(set_of_phens):
 
 ## {{{ Evaluando para todos los genes
 
-def model_evaluating(mph,iph,type_of_noise):
+list_of_gens = pgw.lista_de_genes()
+
+def model_evaluating(mph,iph,type_of_noise,fen_sample,gen_sample,list_of_genes=list_of_gens):
     """
 A esta función le damos un mph y un iph y evalúa el modelo para ese set
 simulado, calculando el ranking en la importancia para el gen real dado un
 conjunto de fenotipos.
+n_sample es el número máximo de fenotipos que vamos a sacar del set
     """
-    list_of_genes = pgw.lista_de_genes()
     #metrics va a almacenar la posición en el ranking de importancia del gen
     # real en nuestro modelo
+    list_of_genes = np.random.choice(list_of_genes,gen_sample)
     metrics = []
     i=1
-    noised_set = pgw.whats_your_set(mph,iph,"normal")
+    noised_set = pgw.whats_your_set(mph,iph,type_of_noise)
     for gene in list_of_genes:
         print(f"\nCalculando para gen {i} de {len(list_of_genes)}  ")
         #Los fenotipos observados con ruido para un dado gen
         fen_observados = pgw.fen_observados_con_ruido(gene,
-                noised_set)
+                noised_set,
+                fen_sample)
 
         #Calculamos los parámetros esp. cap. y sim. para la unión de genes
         # posibles que causan esos fenotipos
@@ -89,8 +95,8 @@ conjunto de fenotipos.
         #Esto agrega a metrics la posición en el índice rankeado del gen real
         # entre los miles posibles
         try:
-            metrics.append(df.loc[df['gene']==int(gene)].index[0])
-            print(f"                      ranking = {metrics[i-1]+1}\n")
+            metrics.append(df.loc[df['gene']==int(gene)].index[0]+1)
+            print(f"                      ranking = {metrics[i-1]}\n")
             i+=1
         except:
             continue
@@ -99,7 +105,69 @@ conjunto de fenotipos.
     return metrics
 
 
-
+def percent_below_x(lst,x):
+    count = sum(1 for i in lst if i <= x)
+    return (count / len(lst))
 ## }}}
 
 
+
+
+
+## {{{
+results = {}
+for type_of_noise in ['normal','constant','random','gold_standard']:
+    if type_of_noise == 'gold_standard':
+        mph_iph_metrics = []
+        for fen_samples in range(15):
+            list_of_gen_rankings = model_evaluating(0.1,0.1,type_of_noise,fen_samples+1,100)
+            mph_iph_metrics.append(percent_below_x(list_of_gen_rankings,10))
+        results[f"clean_set"] = mph_iph_metrics
+
+
+    elif type_of_noise == 'normal' or type_of_noise == 'constant':
+        for mph in [0.1,0.5]:
+            for iph in [0.1,0.5]:
+                mph_iph_metrics = []
+                for fen_samples in range(15):
+                    list_of_gen_rankings = model_evaluating(mph,iph,type_of_noise,fen_samples+1,100)
+                    mph_iph_metrics.append(percent_below_x(list_of_gen_rankings,10))
+                results[f"{type_of_noise}: mph={mph}, iph={iph}"] = mph_iph_metrics
+
+    elif type_of_noise == 'random':
+        mph_iph_metrics = []
+        for fen_samples in range(15):
+            list_of_gen_rankings = model_evaluating(0.1,0.1,type_of_noise,fen_samples+1,100)
+            mph_iph_metrics.append(percent_below_x(list_of_gen_rankings,10))
+        results[f"random"] = mph_iph_metrics
+
+
+top_10_metrics = pd.DataFrame(results)
+
+## }}}
+
+## {{{
+with open(f"{PATH}output/top_10_metrics.csv", "w") as f:
+    top_10_metrics.to_csv(f)
+## }}}
+
+##{{{
+metrics = []
+for fen_samples in range(15):
+    list_of_gen_rankings = model_evaluating(0.1,0.1,"gold_standard",fen_samples+1,100)
+    metrics.append(percent_below_x(list_of_gen_rankings,10))
+results.append((f"Clean set", metrics))
+
+##}}}
+
+## {{{
+with plt.style.context(['science','ieee','nature']):
+    fig , ax = plt.subplots()
+    for label, metrics in results:
+        ax.plot(np.arange(0,15), metrics, label=label)
+ax.legend( loc='lower right', fontsize=4)
+ax.set_xlabel('Total observed phenotypes',fontsize=5)
+ax.set_ylabel('Accuracy',fontsize=5)
+ax.set_title('Accuracy of the model for different noise levels', fontsize=4)
+ax.tick_params(axis='both', which='major', labelsize=6)
+## }}}

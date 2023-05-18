@@ -87,7 +87,7 @@ devuelve el set
             noised_gene_phenotype_dict = json.load(file)
 
     elif type_of_noise == 'constant':
-        filename = f'{PATH}data/simulated/{type_of_noise}_simulations/mph_{mph}_iph_{iph}.txt'
+        filename = f'{PATH}data/simulated/{type_of_noise}_simulations/mph_{mph}_iph_{iph}.json'
         with open(filename,'r') as file:
             noised_gene_phenotype_dict = json.load(file)
 
@@ -97,20 +97,33 @@ devuelve el set
         with open(filename,'r') as file:
             noised_gene_phenotype_dict = json.load(file)
 
+    elif type_of_noise == 'gold_standard':
+        filename = f'{PATH}data/simulated/gene_phenotype_dict.json'
+        with open(filename,'r') as file:
+            noised_gene_phenotype_dict = json.load(file)
+
     return noised_gene_phenotype_dict
 
 
 def fen_observados_con_ruido(gen_id,
-        noised_set):
+        noised_set,n_sample):
 
     """
 mph e iph corresponden a los dos parámetros de ruido: missing phenotypes e
 incorrect phenotypes, respectivamente, el que elijamos ahí va a ser tomado de
 la base de datos.
+n_sample es el número de fenotipos observados que queremos tomar
     """
 
-    fen_observados = dict(noised_set)[str(gen_id)]
-    return set(fen_observados)
+    fen_observados_total = dict(noised_set)[str(gen_id)]
+    try:
+        n_fen_observados = np.random.choice(fen_observados_total,n_sample,replace=False)
+    except:
+        #Si el n_sample es mayor al n total de fen para ese gen, entonces,
+        # directamente le ponemos el fen_total de ese gen (que va a ser menor)
+        n_fen_observados = fen_observados_total    #replace=False es para que una vez que elijo un fenotipo, no lo vuelva a elegir.
+
+    return set(n_fen_observados)
 
 ## }}}
 
