@@ -67,7 +67,7 @@ devuelve: una lista de {num incorrect} fenotipos incorrectos
 ## {{{ genphen_simulator
 
 def genphen_simulator(missing_phens=[0.1,0.2,0.3,0.4,0.5],
-        incorrect_phens=[0.1,0.2,0.3],
+        incorrect_phens=[0.1,0.2,0.3,0.4,0.5],
         n_samples_per_gene=1,
         type_of_noise = "random",
         genphen_db=f'{PATH}/data/simulated/genes_to_phenotype.txt'):

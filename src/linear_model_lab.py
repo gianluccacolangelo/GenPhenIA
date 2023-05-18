@@ -151,23 +151,47 @@ with open(f"{PATH}output/top_10_metrics.csv", "w") as f:
     top_10_metrics.to_csv(f)
 ## }}}
 
-##{{{
-metrics = []
-for fen_samples in range(15):
-    list_of_gen_rankings = model_evaluating(0.1,0.1,"gold_standard",fen_samples+1,100)
-    metrics.append(percent_below_x(list_of_gen_rankings,10))
-results.append((f"Clean set", metrics))
-
-##}}}
 
 ## {{{
+with open(f"{PATH}output/top_10_metrics.csv", "r") as f:
+    top_10_metrics = pd.read_csv(f)
+## }}}
+
+
+## {{{
+x = np.linspace(0, 10, 100)
+
+# Create a set of line styles to use (you can use any suitable line styles)
+styles = ['-', '--', '-.', ':']
+
+# Create a colormap
+cmap = plt.get_cmap('tab10')
+
 with plt.style.context(['science','ieee','nature']):
-    fig , ax = plt.subplots()
-    for label, metrics in results:
-        ax.plot(np.arange(0,15), metrics, label=label)
-ax.legend( loc='lower right', fontsize=4)
-ax.set_xlabel('Total observed phenotypes',fontsize=5)
-ax.set_ylabel('Accuracy',fontsize=5)
-ax.set_title('Accuracy of the model for different noise levels', fontsize=4)
-ax.tick_params(axis='both', which='major', labelsize=6)
+    fig, (ax1,ax2) = plt.subplots(1,2)
+    for i, label in enumerate(top_10_metrics.columns[4:8]):
+        ax1.plot(np.arange(0,15), top_10_metrics[label], label=label, color=cmap(i), linestyle=styles[i % len(styles)])
+    ax1.plot(np.arange(0,15), top_10_metrics['clean_set'], label='clean_set',
+            color='black')
+    ax1.legend(loc='lower right', fontsize=2)
+    ax1.set_xlabel('Total observed phenotypes', fontsize=4)
+    ax1.set_ylabel('Accuracy',fontsize=4)
+    ax1.set_title('Accuracy of the model for different noise levels', fontsize=4)
+    ax1.tick_params(axis='both', which='major', labelsize=4)
+    ax1.axhline(y=0.9, color='green', linestyle='--', linewidth=1,alpha=0.5)
+    ax1.axvline(x=5, color='green', linestyle='--', linewidth=1,alpha=0.5)
+
+    for i, label in enumerate(top_10_metrics.columns[0:4]):
+        ax2.plot(np.arange(0,15), top_10_metrics[label], label=label, color=cmap(i), linestyle=styles[i % len(styles)])
+    ax2.plot(np.arange(0,15), top_10_metrics['clean_set'], label='clean_set',
+            color='black')
+    ax2.legend(loc='lower right', fontsize=2)
+    ax2.set_xlabel('Total observed phenotypes', fontsize=4)
+    ax2.set_ylabel('Accuracy',fontsize=4)
+    ax2.set_title('Accuracy of the model for different noise levels', fontsize=4)
+    ax2.tick_params(axis='both', which='major', labelsize=4)
+    ax2.axhline(y=0.9, color='green', linestyle='--', linewidth=1,alpha=0.5)
+    ax2.axvline(x=5, color='green', linestyle='--', linewidth=1,alpha=0.5)
+
+plt.show()
 ## }}}
