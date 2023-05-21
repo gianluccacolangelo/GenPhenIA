@@ -142,16 +142,12 @@ def lista_de_genes():
 def corrida_de_pesos(type_of_noise="normal",mph=0.1,iph=0.1):
 
     lista = lista_de_genes()
-
+    noised_set = whats_your_set(mph,iph,type_of_noise)
     list_of_df = []
     i=0
     for gen in lista:
         fen_reales = fen_reales_del_gen(gen)
-        fen_observados = fen_observados_con_ruido(gen,
-                type_of_noise=type_of_noise) if type_of_noise == "random" else fen_observados_con_ruido(gen,
-                        mph=mph,
-                        iph=iph,
-                        type_of_noise=type_of_noise)
+        fen_observados = fen_observados_con_ruido(gen,noised_set,100)
 
         especificidad = especificidad_del_gen(fen_observados,fen_reales)
         capitalidad = capitalidad_del_gen(fen_observados,fen_reales)
