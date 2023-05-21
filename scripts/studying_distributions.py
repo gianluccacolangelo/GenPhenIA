@@ -30,6 +30,10 @@ import pandas as pd
 list_of_genees = pgw.lista_de_genes()
 
 def calculate_gene_parameters(mph,iph,type_of_noise,alpha,betha,gamma,gen_sample,fen_sample):
+    """
+Esta función calcula la especificidad, capitalidad y similaridad de gene
+reales, dependiendo de cuánto pongamos en gen sample.
+    """
     list_of_gens = np.random.choice(list_of_genees,gen_sample,replace=False)
     data = []
     noised_set = pgw.whats_your_set(mph,iph,type_of_noise)
@@ -99,4 +103,33 @@ with plt.style.context(['science','ieee','nature']):
             hspace=0.,wspace=0.1)
 
     ax.tick_params(axis='both', which='major', labelsize=4)
+## }}}
+
+
+## {{{ Correlaciones entre variables en función de N
+
+for fen_sample in range(1,11):
+    df = calculate_gene_parameters(.1,.1,'constant',1,1,1,500,fen_sample)
+    esp = np.array(list(df['especificidad']))
+    cap = np.array(list(df['capitalidad']))
+    sim = np.array(list(df['similaridad']))
+    corr, _ = pearsonr(cap,sim)
+    print('corr entre esp y cap: %.3f' % corr)
+
+
+## }}}
+
+## {{{
+with plt.style.context(['science','ieee','nature']):
+    fig,ax = plt.subplots()
+    ax.scatter(np.arange(1,11),[0.194,0.207,0.22,0.19,0.28,.26,.18,.20,24,2])
+    ax.set_xlabel('Fenotipos observados totales (N)',fontsize=4)
+    ax.set_ylabel('Coef correlación entre esp y cap',fontsize=4)
+    ax.set_title(f'500 HC para cada N. mph,iph=0.5',fontsize=4)
+    plt.subplots_adjust(top=0.9,bottom=0.15,
+            left=0.176,right=0.952,
+            hspace=0.,wspace=0.1)
+
+    ax.tick_params(axis='both', which='major', labelsize=4)
+
 ## }}}
