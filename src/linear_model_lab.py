@@ -190,51 +190,52 @@ def percent_below_x(lst,x):
 
 
 ## {{{
-# with open(f"{PATH}output/top_10_metrics_1_0_0.csv", "r") as f:
-    # top_10_metrics = pd.read_csv(f)
+with open(f"{PATH}output/top_10_metrics.csv", "r") as f:
+    top_10_metrics = pd.read_csv(f)
 ## }}}
 
 
 ## {{{
-# x = np.linspace(0, 10, 100)
+x = np.linspace(0, 10, 100)
 
-# # Create a set of line styles to use (you can use any suitable line styles)
-# styles = ['-', '--', '-.', ':']
+# Create a set of line styles to use (you can use any suitable line styles)
+styles = ['-', '--', '-.', ':']
 
-# # Create a colormap
-# cmap = plt.get_cmap('tab10')
+# Create a colormap
+cmap = plt.get_cmap('tab10')
 
-# with plt.style.context(['science','ieee','nature']):
-    # fig, ax1 = plt.subplots()
-    # plt.rcParams["text.usetex"] = True
-    # for i, label in enumerate(top_10_metrics.columns[1:2]):
-        # ax1.plot(np.arange(1,11), top_10_metrics[label], label=label, color=cmap(i), linestyle=styles[i % len(styles)])
-    # ax1.plot(np.arange(1,11), top_10_metrics['clean_set'], label='clean_set',
-            # color='black')
-    # ax1.legend(loc='lower right', fontsize=4)
-    # ax1.set_xlabel('Total observed phenotypes (N)', fontsize=4)
-    # ax1.set_ylabel('Accuracy',fontsize=4)
-    # ax1.set_title('Accuracy of the model for $\\alpha=1, \\beta=\\gamma=0$', fontsize=4)
-    # ax1.tick_params(axis='both', which='major', labelsize=3)
-    # # ax1.axhline(y=0.9, color='green', linestyle='--', linewidth=1,alpha=0.5)
-    # # ax1.axvline(x=5, color='green', linestyle='--', linewidth=1,alpha=0.5)
-    # ax1.set_ylim(0,1)
-    # plt.subplots_adjust(top=0.9,bottom=0.15,
-            # left=0.176,right=0.952,
-            # hspace=0.,wspace=0.1)
-    # for i, label in enumerate(top_10_metrics.columns[1:5]):
-        # ax2.plot(np.arange(0,15), top_10_metrics[label], label=label, color=cmap(i), linestyle=styles[i % len(styles)])
-    # ax2.plot(np.arange(0,15), top_10_metrics['clean_set'], label='clean_set',
-            # color='black')
-    # ax2.legend(loc='lower right', fontsize=2)
-    # ax2.set_xlabel('Total observed phenotypes', fontsize=4)
+with plt.style.context(['science','ieee','nature']):
+    fig, (ax1,ax2) = plt.subplots(1,2)
+    plt.rcParams["text.usetex"] = True
+    for i, label in enumerate(top_10_metrics.columns[1:5]):
+        ax1.plot(np.arange(1,16), top_10_metrics[label], label=label, color=cmap(i), linestyle=styles[i % len(styles)])
+    ax1.plot(np.arange(1,16), top_10_metrics['clean_set'], label='clean_set',
+            color='black')
+    ax1.legend(loc='lower right', fontsize=4)
+    ax1.set_xlabel('Total observed phenotypes (N)', fontsize=4)
+    ax1.set_ylabel('Accuracy',fontsize=4)
+    ax1.set_title('Accuracy of the model for different noise levels', fontsize=4)
+    ax1.tick_params(axis='both', which='major', labelsize=3)
+    ax1.axhline(y=0.9, color='green', linestyle='--', linewidth=1,alpha=0.5)
+    ax1.axvline(x=5, color='green', linestyle='--', linewidth=1,alpha=0.5)
+    ax1.set_ylim(0,1)
+    plt.subplots_adjust(top=0.9,bottom=0.15,
+            left=0.176,right=0.952,
+            hspace=0.,wspace=0.1)
+    for i, label in enumerate(top_10_metrics.columns[5:9]):
+        ax2.plot(np.arange(1,16), top_10_metrics[label], label=label, color=cmap(i), linestyle=styles[i % len(styles)])
+    ax2.plot(np.arange(1,16), top_10_metrics['clean_set'], label='clean_set',
+            color='black')
+    ax2.legend(loc='lower right', fontsize=4)
+    ax2.set_xlabel('Total observed phenotypes (N)', fontsize=4)
     # ax2.set_ylabel('Accuracy',fontsize=4)
-    # ax2.set_title('Accuracy of the model for different noise levels', fontsize=4)
-    # ax2.tick_params(axis='both', which='major', labelsize=4)
-    # ax2.axhline(y=0.9, color='green', linestyle='--', linewidth=1,alpha=0.5)
-    # ax2.axvline(x=5, color='green', linestyle='--', linewidth=1,alpha=0.5)
+    ax2.set_title('Accuracy of the model for different noise levels', fontsize=4)
+    ax2.tick_params(axis='both', which='major', labelsize=3)
+    ax2.axhline(y=0.9, color='green', linestyle='--', linewidth=1,alpha=0.5)
+    ax2.axvline(x=5, color='green', linestyle='--', linewidth=1,alpha=0.5)
+    ax2.set_ylim(0,1)
 
-# plt.show()
+plt.show()
 ## }}}
 
 
