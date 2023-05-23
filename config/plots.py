@@ -7,6 +7,9 @@ import sys
 sys.path.insert(0,'/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/src')
 import phen_gen_weight_functions as pgw
 import linear_model_lab as lml
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 PATH = "/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/"
 ## }}}
 
@@ -103,7 +106,7 @@ plt.show()
 
 ## {{{ CORRIENDO MODELO PARA cada métrica separada
 
-for alpha,betha,gamma in [(1,0,0).(0,1,0),(0,0,1)]:
+for alpha,betha,gamma in [(1,0,0),(0,1,0),(0,0,1)]:
     results = {}
 #alpha -> especificidad
 #betha -> capitalidad
@@ -151,7 +154,7 @@ for alpha,betha,gamma in [(1,0,0).(0,1,0),(0,0,1)]:
             top_10_metrics.to_csv(f)
 
 ## {{{ PLOT
-with open(f"{PATH}output/top_10_metrics_1_0_0.csv", "r") as f:
+with open(f"{PATH}output/top_10_metrics_0_1_0.csv", "r") as f:
     top_10_metrics = pd.read_csv(f)
 
 x = np.linspace(0, 10, 100)
