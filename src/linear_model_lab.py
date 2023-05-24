@@ -17,6 +17,8 @@ PATH = "/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/"
 ## {{{
 
 df_phen_to_gen = pd.read_csv(f"{PATH}/data/phenotype_to_genes.txt",delimiter="\t")
+phen_to_genes = df_phen_to_gen.groupby('hpo_id')['ncbi_gene_id'].apply(set).to_dict()
+
 def union_de_genes(set_of_phens):
     """
 Esta función toma un conjunto de fenotipos y devuelvue la unión de todos los
@@ -27,9 +29,8 @@ Y para cada fenotipo scrappea en phenotypes_to_genes.txt para obtener los genes
 que lo causan.
 
     """
-    selected_rows = df_phen_to_gen[df_phen_to_gen["hpo_id"].isin(set_of_phens)]
-    gene_ids = selected_rows['ncbi_gene_id'].tolist()
-    return set(gene_ids)
+    gene_ids = set.union(*(phen_to_genes.get(phen, set()) for phen in set_of_phens))
+    return gene_ids
 
 def calculate_gene_parameters(set_of_phens,alpha,betha,gamma):
     """
