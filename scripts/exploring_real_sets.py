@@ -102,7 +102,7 @@ with open (f"{PATH}data/simulated/phenotype_gene_dict.json",'r') as f:
         phenotype_gene_dict[phen] = [int(gene.split(':')[-1])
                 for gene in phenotype_gene_dict[phen]]
 
-def mph(db_curada,db_real):
+def ruidos_reales(db_curada,db_real):
     """
     Esta función calcula la cantidad de mph que hay en una base de datos real
     """
@@ -127,11 +127,19 @@ with open(f'{PATH}data/phenotype_to_genes.txt','r') as file:
     df = pd.DataFrame(reader)
 
 
+mph,iph = ruidos_reales(df,bitgenia)
 
 ## }}}
 
 
 ## {{{ plotting
 
+with plt.style.context(['science','ieee','nature']):
+    fig, ax1 = plt.subplots()
+    ax1.boxplot([mph,iph],flierprops=dict(markerfacecolor='r', markersize=0.4))
+    ax1.set_xticklabels(['mph', 'iph'])
+    ax1.set_ylabel("$\%$")
+    ax1.set_xlabel("Tipos de ruido",fontsize=5)
+    ax1.set_title(f"Ruidos reales de Bitgenia",fontsize=6)
 
 ## }}}
