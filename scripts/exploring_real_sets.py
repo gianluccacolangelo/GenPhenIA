@@ -74,6 +74,7 @@ with plt.style.context(['science','ieee','nature']):
             label=f"media $={np.round(np.mean(bitgenia_total_phenotypes))}$")
     ax1.tick_params(axis='both',which='major',labelsize=3)
     ax1.legend(fontsize=5)
+    ax1.text(20,60,f"std $= {np.round(np.std(bitgenia_total_phenotypes))}$",fontsize=4)
 
     ax2.hist(clinvar_total_phenotypes,bins=20,alpha=.7)
     ax2.set_title("Clinvar")
@@ -82,5 +83,12 @@ with plt.style.context(['science','ieee','nature']):
             label=f"media $={np.round(np.mean(clinvar_total_phenotypes))}$")
     ax2.tick_params(axis='both',which='major',labelsize=3)
     ax2.legend(fontsize=5)
+    ax2.text(25,360,f"std $= {np.round(np.std(clinvar_total_phenotypes))}$",fontsize=4)
+
+## }}}
+
+
+## {{{
+
 
 ## }}}
