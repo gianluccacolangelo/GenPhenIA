@@ -40,9 +40,10 @@ file_path = f"{PATH}data/real/bitgenia_IDs_tov3.sets"
 dictionary = convert_to_dict(file_path)
 # print(dictionary)
 
-with open(f'{PATH}data/real/bitgenia.json', 'w') as f:
-    json.dump(dictionary, f)
-
+def save_to_json(dictionary, json_file_path):
+    with open(f'{PATH}data/real/bitgenia.json', 'w') as json_file:
+        json.dump(dictionary, json_file, indent=4, sort_keys=True)
+save_to_json(dictionary,"bla")
 ## }}}
 
 
