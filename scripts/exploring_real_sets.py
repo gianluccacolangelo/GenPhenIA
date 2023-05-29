@@ -21,6 +21,8 @@ import scienceplots
 import matplotlib.pyplot as plt
 import pandas as pd
 import csv
+# import matplotlib
+# matplotlib.use('TkAgg')
 ## }}}
 
 ## {{{ Convertir a diccionario el set que nos dieron
@@ -66,26 +68,27 @@ with open(f'{PATH}data/real/clinvar.json','r') as f:
 bitgenia_total_phenotypes = [len(phen_set) for phen_set in bitgenia.values()]
 clinvar_total_phenotypes = [len(phen_set) for phen_set in clinvar.values()]
 
-# with plt.style.context(['science','ieee','nature']):
-    # fig, (ax1,ax2) = plt.subplots(1,2)
-    # ax1.hist(bitgenia_total_phenotypes,bins=20,alpha=.7)
-    # ax1.set_title("Bitgenia")
-    # ax1.set_xlabel("Fenotipos observados totales (N)",size=4)
-    # ax1.set_ylabel("Frecuencia",size=4)
-    # ax1.axvline(x=np.mean(bitgenia_total_phenotypes),linestyle="--",
-            # label=f"media $={np.round(np.mean(bitgenia_total_phenotypes))}$")
-    # ax1.tick_params(axis='both',which='major',labelsize=3)
-    # ax1.legend(fontsize=5)
-    # ax1.text(20,60,f"std $= {np.round(np.std(bitgenia_total_phenotypes))}$",fontsize=4)
+with plt.style.context(['science','ieee','nature']):
+    fig, (ax1,ax2) = plt.subplots(1,2)
 
-    # ax2.hist(clinvar_total_phenotypes,bins=20,alpha=.7)
-    # ax2.set_title("Clinvar")
-    # ax2.set_xlabel("Fenotipos observados totales (N)",size=4)
-    # ax2.axvline(x=np.mean(clinvar_total_phenotypes),linestyle="--",
-            # label=f"media $={np.round(np.mean(clinvar_total_phenotypes))}$")
-    # ax2.tick_params(axis='both',which='major',labelsize=3)
-    # ax2.legend(fontsize=5)
-    # ax2.text(25,360,f"std $= {np.round(np.std(clinvar_total_phenotypes))}$",fontsize=4)
+    ax1.hist(bitgenia_total_phenotypes,bins=20,alpha=.7)
+    ax1.set_title("Bitgenia")
+    ax1.set_xlabel("Fenotipos observados totales (N)",size=4)
+    ax1.set_ylabel("Frecuencia",size=4)
+    ax1.axvline(x=np.mean(bitgenia_total_phenotypes),linestyle="--",
+            label=f"media $={np.round(np.mean(bitgenia_total_phenotypes),2)}$")
+    ax1.tick_params(axis='both',which='major',labelsize=3)
+    ax1.legend(fontsize=5)
+    ax1.text(20,60,f"std $= {np.round(np.std(bitgenia_total_phenotypes),2)}$",fontsize=4)
+
+    ax2.hist(clinvar_total_phenotypes,bins=20,alpha=.7)
+    ax2.set_title("Clinvar")
+    ax2.set_xlabel("Fenotipos observados totales (N)",size=4)
+    ax2.axvline(x=np.mean(clinvar_total_phenotypes),linestyle="--",
+            label=f"media $={np.round(np.mean(clinvar_total_phenotypes),2)}$")
+    ax2.tick_params(axis='both',which='major',labelsize=3)
+    ax2.legend(fontsize=5)
+    ax2.text(25,360,f"std $= {np.round(np.std(clinvar_total_phenotypes),2)}$",fontsize=4)
 ## }}}
 
 
@@ -141,5 +144,7 @@ with plt.style.context(['science','ieee','nature']):
     ax1.set_ylabel("$\%$")
     ax1.set_xlabel("Tipos de ruido",fontsize=5)
     ax1.set_title(f"Ruidos reales de Bitgenia",fontsize=6)
+    ax1.text(1.5,0.95,f"mph $= {np.round(np.mean(mph),3)}\pm {np.round(np.std(mph),3)}$",fontsize=4)
+    ax1.text(1.5,0.84,f"iph $= {np.round(np.mean(iph),3)}\pm {np.round(np.std(iph),3)}$",fontsize=4)
 
 ## }}}
