@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.4.21)  29 MAY 2023 17:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.4.21)  29 MAY 2023 17:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -110,7 +110,7 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count271
 \l__pdf_internal_box=\box52
 )
-No file journal.aux.
+(./journal.aux)
 \openout1 = `journal.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
@@ -127,6 +127,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count272
@@ -149,15 +150,20 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+Overfull \hbox (1.38959pt too wide) in paragraph at lines 21--22
+\OT1/cmr/m/n/10 section29-05-2023 sub-sec-tion-Com-mits sub-sec-tion-Fig-ures s
+ub-sec-tion-Bib-li-og-ra-phy
+ []
+
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./journal.aux) ) 
 Here is how much of TeX's memory you used:
- 1964 strings out of 480247
- 29904 string characters out of 5896151
- 317941 words of memory out of 5000000
- 19930 multiletter control sequences out of 15000+600000
- 473880 words of font info for 44 fonts, out of 8000000 for 9000
+ 1965 strings out of 480247
+ 29913 string characters out of 5896151
+ 316932 words of memory out of 5000000
+ 19929 multiletter control sequences out of 15000+600000
+ 473573 words of font info for 43 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  55i,6n,62p,224b,193s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/sha
@@ -165,7 +171,7 @@ re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on journal.pdf (1 page, 52089 bytes).
+Output written on journal.pdf (1 page, 49529 bytes).
 PDF statistics:
  28 PDF objects out of 1000 (max. 8388607)
  16 compressed objects within 1 object stream
