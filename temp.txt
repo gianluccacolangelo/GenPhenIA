@@ -1,10 +1,6 @@
-\\section{}
-
+'\\section{}
 \\subsection{Commits}
-
 \\subsection{Figures}
-
 \\subsection{Bibliography}
-
 \\subsection{Thoughts}
-
+'
