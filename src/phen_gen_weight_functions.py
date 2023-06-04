@@ -46,6 +46,22 @@ Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     return len(fenotipos_observados.intersection(
         fenotipos_del_gen))/len(fenotipos_observados.union(fenotipos_del_gen))
 
+def parametro(fenotipos_observados,fenotipos_del_gen,nuevo_parametro):
+    """
+Esta función está para probar nuevas métricas, donde nuevo_parametro es un
+entero de la nueva métrica
+    """
+    j = fenotipos_observados.intersection(fenotipos_del_gen)
+    i = set(fenotipos_observados)-j
+    k = set(fenotipos_del_gen)-j
+    if nuevo_parametro==1:
+        result = len(j)-len(i)-len(k)
+    elif nuevo_parametro==2:
+        result = len(j)-len(i)
+    elif nuevo_parametro==3:
+        result = len(j)/(len(i)+len(k))
+    return result
+
 
 ## }}}
 
