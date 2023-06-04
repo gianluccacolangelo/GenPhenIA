@@ -32,7 +32,7 @@ que lo causan.
     gene_ids = set.union(*(phen_to_genes.get(phen, set()) for phen in set_of_phens))
     return gene_ids
 
-def calculate_gene_parameters(set_of_phens,alpha,betha,gamma):
+def calculate_gene_parameters(set_of_phens,alpha,betha,gamma,n_metrica=1,nueva_metrica=False):
     """
 Esta función toma un conjunto de fenotipos observados, y calcula:
     especificidad
@@ -56,21 +56,27 @@ Esta función toma un conjunto de fenotipos observados, y calcula:
         especificidad = pgw.especificidad_del_gen(set_of_phens,real_gene_phens)
         capitalidad = pgw.capitalidad_del_gen(set_of_phens,real_gene_phens)
         similaridad = pgw.similaridad_del_gen(set_of_phens,real_gene_phens)
+        nueva_metrica = pgw.parametro(set_of_phens,real_gene_phens,n_metrica)
 
         # add the gene and its parameters to the list
         data.append({'gene': gene,
                      'especificidad':especificidad,
                      'capitalidad': capitalidad,
                      'similaridad': similaridad,
+                     'nueva_metrica':nueva_metrica,
                      'total':(alpha*especificidad+betha*capitalidad+gamma*similaridad)})
         print(f"Calculando {i/len(genes)*100:.1f}%",end="\r")
 
     df = pd.DataFrame(data)
 
     # ordenamos el dataframe en orden descendente por el total
-    df = df.sort_values('total', ascending=False)
-    # Reseteamos el índice
-    df = df.reset_index(drop=True)
+    if nueva_metrica == False:
+        df = df.sort_values('total', ascending=False)
+        # Reseteamos el índice
+        df = df.reset_index(drop=True)
+    else:
+        df = df.sort_values('nueva_metrica', ascending=False)
+        df = df.reset_index(drop=True)
     return df
 ## }}}
 
@@ -86,6 +92,8 @@ def model_evaluating(mph,iph,
         alpha,
         betha,
         gamma,
+        nueva_metrica=False,
+        n_metrica=1,
         list_of_genes=list_of_gens):
     """
 A esta función le damos un mph, iph, y tipo de ruido y evalúa el modelo para ese
@@ -112,7 +120,7 @@ genes reales evaluados
 
         #Calculamos los parámetros esp. cap. y sim. para la unión de genes
         # posibles que causan esos fenotipos
-        df = calculate_gene_parameters(fen_observados,alpha,betha,gamma)
+        df = calculate_gene_parameters(fen_observados,alpha,betha,gamma,n_metrica,nueva_metrica)
 
         #Esto agrega a metrics la posición en el índice rankeado del gen real
         # entre los miles posibles
