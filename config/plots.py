@@ -27,7 +27,7 @@ for type_of_noise in ['normal','constant','random','gold_standard']:
         mph_iph_metrics = []
         for fen_samples in range(15):
             list_of_gen_rankings = lml.model_evaluating(0.1,0.1,type_of_noise,fen_samples+1,100)
-            mph_iph_metrics.append(percent_below_x(list_of_gen_rankings,10))
+            mph_iph_metrics.append(lml.percent_below_x(list_of_gen_rankings,10))
         results[f"clean_set"] = mph_iph_metrics
 
 
@@ -37,14 +37,14 @@ for type_of_noise in ['normal','constant','random','gold_standard']:
                 mph_iph_metrics = []
                 for fen_samples in range(15):
                     list_of_gen_rankings = lml.model_evaluating(mph,iph,type_of_noise,fen_samples+1,100)
-                    mph_iph_metrics.append(percent_below_x(list_of_gen_rankings,10))
+                    mph_iph_metrics.append(lml.percent_below_x(list_of_gen_rankings,10))
                 results[f"{type_of_noise}: mph={mph}, iph={iph}"] = mph_iph_metrics
 
     elif type_of_noise == 'random':
         mph_iph_metrics = []
         for fen_samples in range(15):
             list_of_gen_rankings = lml.model_evaluating(0.1,0.1,type_of_noise,fen_samples+1,100)
-            mph_iph_metrics.append(percent_below_x(list_of_gen_rankings,10))
+            mph_iph_metrics.append(lml.percent_below_x(list_of_gen_rankings,10))
         results[f"random"] = mph_iph_metrics
 
 
@@ -106,10 +106,10 @@ plt.show()
 
 ## {{{ CORRIENDO MODELO PARA cada métrica separada
 
-for alpha,betha,gamma in [(1,0,0),(0,1,0),(0,0,1)]:
+for alpha,beta,gamma in [(1,0,0),(0,1,0),(0,0,1)]:
     results = {}
 #alpha -> especificidad
-#betha -> capitalidad
+#beta -> capitalidad
 #gamma -> similaridad
     for type_of_noise in ['constant','gold_standard']:
         if type_of_noise == 'gold_standard':
@@ -119,9 +119,9 @@ for alpha,betha,gamma in [(1,0,0),(0,1,0),(0,0,1)]:
                             fen_samples+1,
                             500,
                             alpha,
-                            betha,
+                            beta,
                             gamma)
-                mph_iph_metrics.append(percent_below_x(list_of_gen_rankings,10))
+                mph_iph_metrics.append(lml.percent_below_x(list_of_gen_rankings,10))
             results[f"clean_set"] = mph_iph_metrics
 
 
@@ -135,26 +135,26 @@ for alpha,betha,gamma in [(1,0,0),(0,1,0),(0,0,1)]:
                                     fen_samples+1,
                                     500,
                                     alpha,
-                                    betha,
+                                    beta,
                                     gamma)
-                        mph_iph_metrics.append(percent_below_x(list_of_gen_rankings,10))
+                        mph_iph_metrics.append(lml.percent_below_x(list_of_gen_rankings,10))
                     results[f"{type_of_noise}: mph={mph}, iph={iph}"] = mph_iph_metrics
 
         elif type_of_noise == 'random':
             mph_iph_metrics = []
             for fen_samples in range(15):
                 list_of_gen_rankings = lml.model_evaluating(0.1,0.1,type_of_noise,fen_samples+1,500)
-                mph_iph_metrics.append(percent_below_x(list_of_gen_rankings,10))
+                mph_iph_metrics.append(lml.percent_below_x(list_of_gen_rankings,10))
             results[f"random"] = mph_iph_metrics
 
 
         top_10_metrics = pd.DataFrame(results)
 
-        with open(f"{PATH}output/top_10_metrics_{alpha}_{betha}_{gamma}.csv", "w") as f:
+        with open(f"{PATH}output/top_10_metrics_{alpha}_{beta}_{gamma}.csv", "w") as f:
             top_10_metrics.to_csv(f)
 
 ## {{{ PLOT
-with open(f"{PATH}output/top_10_metrics_0_1_0.csv", "r") as f:
+with open(f"{PATH}output/top_10_metrics_1_1_1_2.csv", "r") as f:
     top_10_metrics = pd.read_csv(f)
 
 x = np.linspace(0, 10, 100)
@@ -175,7 +175,7 @@ with plt.style.context(['science','ieee','nature']):
     ax1.legend(loc='lower right', fontsize=4)
     ax1.set_xlabel('Total observed phenotypes (N)', fontsize=4)
     ax1.set_ylabel('Accuracy',fontsize=4)
-    ax1.set_title('Accuracy of the model for $\\alpha=1, \\beta=\\gamma=0$', fontsize=4)
+    ax1.set_title('$j-i$', fontsize=4)
     ax1.tick_params(axis='both', which='major', labelsize=3)
     # ax1.axhline(y=0.9, color='green', linestyle='--', linewidth=1,alpha=0.5)
     # ax1.axvline(x=5, color='green', linestyle='--', linewidth=1,alpha=0.5)
@@ -184,5 +184,49 @@ with plt.style.context(['science','ieee','nature']):
             left=0.176,right=0.952,
             hspace=0.,wspace=0.1)
 ## }}}
+
+## }}}
+
+
+
+## {{{
+def accuracy(type_of_noise,alpha,beta,gamma,nueva_metrica=True,n_metrica=1):
+    results = {}
+    for type_of_noise in ['constant','gold_standard']:
+        if type_of_noise == 'gold_standard':
+            mph_iph_metrics = []
+            for fen_samples in range(10):
+                list_of_gen_rankings = lml.model_evaluating(0.1,0.1,type_of_noise,
+                            fen_samples+1,
+                            500,
+                            alpha,
+                            beta,
+                            gamma,
+                            nueva_metrica=nueva_metrica,
+                            n_metrica=n_metrica)
+                mph_iph_metrics.append(lml.percent_below_x(list_of_gen_rankings,10))
+            results[f"clean_set"] = mph_iph_metrics
+
+        elif type_of_noise == 'constant':
+            for mph in [0.1]:
+                for iph in [0.1]:
+                    mph_iph_metrics = []
+                    for fen_samples in range(10):
+                        list_of_gen_rankings = lml.model_evaluating(mph,iph,
+                                    type_of_noise,
+                                    fen_samples+1,
+                                    500,
+                                    alpha,
+                                    beta,
+                                    gamma,
+                                    nueva_metrica=nueva_metrica,
+                                    n_metrica=n_metrica)
+                        mph_iph_metrics.append(lml.percent_below_x(list_of_gen_rankings,10))
+            results[f"{type_of_noise}: mph={mph}, iph={iph}"] = mph_iph_metrics
+
+    top_10_metrics = pd.DataFrame(results)
+
+    with open(f"{PATH}output/top_10_metrics_{alpha}_{beta}_{gamma}_{nueva_metrica}_{n_metrica}.csv", "w") as f:
+        top_10_metrics.to_csv(f)
 
 ## }}}
