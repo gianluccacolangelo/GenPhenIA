@@ -22,8 +22,10 @@ función devolverá la fracción de fenotiops_del_gen que están en fenotipos_ob
 
 Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     """
-    return len(fenotipos_observados.intersection(
-        fenotipos_del_gen))/len(fenotipos_del_gen)
+    j = fenotipos_observados.intersection(fenotipos_del_gen)
+    i = set(fenotipos_observados)-j
+    k = set(fenotipos_del_gen)-j
+    return len(j)/len(np.log10(1+k)+j)
 
 
 def capitalidad_del_gen(fenotipos_observados,fenotipos_del_gen):
@@ -32,6 +34,9 @@ esta función fevolverá la fracción de fenotiops_observados que están en feno
 
 Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     """
+    j = fenotipos_observados.intersection(fenotipos_del_gen)
+    i = set(fenotipos_observados)-j
+    k = set(fenotipos_del_gen)-j
     return len(fenotipos_observados.intersection(
         fenotipos_del_gen))/len(fenotipos_observados)
 
@@ -43,6 +48,9 @@ gen sobre la unión de ambos.
 
 Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     """
+    j = fenotipos_observados.intersection(fenotipos_del_gen)
+    i = set(fenotipos_observados)-j
+    k = set(fenotipos_del_gen)-j
     return len(fenotipos_observados.intersection(
         fenotipos_del_gen))/len(fenotipos_observados.union(fenotipos_del_gen))
 
