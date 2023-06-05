@@ -70,12 +70,12 @@ Esta función toma un conjunto de fenotipos observados, y calcula:
     df = pd.DataFrame(data)
 
     # ordenamos el dataframe en orden descendente por el total
-    if nueva_metrica == False:
+    if nueva_metrica == "no":
         df = df.sort_values('total', ascending=False)
         # Reseteamos el índice
         df = df.reset_index(drop=True)
         print("sorting by total")
-    elif nueva_metrica == True:
+    elif nueva_metrica == "si":
         df = df.sort_values('nueva_metrica', ascending=False)
         df = df.reset_index(drop=True)
         print("sorting by new metric")
