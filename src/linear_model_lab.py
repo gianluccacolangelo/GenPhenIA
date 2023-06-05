@@ -32,7 +32,7 @@ que lo causan.
     gene_ids = set.union(*(phen_to_genes.get(phen, set()) for phen in set_of_phens))
     return gene_ids
 
-def calculate_gene_parameters(set_of_phens,alpha,betha,gamma,n_metrica,nueva_metrica):
+def calculate_gene_parameters(set_of_phens,alpha,beta,gamma,n_metrica,nueva_metrica):
     """
 Esta función toma un conjunto de fenotipos observados, y calcula:
     especificidad
@@ -41,9 +41,8 @@ Esta función toma un conjunto de fenotipos observados, y calcula:
 
     para cada uno de los genes candidatos y devuelve una lista ordenada por
     aquellos genes candidatos que más suman esas métricas pesadas por alpha
-    betha y gamma.
+    beta y gamma.
     """
-
     genes = union_de_genes(set_of_phens)
     data = []
     i = 0
@@ -56,19 +55,18 @@ Esta función toma un conjunto de fenotipos observados, y calcula:
         especificidad = pgw.especificidad_del_gen(set_of_phens,real_gene_phens)
         capitalidad = pgw.capitalidad_del_gen(set_of_phens,real_gene_phens)
         similaridad = pgw.similaridad_del_gen(set_of_phens,real_gene_phens)
-        nueva_metrica = pgw.parametro(set_of_phens,real_gene_phens,n_metrica)
+        metrica = pgw.parametro(set_of_phens,real_gene_phens,n_metrica)
 
         # add the gene and its parameters to the list
         data.append({'gene': gene,
                      'especificidad':especificidad,
                      'capitalidad': capitalidad,
                      'similaridad': similaridad,
-                     'nueva_metrica':nueva_metrica,
-                     'total':(alpha*especificidad+betha*capitalidad+gamma*similaridad)})
-        print(f"Calculando {i/len(genes)*100:.1f}%",end="\r")
+                     'nueva_metrica':metrica,
+                     'total':(alpha*especificidad+beta*capitalidad+gamma*similaridad)})
+        # print(f"Calculando {i/len(genes)*100:.1f}%",end="\r")
 
     df = pd.DataFrame(data)
-
     # ordenamos el dataframe en orden descendente por el total
     if nueva_metrica == "no":
         df = df.sort_values('total', ascending=False)
@@ -92,7 +90,7 @@ def model_evaluating(mph,iph,
         fen_sample,
         gen_sample,
         alpha,
-        betha,
+        beta,
         gamma,
         nueva_metrica,
         n_metrica,
@@ -124,7 +122,7 @@ genes reales evaluados
         # posibles que causan esos fenotipos
 
         df = calculate_gene_parameters(fen_observados,
-                alpha,betha,gamma,
+                alpha,beta,gamma,
                 nueva_metrica=nueva_metrica,
                 n_metrica=n_metrica)
 
