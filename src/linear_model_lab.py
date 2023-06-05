@@ -135,7 +135,6 @@ genes reales evaluados
         except:
             continue
 
-
     return metrics
 
 
