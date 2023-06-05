@@ -67,7 +67,9 @@ entero de la nueva métrica
     elif nuevo_parametro==2:
         result = len(j)-len(i)
     elif nuevo_parametro==3:
-        result = len(j)/(len(i)+len(k))
+        result = len(j)/(1+len(i)+len(k))
+    elif nuevo_parametro==4:
+        result = len(j)
     return result
 
 
