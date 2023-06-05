@@ -1,1 +1,0 @@
-entiendo que la ventaja de definir pesos que sean independientes facilita la comprensión del modelo lineal. Ya que podemos decir cuál es más importante o no. Mientras que los pesos que definí son más difíciles de comprender cómo contribuyen en el modelo. Pero sin embargo, las que definí predicen mejor, entonces, qué es lo que importa en última instancia?

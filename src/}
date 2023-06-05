@@ -31,7 +31,7 @@ Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
         # result = len(j)/(10**(len(k))+len(j))
     # elif type_of_func == "lineal":
         # result = len(j)/(len(k)+len(j))
-    return len(j)/(10**(len(k))+len(j))
+    return len(j)/(np.log10(1+len(k))+len(j))
 
 
 def capitalidad_del_gen(fenotipos_observados,fenotipos_del_gen):
