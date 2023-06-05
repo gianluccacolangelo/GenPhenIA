@@ -32,7 +32,7 @@ que lo causan.
     gene_ids = set.union(*(phen_to_genes.get(phen, set()) for phen in set_of_phens))
     return gene_ids
 
-def calculate_gene_parameters(set_of_phens,alpha,betha,gamma,n_metrica=1,nueva_metrica=False):
+def calculate_gene_parameters(set_of_phens,alpha,betha,gamma,n_metric,nueva_metrica):
     """
 Esta función toma un conjunto de fenotipos observados, y calcula:
     especificidad
@@ -75,7 +75,7 @@ Esta función toma un conjunto de fenotipos observados, y calcula:
         # Reseteamos el índice
         df = df.reset_index(drop=True)
         print("sorting by total")
-    else:
+    elif nueva_metrica == True:
         df = df.sort_values('nueva_metrica', ascending=False)
         df = df.reset_index(drop=True)
         print("sorting by new metric")
@@ -94,8 +94,8 @@ def model_evaluating(mph,iph,
         alpha,
         betha,
         gamma,
-        nueva_metrica=False,
-        n_metrica=1,
+        nueva_metrica,
+        n_metrica,
         list_of_genes=list_of_gens):
     """
 A esta función le damos un mph, iph, y tipo de ruido y evalúa el modelo para ese
