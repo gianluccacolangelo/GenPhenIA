@@ -40,12 +40,11 @@ esta función fevolverá la fracción de fenotiops_observados que están en feno
 
 Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     """
-    # j = fenotipos_observados.intersection(fenotipos_del_gen)
-    # i = set(fenotipos_observados)-j
-    # k = set(fenotipos_del_gen)-j
-    return len(fenotipos_observados.intersection(
-        fenotipos_del_gen))/len(fenotipos_observados)
-
+    j = fenotipos_observados.intersection(fenotipos_del_gen)
+    i = len(set(fenotipos_observados)-j)
+    k = len(set(fenotipos_del_gen)-j)
+    j = len(j)
+    return j/(np.log(1+i)+j)
 
 def similaridad_del_gen(fenotipos_observados,fenotipos_del_gen):
     """
@@ -54,11 +53,11 @@ gen sobre la unión de ambos.
 
 Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     """
-    # j = fenotipos_observados.intersection(fenotipos_del_gen)
-    # i = set(fenotipos_observados)-j
-    # k = set(fenotipos_del_gen)-j
-    return len(fenotipos_observados.intersection(
-        fenotipos_del_gen))/len(fenotipos_observados.union(fenotipos_del_gen))
+    j = fenotipos_observados.intersection(fenotipos_del_gen)
+    i = len(set(fenotipos_observados)-j)
+    k = len(set(fenotipos_del_gen)-j)
+    j = len(j)
+    return j/(j+i+10**k)
 
 def parametro(fenotipos_observados,fenotipos_del_gen,nuevo_parametro):
     """

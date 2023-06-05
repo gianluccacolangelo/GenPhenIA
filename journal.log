@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.4.21)  29 MAY 2023 18:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.6.3)  5 JUN 2023 13:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -150,54 +150,864 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-<jp.png, id=1, 131.41095pt x 141.76965pt>
-File: jp.png Graphic file (type png)
-<use jp.png>
-Package pdftex.def Info: jp.png  used on input line 53.
+! Missing $ inserted.
+<inserted text> 
+                $
+l.57 ...ispongan en la función parametro de phen_
+                                                  gen_weight_functions
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.58 
+     
+? 
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (1.66669pt too wide) in paragraph at lines 63--64
+ \OT1/cmr/bx/n/10 Com-mit: 99088c5[] \OT1/cmr/m/n/10 Com-mit Mes-sage: mod-i-fi
+co es-peci-fi-ci-dad del gen poniendo
+ []
+
+
+Overfull \hbox (12.33337pt too wide) in paragraph at lines 69--70
+ \OT1/cmr/bx/n/10 Com-mit: e88a0b3[] \OT1/cmr/m/n/10 Com-mit Mes-sage: prueba c
+am-biando es-peci-fi-ci-dad poniendo
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.72 ...o algo que al parecer estaba mal en model_
+                                                  evaluating, que me confund...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 72.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.72 ... mal en model_evaluating, que me confundí
+                                                   entre las variables n_met...
+
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.72 ... mal en model_evaluating, que me confundí
+                                                   entre las variables n_met...
+
+? 
+
+LaTeX Warning: Command \i invalid in math mode on input line 72.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 72.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.72 ...stante inconvenientes los nombres, deberí
+                                                  a cambiar por otros
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.72 ...stante inconvenientes los nombres, deberí
+                                                  a cambiar por otros
+? 
+
+LaTeX Warning: Command \i invalid in math mode on input line 72.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.73 
+     
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.73 
+     
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.73 
+     
+? 
+
+Overfull \hbox (381.2179pt too wide) in paragraph at lines 72--73
+\OT1/cmr/m/n/10 en model$[]\OML/cmm/m/it/10 valuating; quemeconfund[]$ 
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.81 ... Message: también agrego una 'a' a un 'n_
+                                                  metric' que faltaba
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.82 
+     
+? 
+
+Overfull \hbox (43.5425pt too wide) in paragraph at lines 81--82
+ \OT1/cmr/bx/n/10 Com-mit: b43bb67[] \OT1/cmr/m/n/10 Com-mit Mes-sage: tambi^^S
+en agrego una 'a' a un 'n$[]\OML/cmm/m/it/10 etric[]quefaltaba$ 
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.87 ...UCIONADO. El problema estaba en calculate_
+                                                  gene_parameters, que asign...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 87.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.87 ...s el booleano a nueva_metrica pero despué
+                                                  s esa variable cambiaba po...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 87.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.87 ...espués esa variable cambiaba por el pará
+                                                  metro calculado para el ge...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 87.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.87 ...candidato, ahora lo solucionamos y deberí
+                                                  a funcionar todo correctam...
+
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.87 ...candidato, ahora lo solucionamos y deberí
+                                                  a funcionar todo correctam...
+
+? 
+
+LaTeX Warning: Command \i invalid in math mode on input line 87.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.88 
+     
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.88 
+     
+? 
+
+Overfull \hbox (574.92065pt too wide) in paragraph at lines 87--88
+\OT1/cmr/m/n/10 en calculate$[]\OML/cmm/m/it/10 ene[]arameters; queasignabamose
+lbooleanoanueva[]etricaperodespu[]sesavariablecambiabaporelpar[]metrocalculadop
+araelgencandidato; ahoralosolucionamosydeber[]$ 
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.96 Commit Message: a especificidad_
+                                     del_gen le agrego la feature type_of_fu...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 96.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.96 ...go probar si queremos exponencial, logarí
+                                                  tmica o lineal
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.96 ...go probar si queremos exponencial, logarí
+                                                  tmica o lineal
+? 
+
+LaTeX Warning: Command \i invalid in math mode on input line 96.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.97 
+     
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.97 
+     
+? 
+
+Overfull \hbox (322.10179pt too wide) in paragraph at lines 96--97
+ \OT1/cmr/bx/n/10 Com-mit: e4d8092[] \OT1/cmr/m/n/10 Com-mit Mes-sage: a especi
+ficidad$[]\OML/cmm/m/it/10 el[]enleagregolafeaturetype[]f[]unc; paraluegoprobar
+siqueremosexponencial; logar[]$ 
+ []
+
+[2]
+<n.png, id=17, 131.41095pt x 141.76965pt>
+File: n.png Graphic file (type png)
+<use n.png>
+Package pdftex.def Info: n.png  used on input line 104.
 (pdftex.def)             Requested size: 131.41061pt x 141.7693pt.
+<docs/especificidad_accuracy_exponencial.png, id=19, 138.15614pt x 143.45595pt>
 
+File: docs/especificidad_accuracy_exponencial.png Graphic file (type png)
+<use docs/especificidad_accuracy_exponencial.png>
+Package pdftex.def Info: docs/especificidad_accuracy_exponencial.png  used on i
+nput line 105.
+(pdftex.def)             Requested size: 138.15579pt x 143.45558pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+! Missing $ inserted.
+<inserted text> 
+                $
+l.105 .../especificidad_accuracy_exponencial.png.}
+                                                   \end{figure}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.105 .../especificidad_accuracy_exponencial.png.}
+                                                   \end{figure}
+? 
+<docs/especificidad_accuracy_logaritmico.png, id=20, 138.15614pt x 143.45595pt>
 
-
-LaTeX Warning: File `pepe.png' not found on input line 54.
-
-
-! Package pdftex.def Error: File `pepe.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.54 ...}[h] \centering \includegraphics{pepe.png}
-                                                   \caption{Caption for pepe...
-
+File: docs/especificidad_accuracy_logaritmico.png Graphic file (type png)
+<use docs/especificidad_accuracy_logaritmico.png>
+Package pdftex.def Info: docs/especificidad_accuracy_logaritmico.png  used on i
+nput line 106.
+(pdftex.def)             Requested size: 138.15579pt x 143.45558pt.
+! Missing $ inserted.
+<inserted text> 
+                $
+l.106 .../especificidad_accuracy_logaritmico.png.}
+                                                   \end{figure}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.106 .../especificidad_accuracy_logaritmico.png.}
+                                                   \end{figure}
 ? 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[1
+<docs/j-i-k.png, id=21, 137.91525pt x 143.21506pt>
+File: docs/j-i-k.png Graphic file (type png)
+<use docs/j-i-k.png>
+Package pdftex.def Info: docs/j-i-k.png  used on input line 107.
+(pdftex.def)             Requested size: 137.9149pt x 143.21469pt.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./jp.png>]
-(./journal.aux) ) 
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<docs/j-i.png, id=22, 137.91525pt x 143.21506pt>
+File: docs/j-i.png Graphic file (type png)
+<use docs/j-i.png>
+Package pdftex.def Info: docs/j-i.png  used on input line 108.
+(pdftex.def)             Requested size: 137.9149pt x 143.21469pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<docs/jsobre1+i+k.png, id=23, 137.91525pt x 143.21506pt>
+File: docs/jsobre1+i+k.png Graphic file (type png)
+<use docs/jsobre1+i+k.png>
+Package pdftex.def Info: docs/jsobre1+i+k.png  used on input line 109.
+(pdftex.def)             Requested size: 137.9149pt x 143.21469pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3 <./n.png> <./docs/especificidad_accuracy_exponencial.png>]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.120 ...spongan en la función parametro de phen_
+                                                  gen_weight_functions
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.121 
+      
+? 
+[4 <./docs/especificidad_accuracy_logaritmico.png> <./docs/j-i-k.png>]
+Overfull \hbox (1.66669pt too wide) in paragraph at lines 126--127
+ \OT1/cmr/bx/n/10 Com-mit: 99088c5[] \OT1/cmr/m/n/10 Com-mit Mes-sage: mod-i-fi
+co es-peci-fi-ci-dad del gen poniendo
+ []
+
+
+Overfull \hbox (12.33337pt too wide) in paragraph at lines 132--133
+ \OT1/cmr/bx/n/10 Com-mit: e88a0b3[] \OT1/cmr/m/n/10 Com-mit Mes-sage: prueba c
+am-biando es-peci-fi-ci-dad poniendo
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.135 ... algo que al parecer estaba mal en model_
+                                                  evaluating, que me confund...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 135.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.135 ...mal en model_evaluating, que me confundí
+                                                   entre las variables n_met...
+
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.135 ...mal en model_evaluating, que me confundí
+                                                   entre las variables n_met...
+
+? 
+
+LaTeX Warning: Command \i invalid in math mode on input line 135.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 135.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.135 ...tante inconvenientes los nombres, deberí
+                                                  a cambiar por otros
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.135 ...tante inconvenientes los nombres, deberí
+                                                  a cambiar por otros
+? 
+
+LaTeX Warning: Command \i invalid in math mode on input line 135.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.136 
+      
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.136 
+      
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.136 
+      
+? 
+
+Overfull \hbox (381.2179pt too wide) in paragraph at lines 135--136
+\OT1/cmr/m/n/10 en model$[]\OML/cmm/m/it/10 valuating; quemeconfund[]$ 
+ []
+
+[5 <./docs/j-i.png> <./docs/jsobre1+i+k.png>]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.144 ...Message: también agrego una 'a' a un 'n_
+                                                  metric' que faltaba
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.145 
+      
+? 
+
+Overfull \hbox (43.5425pt too wide) in paragraph at lines 144--145
+ \OT1/cmr/bx/n/10 Com-mit: b43bb67[] \OT1/cmr/m/n/10 Com-mit Mes-sage: tambi^^S
+en agrego una 'a' a un 'n$[]\OML/cmm/m/it/10 etric[]quefaltaba$ 
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.150 ...CIONADO. El problema estaba en calculate_
+                                                  gene_parameters, que asign...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 150.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.150 ... el booleano a nueva_metrica pero despué
+                                                  s esa variable cambiaba po...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 150.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.150 ...spués esa variable cambiaba por el pará
+                                                  metro calculado para el ge...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 150.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.150 ...andidato, ahora lo solucionamos y deberí
+                                                  a funcionar todo correctam...
+
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.150 ...andidato, ahora lo solucionamos y deberí
+                                                  a funcionar todo correctam...
+
+? 
+
+LaTeX Warning: Command \i invalid in math mode on input line 150.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.151 
+      
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.151 
+      
+? 
+
+Overfull \hbox (574.92065pt too wide) in paragraph at lines 150--151
+\OT1/cmr/m/n/10 en calculate$[]\OML/cmm/m/it/10 ene[]arameters; queasignabamose
+lbooleanoanueva[]etricaperodespu[]sesavariablecambiabaporelpar[]metrocalculadop
+araelgencandidato; ahoralosolucionamosydeber[]$ 
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.159 Commit Message: a especificidad_
+                                      del_gen le agrego la feature type_of_f...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 159.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.159 ...o probar si queremos exponencial, logarí
+                                                  tmica o lineal
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.159 ...o probar si queremos exponencial, logarí
+                                                  tmica o lineal
+? 
+
+LaTeX Warning: Command \i invalid in math mode on input line 159.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.160 
+      
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.160 
+      
+? 
+
+Overfull \hbox (322.10179pt too wide) in paragraph at lines 159--160
+ \OT1/cmr/bx/n/10 Com-mit: e4d8092[] \OT1/cmr/m/n/10 Com-mit Mes-sage: a especi
+ficidad$[]\OML/cmm/m/it/10 el[]enleagregolafeaturetype[]f[]unc; paraluegoprobar
+siqueremosexponencial; logar[]$ 
+ []
+
+File: docs/especificidad_accuracy_exponencial.png Graphic file (type png)
+<use docs/especificidad_accuracy_exponencial.png>
+Package pdftex.def Info: docs/especificidad_accuracy_exponencial.png  used on i
+nput line 166.
+(pdftex.def)             Requested size: 138.15579pt x 143.45558pt.
+! Missing $ inserted.
+<inserted text> 
+                $
+l.166 .../especificidad_accuracy_exponencial.png.}
+                                                   \end{figure}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.166 .../especificidad_accuracy_exponencial.png.}
+                                                   \end{figure}
+? 
+File: docs/especificidad_accuracy_logaritmico.png Graphic file (type png)
+<use docs/especificidad_accuracy_logaritmico.png>
+Package pdftex.def Info: docs/especificidad_accuracy_logaritmico.png  used on i
+nput line 167.
+(pdftex.def)             Requested size: 138.15579pt x 143.45558pt.
+! Missing $ inserted.
+<inserted text> 
+                $
+l.167 .../especificidad_accuracy_logaritmico.png.}
+                                                   \end{figure}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.167 .../especificidad_accuracy_logaritmico.png.}
+                                                   \end{figure}
+? 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: docs/j-i-k.png Graphic file (type png)
+<use docs/j-i-k.png>
+Package pdftex.def Info: docs/j-i-k.png  used on input line 168.
+(pdftex.def)             Requested size: 137.9149pt x 143.21469pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: docs/j-i.png Graphic file (type png)
+<use docs/j-i.png>
+Package pdftex.def Info: docs/j-i.png  used on input line 169.
+(pdftex.def)             Requested size: 137.9149pt x 143.21469pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: docs/jsobre1+i+k.png Graphic file (type png)
+<use docs/jsobre1+i+k.png>
+Package pdftex.def Info: docs/jsobre1+i+k.png  used on input line 170.
+(pdftex.def)             Requested size: 137.9149pt x 143.21469pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (12.33337pt too wide) in paragraph at lines 178--179
+ \OT1/cmr/bx/n/10 Com-mit: e88a0b3[] \OT1/cmr/m/n/10 Com-mit Mes-sage: prueba c
+am-biando es-peci-fi-ci-dad poniendo
+ []
+
+[6]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.181 ... algo que al parecer estaba mal en model_
+                                                  evaluating, que me confund...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 181.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.181 ...mal en model_evaluating, que me confundí
+                                                   entre las variables n_met...
+
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.181 ...mal en model_evaluating, que me confundí
+                                                   entre las variables n_met...
+
+? 
+
+LaTeX Warning: Command \i invalid in math mode on input line 181.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 181.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.181 ...tante inconvenientes los nombres, deberí
+                                                  a cambiar por otros
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.181 ...tante inconvenientes los nombres, deberí
+                                                  a cambiar por otros
+? 
+
+LaTeX Warning: Command \i invalid in math mode on input line 181.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.182 
+      
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.182 
+      
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.182 
+      
+? 
+
+Overfull \hbox (381.2179pt too wide) in paragraph at lines 181--182
+\OT1/cmr/m/n/10 en model$[]\OML/cmm/m/it/10 valuating; quemeconfund[]$ 
+ []
+
+[7]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.190 ...Message: también agrego una 'a' a un 'n_
+                                                  metric' que faltaba
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.191 
+      
+? 
+
+Overfull \hbox (43.5425pt too wide) in paragraph at lines 190--191
+ \OT1/cmr/bx/n/10 Com-mit: b43bb67[] \OT1/cmr/m/n/10 Com-mit Mes-sage: tambi^^S
+en agrego una 'a' a un 'n$[]\OML/cmm/m/it/10 etric[]quefaltaba$ 
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.196 ...CIONADO. El problema estaba en calculate_
+                                                  gene_parameters, que asign...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 196.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.196 ... el booleano a nueva_metrica pero despué
+                                                  s esa variable cambiaba po...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 196.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.196 ...spués esa variable cambiaba por el pará
+                                                  metro calculado para el ge...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 196.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.196 ...andidato, ahora lo solucionamos y deberí
+                                                  a funcionar todo correctam...
+
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.196 ...andidato, ahora lo solucionamos y deberí
+                                                  a funcionar todo correctam...
+
+? 
+
+LaTeX Warning: Command \i invalid in math mode on input line 196.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.197 
+      
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.197 
+      
+? 
+
+Overfull \hbox (574.92065pt too wide) in paragraph at lines 196--197
+\OT1/cmr/m/n/10 en calculate$[]\OML/cmm/m/it/10 ene[]arameters; queasignabamose
+lbooleanoanueva[]etricaperodespu[]sesavariablecambiabaporelpar[]metrocalculadop
+araelgencandidato; ahoralosolucionamosydeber[]$ 
+ []
+
+[8]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.205 Commit Message: a especificidad_
+                                      del_gen le agrego la feature type_of_f...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 205.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.205 ...o probar si queremos exponencial, logarí
+                                                  tmica o lineal
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.205 ...o probar si queremos exponencial, logarí
+                                                  tmica o lineal
+? 
+
+LaTeX Warning: Command \i invalid in math mode on input line 205.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.206 
+      
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.206 
+      
+? 
+
+Overfull \hbox (322.10179pt too wide) in paragraph at lines 205--206
+ \OT1/cmr/bx/n/10 Com-mit: e4d8092[] \OT1/cmr/m/n/10 Com-mit Mes-sage: a especi
+ficidad$[]\OML/cmm/m/it/10 el[]enleagregolafeaturetype[]f[]unc; paraluegoprobar
+siqueremosexponencial; logar[]$ 
+ []
+
+File: docs/especificidad_accuracy_exponencial.png Graphic file (type png)
+<use docs/especificidad_accuracy_exponencial.png>
+Package pdftex.def Info: docs/especificidad_accuracy_exponencial.png  used on i
+nput line 212.
+(pdftex.def)             Requested size: 138.15579pt x 143.45558pt.
+! Missing $ inserted.
+<inserted text> 
+                $
+l.212 .../especificidad_accuracy_exponencial.png.}
+                                                   \end{figure}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.212 .../especificidad_accuracy_exponencial.png.}
+                                                   \end{figure}
+? 
+File: docs/especificidad_accuracy_logaritmico.png Graphic file (type png)
+<use docs/especificidad_accuracy_logaritmico.png>
+Package pdftex.def Info: docs/especificidad_accuracy_logaritmico.png  used on i
+nput line 213.
+(pdftex.def)             Requested size: 138.15579pt x 143.45558pt.
+! Missing $ inserted.
+<inserted text> 
+                $
+l.213 .../especificidad_accuracy_logaritmico.png.}
+                                                   \end{figure}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.213 .../especificidad_accuracy_logaritmico.png.}
+                                                   \end{figure}
+? 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: docs/j-i-k.png Graphic file (type png)
+<use docs/j-i-k.png>
+Package pdftex.def Info: docs/j-i-k.png  used on input line 214.
+(pdftex.def)             Requested size: 137.9149pt x 143.21469pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: docs/j-i.png Graphic file (type png)
+<use docs/j-i.png>
+Package pdftex.def Info: docs/j-i.png  used on input line 215.
+(pdftex.def)             Requested size: 137.9149pt x 143.21469pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: docs/jsobre1+i+k.png Graphic file (type png)
+<use docs/jsobre1+i+k.png>
+Package pdftex.def Info: docs/jsobre1+i+k.png  used on input line 216.
+(pdftex.def)             Requested size: 137.9149pt x 143.21469pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9] [10] [11] (./journal.aux) ) 
 Here is how much of TeX's memory you used:
- 2024 strings out of 480247
- 30674 string characters out of 5896151
- 319932 words of memory out of 5000000
- 19971 multiletter control sequences out of 15000+600000
- 474356 words of font info for 46 fonts, out of 8000000 for 9000
+ 2018 strings out of 480247
+ 31139 string characters out of 5896152
+ 321932 words of memory out of 5000000
+ 19973 multiletter control sequences out of 15000+600000
+ 474642 words of font info for 47 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 55i,6n,62p,271b,255s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on journal.pdf (2 pages, 121676 bytes).
+ 55i,6n,62p,312b,219s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on journal.pdf (11 pages, 368400 bytes).
 PDF statistics:
- 44 PDF objects out of 1000 (max. 8388607)
- 25 compressed objects within 1 object stream
+ 93 PDF objects out of 1000 (max. 8388607)
+ 51 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

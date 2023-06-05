@@ -154,7 +154,7 @@ for alpha,beta,gamma in [(1,0,0),(0,1,0),(0,0,1)]:
             top_10_metrics.to_csv(f)
 
 ## {{{ PLOT
-with open(f"{PATH}output/top_10_metrics_1_0_0_no_2.csv", "r") as f:
+with open(f"{PATH}output/top_10_metrics_0_0_0_si_4.csv", "r") as f:
     top_10_metrics = pd.read_csv(f)
 
 x = np.linspace(0, 10, 100)
@@ -175,7 +175,7 @@ with plt.style.context(['science','ieee','nature']):
     ax1.legend(loc='lower right', fontsize=4)
     ax1.set_xlabel('Total observed phenotypes (N)', fontsize=4)
     ax1.set_ylabel('Accuracy',fontsize=4)
-    ax1.set_title('Especificidad modificada $\\frac{j}{\\log(1+k)+j}$', fontsize=4)
+    ax1.set_title('$j$', fontsize=4)
     ax1.tick_params(axis='both', which='major', labelsize=3)
     # ax1.axhline(y=0.9, color='green', linestyle='--', linewidth=1,alpha=0.5)
     # ax1.axvline(x=5, color='green', linestyle='--', linewidth=1,alpha=0.5)
@@ -190,6 +190,8 @@ with plt.style.context(['science','ieee','nature']):
 
 
 ## {{{
+#TODO PROBAR MÉTRICA QUE SEA J SOLO, SIN NORMALIZAR NI NADA, YA QUE AL PARECER
+# NO DEPENDE MUCHO DE i POR LO QUE VIMOS EN LOS RESULTADOS
 def accuracy(type_of_noise,alpha,beta,gamma,nueva_metrica,n_metrica):
     results = {}
     for type_of_noise in ['constant','gold_standard']:
