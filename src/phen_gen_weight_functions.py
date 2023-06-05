@@ -25,7 +25,7 @@ Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     j = fenotipos_observados.intersection(fenotipos_del_gen)
     i = set(fenotipos_observados)-j
     k = set(fenotipos_del_gen)-j
-    return len(j)/len(np.log10(1+k)+j)
+    return len(j)/(np.log10(1+len(k))+len(j))
 
 
 def capitalidad_del_gen(fenotipos_observados,fenotipos_del_gen):
