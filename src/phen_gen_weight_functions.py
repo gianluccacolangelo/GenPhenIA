@@ -15,7 +15,7 @@ PATH = '/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/'
 
 
 ## {{{ funciones de peso de genes candidatos
-def especificidad_del_gen(fenotipos_observados,fenotipos_del_gen):
+def especificidad_del_gen(fenotipos_observados,fenotipos_del_gen,type_of_func):
     """
 fenotipos_observados y fenotipos_del_gen tienen que ser sets (conjuntos), esta
 función devolverá la fracción de fenotiops_del_gen que están en fenotipos_observados
@@ -25,7 +25,13 @@ Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     j = fenotipos_observados.intersection(fenotipos_del_gen)
     i = set(fenotipos_observados)-j
     k = set(fenotipos_del_gen)-j
-    return len(j)/(10**len(k)+len(j))
+    if type_of_func == "log":
+        result = len(j)/(np.log10(1+len(k))+len(j))
+    elif type_of_func == "exp":
+        result = len(j)/(10**(len(k))+len(j))
+    elif type_of_func == "lineal"
+        result = len(j)/(len(k)+len(j))
+    return result
 
 
 def capitalidad_del_gen(fenotipos_observados,fenotipos_del_gen):
