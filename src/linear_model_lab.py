@@ -74,9 +74,11 @@ Esta función toma un conjunto de fenotipos observados, y calcula:
         df = df.sort_values('total', ascending=False)
         # Reseteamos el índice
         df = df.reset_index(drop=True)
+        print("sorting by total")
     else:
         df = df.sort_values('nueva_metrica', ascending=False)
         df = df.reset_index(drop=True)
+        print("sorting by new metric")
     return df
 ## }}}
 
@@ -120,7 +122,11 @@ genes reales evaluados
 
         #Calculamos los parámetros esp. cap. y sim. para la unión de genes
         # posibles que causan esos fenotipos
-        df = calculate_gene_parameters(fen_observados,alpha,betha,gamma,n_metrica,nueva_metrica)
+
+        df = calculate_gene_parameters(fen_observados,
+                alpha,betha,gamma,
+                nueva_metrica=nueva_metrica,
+                n_metrica=n_metrica)
 
         #Esto agrega a metrics la posición en el índice rankeado del gen real
         # entre los miles posibles
