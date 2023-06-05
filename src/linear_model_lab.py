@@ -32,7 +32,7 @@ que lo causan.
     gene_ids = set.union(*(phen_to_genes.get(phen, set()) for phen in set_of_phens))
     return gene_ids
 
-def calculate_gene_parameters(set_of_phens,alpha,betha,gamma,n_metric,nueva_metrica):
+def calculate_gene_parameters(set_of_phens,alpha,betha,gamma,n_metrica,nueva_metrica):
     """
 Esta función toma un conjunto de fenotipos observados, y calcula:
     especificidad
