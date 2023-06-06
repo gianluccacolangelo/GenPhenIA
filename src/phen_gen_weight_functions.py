@@ -22,8 +22,16 @@ función devolverá la fracción de fenotiops_del_gen que están en fenotipos_ob
 
 Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     """
-    return len(fenotipos_observados.intersection(
-        fenotipos_del_gen))/len(fenotipos_del_gen)
+    j = fenotipos_observados.intersection(fenotipos_del_gen)
+    i = set(fenotipos_observados)-j
+    k = set(fenotipos_del_gen)-j
+    # if type_of_func == "log":
+        # result = len(j)/(np.log10(1+len(k))+len(j))
+    # elif type_of_func == "exp":
+        # result = len(j)/(10**(len(k))+len(j))
+    # elif type_of_func == "lineal":
+        # result = len(j)/(len(k)+len(j))
+    return len(j)/(np.log10(len(k)+1)+len(j))
 
 
 def capitalidad_del_gen(fenotipos_observados,fenotipos_del_gen):
@@ -32,9 +40,11 @@ esta función fevolverá la fracción de fenotiops_observados que están en feno
 
 Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     """
-    return len(fenotipos_observados.intersection(
-        fenotipos_del_gen))/len(fenotipos_observados)
-
+    j = fenotipos_observados.intersection(fenotipos_del_gen)
+    i = len(set(fenotipos_observados)-j)
+    k = len(set(fenotipos_del_gen)-j)
+    j = len(j)
+    return j/(i+j)
 
 def similaridad_del_gen(fenotipos_observados,fenotipos_del_gen):
     """
@@ -43,8 +53,35 @@ gen sobre la unión de ambos.
 
 Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     """
-    return len(fenotipos_observados.intersection(
-        fenotipos_del_gen))/len(fenotipos_observados.union(fenotipos_del_gen))
+    j = fenotipos_observados.intersection(fenotipos_del_gen)
+    i = len(set(fenotipos_observados)-j)
+    k = len(set(fenotipos_del_gen)-j)
+    j = len(j)
+    return j/(j+i+np.log10(1+k))
+
+def parametro(fenotipos_observados,fenotipos_del_gen,nuevo_parametro):
+    """
+Esta función está para probar nuevas métricas, donde nuevo_parametro es un
+entero de la nueva métrica
+    """
+    j = fenotipos_observados.intersection(fenotipos_del_gen)
+    i = set(fenotipos_observados)-j
+    k = set(fenotipos_del_gen)-j
+    if nuevo_parametro==1:
+        result = len(j)-len(i)-len(k)
+    elif nuevo_parametro==2:
+        result = len(j)-len(i)
+    elif nuevo_parametro==3:
+        result = len(j)/(1+len(i)+len(k))
+    elif nuevo_parametro==4:
+        result = len(j)
+    elif nuevo_parametro==5:
+        result = -len(i)
+    elif nuevo_parametro==6:
+        result = -len(k)
+    elif nuevo_parametro == 7:
+        result = -len(i)-len(k)
+    return result
 
 
 ## }}}
@@ -142,16 +179,12 @@ def lista_de_genes():
 def corrida_de_pesos(type_of_noise="normal",mph=0.1,iph=0.1):
 
     lista = lista_de_genes()
-
+    noised_set = whats_your_set(mph,iph,type_of_noise)
     list_of_df = []
     i=0
     for gen in lista:
         fen_reales = fen_reales_del_gen(gen)
-        fen_observados = fen_observados_con_ruido(gen,
-                type_of_noise=type_of_noise) if type_of_noise == "random" else fen_observados_con_ruido(gen,
-                        mph=mph,
-                        iph=iph,
-                        type_of_noise=type_of_noise)
+        fen_observados = fen_observados_con_ruido(gen,noised_set,100)
 
         especificidad = especificidad_del_gen(fen_observados,fen_reales)
         capitalidad = capitalidad_del_gen(fen_observados,fen_reales)
