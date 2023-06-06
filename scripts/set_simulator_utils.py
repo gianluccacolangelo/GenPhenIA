@@ -34,7 +34,7 @@ convierte en un diccionario con la siguiente forma
                 gene_phenotype_dict[gene_id] = []
             gene_phenotype_dict[gene_id].append(hpo_id)
 
-    with open(f'{PATH}/data/simulated/gene_phenotype_dict.json','w') as file:
+    with open(f'{PATH}/data/simulated/phenotype_gene_dict.json','w') as file:
         json.dump(gene_phenotype_dict, file)
 ## }}}
 

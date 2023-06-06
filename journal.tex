@@ -1,0 +1,318 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\begin{document}
+
+\title{An Expedition to The Valley of Genomics}
+\author{Your Name}
+\date{\today}
+
+\maketitle
+
+
+
+\section{29-05-2023}
+\subsection{Commits}
+\paragraph{Commit: bd81b50}
+Commit Message: Hoy hicimos un workflow en el que cada commit se va guardado en el diario de laboratorio, con su id y con su mensaje. También se genera una sección de figuras para las figuras que fueron generadas en esa sesión
+
+\paragraph{Commit: 7997396}
+Commit Message: pruebo figura
+
+\paragraph{Commit: 50ff4b4}
+Commit Message: pruebo figura
+
+\paragraph{Commit: 459b400}
+Commit Message: ol
+
+\paragraph{Commit: 1d47914}
+Commit Message: prueba
+
+\paragraph{Commit: ba9ba18}
+Commit Message: prueba
+
+\paragraph{Commit: 6029931}
+Commit Message: prueba
+
+\paragraph{Commit: 2b666e3}
+Commit Message: prueba
+
+\paragraph{Commit: b987caa}
+Commit Message: prueba
+
+\paragraph{Commit: 39adf1f}
+Commit Message: prueba
+
+\paragraph{Commit: 2c3ca23}
+Commit Message: prueba
+
+\paragraph{Commit: dcf4e49}
+Commit Message: prueba
+
+\paragraph{Commit: fcdee47}
+Commit Message: agrego la función parametro para probar las nuevas funciones
+
+\paragraph{Commit: 435d42e}
+Commit Message: en linear model lab agrego la capacidad de que la funcion model evaluating y la función calculate gene parameters puedan evaluar las nuevas métricas que se dispongan en la función parametro de phen_gen_weight_functions
+
+\paragraph{Commit: 5b2b424}
+Commit Message: agrego en el archivo plots.py la función accuracy para medir individualmente cada métrica
+
+\paragraph{Commit: 99088c5}
+Commit Message: modifico especificidad del gen poniendo k en logaritmo
+
+\paragraph{Commit: d558a88}
+Commit Message: arreglo la definición que había hecho de especificidad porque estaba mal escrita
+
+\paragraph{Commit: e88a0b3}
+Commit Message: prueba cambiando especificidad poniendo a k en un exponente de 10
+
+\paragraph{Commit: cba1811}
+Commit Message: arreglo algo que al parecer estaba mal en model_evaluating, que me confundí entre las variables n_metrica y nueva_muetrica, que son, dicho sea de paso, bastante inconvenientes los nombres, debería cambiar por otros
+
+\paragraph{Commit: ff87169}
+Commit Message: le saco los argumentos definidos de model evaluating y calculate gene parameters
+
+\paragraph{Commit: 627b278}
+Commit Message: ahora cambio True y False de nueva métrica por 'si' 'no', a ver si quizás es algo de eso
+
+\paragraph{Commit: b43bb67}
+Commit Message: también agrego una 'a' a un 'n_metric' que faltaba
+
+\paragraph{Commit: 8eb196c}
+Commit Message: cambio todos los betha por beta en linear model lab
+
+\paragraph{Commit: 02318c3}
+Commit Message: SOLUCIONADO. El problema estaba en calculate_gene_parameters, que asignabamos el booleano a nueva_metrica pero después esa variable cambiaba por el parámetro calculado para el gen candidato, ahora lo solucionamos y debería funcionar todo correctamente
+
+\paragraph{Commit: 49694d7}
+Commit Message: es decir que lo anterior no funcionaba no porque no calculase los parámetros sino porque no ordenaba el dataframe
+
+\paragraph{Commit: eef3c10}
+Commit Message: al parametro 3 de las nuevas métricas lo corrigo para no tener zerodivisionerror
+
+\paragraph{Commit: e4d8092}
+Commit Message: a especificidad_del_gen le agrego la feature type_of_func, para luego probar si queremos exponencial, logarítmica o lineal
+
+\paragraph{Commit: dac3246}
+Commit Message: todo funcionando. Las pruebas de métricas nuevas van yendo bien y se están descubriendo cosas interesantes. La especificidad descubrimos que la penalización de k tiene que se logarítmica. Queda por ver la similaridad.
+
+\paragraph{Commit: 09addae}
+Commit Message: generé todos los gráficos de rendimiento para especificidad similaridad capitalidad y para algunos a parte. A parte para i y k no corrí porque son complementarios de j, no tendría sentido hacerlo
+
+\paragraph{Commit: d743385}
+Commit Message: agrego la función accumulated_accuracy para calcular el accuracy acumulado a lo largo de N y así poder elegir cuantitativamente con cuál métrica me quedo
+
+\paragraph{Commit: 90286d2}
+Commit Message: dejo especificidad logarítmica, similaridad logarítmica y capitalid logarítmica, que son las que más accuracy acumulado obtuviewron
+
+\paragraph{Commit: 3a1e9e0}
+Commit Message: en este punto están todas las combinaciones algebraicas hechas y también todas las combinaciones de a pares de métricas. Conclusión, la similaridad logarítmica sola es la que mejor desempeña hasta ahora. Agregarle métricaslo mantiene igual
+
+%CommitsEnd
+\subsection{Figures}
+
+\begin{figure}[h] \centering \includegraphics{n.png} \caption{Caption for n.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_exponencial.png} \caption{Caption for docs/especificidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_logaritmico.png} \caption{Caption for docs/especificidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j-i-k.png} \caption{Caption for docs/j-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j-i.png} \caption{Caption for docs/j-i.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/jsobre1+i+k.png} \caption{Caption for docs/jsobre1+i+k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_exponencial.png} \caption{Caption for docs/capitalidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_logaritmico.png} \caption{Caption for docs/capitalidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j_solo.png} \caption{Caption for docs/j_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_exponencial.png} \caption{Caption for docs/similaridad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/similaridad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-i-k.png} \caption{Caption for docs/-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-i_solo.png} \caption{Caption for docs/-i_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-k_solo.png} \caption{Caption for docs/-k_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_esp_mas_sim.png} \caption{Caption for docs/cap_mas_esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_sim.png} \caption{Caption for docs/cap_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_cap.png} \caption{Caption for docs/esp_mas_cap.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_sim.png} \caption{Caption for docs/esp_mas_sim.png.} \end{figure}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{04-06-2023}
+\subsection{Commits}
+\paragraph{Commit: fcdee47}
+Commit Message: agrego la función parametro para probar las nuevas funciones
+
+\paragraph{Commit: 435d42e}
+Commit Message: en linear model lab agrego la capacidad de que la funcion model evaluating y la función calculate gene parameters puedan evaluar las nuevas métricas que se dispongan en la función parametro de phen_gen_weight_functions
+
+\paragraph{Commit: 5b2b424}
+Commit Message: agrego en el archivo plots.py la función accuracy para medir individualmente cada métrica
+
+\paragraph{Commit: 99088c5}
+Commit Message: modifico especificidad del gen poniendo k en logaritmo
+
+\paragraph{Commit: d558a88}
+Commit Message: arreglo la definición que había hecho de especificidad porque estaba mal escrita
+
+\paragraph{Commit: e88a0b3}
+Commit Message: prueba cambiando especificidad poniendo a k en un exponente de 10
+
+\paragraph{Commit: cba1811}
+Commit Message: arreglo algo que al parecer estaba mal en model_evaluating, que me confundí entre las variables n_metrica y nueva_muetrica, que son, dicho sea de paso, bastante inconvenientes los nombres, debería cambiar por otros
+
+\paragraph{Commit: ff87169}
+Commit Message: le saco los argumentos definidos de model evaluating y calculate gene parameters
+
+\paragraph{Commit: 627b278}
+Commit Message: ahora cambio True y False de nueva métrica por 'si' 'no', a ver si quizás es algo de eso
+
+\paragraph{Commit: b43bb67}
+Commit Message: también agrego una 'a' a un 'n_metric' que faltaba
+
+\paragraph{Commit: 8eb196c}
+Commit Message: cambio todos los betha por beta en linear model lab
+
+\paragraph{Commit: 02318c3}
+Commit Message: SOLUCIONADO. El problema estaba en calculate_gene_parameters, que asignabamos el booleano a nueva_metrica pero después esa variable cambiaba por el parámetro calculado para el gen candidato, ahora lo solucionamos y debería funcionar todo correctamente
+
+\paragraph{Commit: 49694d7}
+Commit Message: es decir que lo anterior no funcionaba no porque no calculase los parámetros sino porque no ordenaba el dataframe
+
+\paragraph{Commit: eef3c10}
+Commit Message: al parametro 3 de las nuevas métricas lo corrigo para no tener zerodivisionerror
+
+\paragraph{Commit: e4d8092}
+Commit Message: a especificidad_del_gen le agrego la feature type_of_func, para luego probar si queremos exponencial, logarítmica o lineal
+
+\paragraph{Commit: dac3246}
+Commit Message: todo funcionando. Las pruebas de métricas nuevas van yendo bien y se están descubriendo cosas interesantes. La especificidad descubrimos que la penalización de k tiene que se logarítmica. Queda por ver la similaridad.
+
+\paragraph{Commit: 09addae}
+Commit Message: generé todos los gráficos de rendimiento para especificidad similaridad capitalidad y para algunos a parte. A parte para i y k no corrí porque son complementarios de j, no tendría sentido hacerlo
+
+\paragraph{Commit: d743385}
+Commit Message: agrego la función accumulated_accuracy para calcular el accuracy acumulado a lo largo de N y así poder elegir cuantitativamente con cuál métrica me quedo
+
+\paragraph{Commit: 90286d2}
+Commit Message: dejo especificidad logarítmica, similaridad logarítmica y capitalid logarítmica, que son las que más accuracy acumulado obtuviewron
+
+\paragraph{Commit: 3a1e9e0}
+Commit Message: en este punto están todas las combinaciones algebraicas hechas y también todas las combinaciones de a pares de métricas. Conclusión, la similaridad logarítmica sola es la que mejor desempeña hasta ahora. Agregarle métricaslo mantiene igual
+
+%CommitsEnd
+\subsection{Figures}
+\begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_exponencial.png} \caption{Caption for docs/especificidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_logaritmico.png} \caption{Caption for docs/especificidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j-i-k.png} \caption{Caption for docs/j-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j-i.png} \caption{Caption for docs/j-i.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/jsobre1+i+k.png} \caption{Caption for docs/jsobre1+i+k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_exponencial.png} \caption{Caption for docs/capitalidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_logaritmico.png} \caption{Caption for docs/capitalidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j_solo.png} \caption{Caption for docs/j_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_exponencial.png} \caption{Caption for docs/similaridad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/similaridad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-i-k.png} \caption{Caption for docs/-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-i_solo.png} \caption{Caption for docs/-i_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-k_solo.png} \caption{Caption for docs/-k_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_esp_mas_sim.png} \caption{Caption for docs/cap_mas_esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_sim.png} \caption{Caption for docs/cap_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_cap.png} \caption{Caption for docs/esp_mas_cap.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_sim.png} \caption{Caption for docs/esp_mas_sim.png.} \end{figure}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{05-06-2023}
+\subsection{Commits}
+\paragraph{Commit: e88a0b3}
+Commit Message: prueba cambiando especificidad poniendo a k en un exponente de 10
+
+\paragraph{Commit: cba1811}
+Commit Message: arreglo algo que al parecer estaba mal en model_evaluating, que me confundí entre las variables n_metrica y nueva_muetrica, que son, dicho sea de paso, bastante inconvenientes los nombres, debería cambiar por otros
+
+\paragraph{Commit: ff87169}
+Commit Message: le saco los argumentos definidos de model evaluating y calculate gene parameters
+
+\paragraph{Commit: 627b278}
+Commit Message: ahora cambio True y False de nueva métrica por 'si' 'no', a ver si quizás es algo de eso
+
+\paragraph{Commit: b43bb67}
+Commit Message: también agrego una 'a' a un 'n_metric' que faltaba
+
+\paragraph{Commit: 8eb196c}
+Commit Message: cambio todos los betha por beta en linear model lab
+
+\paragraph{Commit: 02318c3}
+Commit Message: SOLUCIONADO. El problema estaba en calculate_gene_parameters, que asignabamos el booleano a nueva_metrica pero después esa variable cambiaba por el parámetro calculado para el gen candidato, ahora lo solucionamos y debería funcionar todo correctamente
+
+\paragraph{Commit: 49694d7}
+Commit Message: es decir que lo anterior no funcionaba no porque no calculase los parámetros sino porque no ordenaba el dataframe
+
+\paragraph{Commit: eef3c10}
+Commit Message: al parametro 3 de las nuevas métricas lo corrigo para no tener zerodivisionerror
+
+\paragraph{Commit: e4d8092}
+Commit Message: a especificidad_del_gen le agrego la feature type_of_func, para luego probar si queremos exponencial, logarítmica o lineal
+
+\paragraph{Commit: dac3246}
+Commit Message: todo funcionando. Las pruebas de métricas nuevas van yendo bien y se están descubriendo cosas interesantes. La especificidad descubrimos que la penalización de k tiene que se logarítmica. Queda por ver la similaridad.
+
+\paragraph{Commit: 09addae}
+Commit Message: generé todos los gráficos de rendimiento para especificidad similaridad capitalidad y para algunos a parte. A parte para i y k no corrí porque son complementarios de j, no tendría sentido hacerlo
+
+\paragraph{Commit: d743385}
+Commit Message: agrego la función accumulated_accuracy para calcular el accuracy acumulado a lo largo de N y así poder elegir cuantitativamente con cuál métrica me quedo
+
+\paragraph{Commit: 90286d2}
+Commit Message: dejo especificidad logarítmica, similaridad logarítmica y capitalid logarítmica, que son las que más accuracy acumulado obtuviewron
+
+\paragraph{Commit: 3a1e9e0}
+Commit Message: en este punto están todas las combinaciones algebraicas hechas y también todas las combinaciones de a pares de métricas. Conclusión, la similaridad logarítmica sola es la que mejor desempeña hasta ahora. Agregarle métricaslo mantiene igual
+
+%CommitsEnd
+\subsection{Figures}
+\begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_exponencial.png} \caption{Caption for docs/especificidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_logaritmico.png} \caption{Caption for docs/especificidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j-i-k.png} \caption{Caption for docs/j-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j-i.png} \caption{Caption for docs/j-i.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/jsobre1+i+k.png} \caption{Caption for docs/jsobre1+i+k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_exponencial.png} \caption{Caption for docs/capitalidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_logaritmico.png} \caption{Caption for docs/capitalidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j_solo.png} \caption{Caption for docs/j_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_exponencial.png} \caption{Caption for docs/similaridad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/similaridad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-i-k.png} \caption{Caption for docs/-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-i_solo.png} \caption{Caption for docs/-i_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-k_solo.png} \caption{Caption for docs/-k_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_esp_mas_sim.png} \caption{Caption for docs/cap_mas_esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_sim.png} \caption{Caption for docs/cap_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_cap.png} \caption{Caption for docs/esp_mas_cap.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_sim.png} \caption{Caption for docs/esp_mas_sim.png.} \end{figure}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{06-06-2023}
+\subsection{Commits}
+\paragraph{Commit: d743385}
+Commit Message: agrego la función accumulated_accuracy para calcular el accuracy acumulado a lo largo de N y así poder elegir cuantitativamente con cuál métrica me quedo
+
+\paragraph{Commit: 90286d2}
+Commit Message: dejo especificidad logarítmica, similaridad logarítmica y capitalid logarítmica, que son las que más accuracy acumulado obtuviewron
+
+\paragraph{Commit: 3a1e9e0}
+Commit Message: en este punto están todas las combinaciones algebraicas hechas y también todas las combinaciones de a pares de métricas. Conclusión, la similaridad logarítmica sola es la que mejor desempeña hasta ahora. Agregarle métricaslo mantiene igual
+
+%CommitsEnd
+\subsection{Figures}
+\begin{figure}[h] \centering \includegraphics{docs/-i-k.png} \caption{Caption for docs/-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-i_solo.png} \caption{Caption for docs/-i_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-k_solo.png} \caption{Caption for docs/-k_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_esp_mas_sim.png} \caption{Caption for docs/cap_mas_esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_sim.png} \caption{Caption for docs/cap_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_cap.png} \caption{Caption for docs/esp_mas_cap.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_sim.png} \caption{Caption for docs/esp_mas_sim.png.} \end{figure}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\end{document}
+
