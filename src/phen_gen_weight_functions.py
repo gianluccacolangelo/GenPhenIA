@@ -31,7 +31,7 @@ Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
         # result = len(j)/(10**(len(k))+len(j))
     # elif type_of_func == "lineal":
         # result = len(j)/(len(k)+len(j))
-    return len(j)/(10**(len(k))+len(j))
+    return len(j)/(np.log10(len(k)+1)+len(j))
 
 
 def capitalidad_del_gen(fenotipos_observados,fenotipos_del_gen):
@@ -44,7 +44,7 @@ Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     i = len(set(fenotipos_observados)-j)
     k = len(set(fenotipos_del_gen)-j)
     j = len(j)
-    return j/(np.log(1+i)+j)
+    return j/(i+j)
 
 def similaridad_del_gen(fenotipos_observados,fenotipos_del_gen):
     """
@@ -57,7 +57,7 @@ Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     i = len(set(fenotipos_observados)-j)
     k = len(set(fenotipos_del_gen)-j)
     j = len(j)
-    return j/(j+i+10**k)
+    return j/(j+i+np.log10(1+k))
 
 def parametro(fenotipos_observados,fenotipos_del_gen,nuevo_parametro):
     """
@@ -75,6 +75,12 @@ entero de la nueva métrica
         result = len(j)/(1+len(i)+len(k))
     elif nuevo_parametro==4:
         result = len(j)
+    elif nuevo_parametro==5:
+        result = -len(i)
+    elif nuevo_parametro==6:
+        result = -len(k)
+    elif nuevo_parametro == 7:
+        result = -len(i)-len(k)
     return result
 
 
