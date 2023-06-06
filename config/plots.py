@@ -154,7 +154,7 @@ for alpha,beta,gamma in [(1,0,0),(0,1,0),(0,0,1)]:
             top_10_metrics.to_csv(f)
 
 ## {{{ PLOT
-with open(f"{PATH}output/top_10_metrics_0_0_0_si_4.csv", "r") as f:
+with open(f"{PATH}output/top_10_metrics_0_0_0_si_6.csv", "r") as f:
     top_10_metrics = pd.read_csv(f)
 
 x = np.linspace(0, 10, 100)
@@ -175,7 +175,7 @@ with plt.style.context(['science','ieee','nature']):
     ax1.legend(loc='lower right', fontsize=4)
     ax1.set_xlabel('Total observed phenotypes (N)', fontsize=4)
     ax1.set_ylabel('Accuracy',fontsize=4)
-    ax1.set_title('$j$', fontsize=4)
+    ax1.set_title('$-k$', fontsize=4)
     ax1.tick_params(axis='both', which='major', labelsize=3)
     # ax1.axhline(y=0.9, color='green', linestyle='--', linewidth=1,alpha=0.5)
     # ax1.axvline(x=5, color='green', linestyle='--', linewidth=1,alpha=0.5)
@@ -190,8 +190,6 @@ with plt.style.context(['science','ieee','nature']):
 
 
 ## {{{
-#TODO PROBAR MÉTRICA QUE SEA J SOLO, SIN NORMALIZAR NI NADA, YA QUE AL PARECER
-# NO DEPENDE MUCHO DE i POR LO QUE VIMOS EN LOS RESULTADOS
 def accuracy(type_of_noise,alpha,beta,gamma,nueva_metrica,n_metrica):
     results = {}
     for type_of_noise in ['constant','gold_standard']:
@@ -232,3 +230,40 @@ def accuracy(type_of_noise,alpha,beta,gamma,nueva_metrica,n_metrica):
         top_10_metrics.to_csv(f)
 
 ## }}}
+
+
+## {{{ Calculando el accuracy acumulado total
+
+"""
+Acá vamos a calcular el accuracy acumulado total, para elegir las tres métricas
+que mejor se desempeñen para luego probar de a pares.
+"""
+with open(f'{PATH}output/top_10_metrics_0_0_0_si_7.csv', 'r') as f:
+    top_10_metrics = pd.read_csv(f)
+
+
+def acumulated_accuracy(top_10_metrics):
+    """
+Esta función calcula el accuracy acumulado a lo largo de N de cada métrica y
+devuelve el total promediadio por cada una de las columnas (gold standard y con
+error)
+    """
+    # Calculate sum of each column
+    column_sums = top_10_metrics.sum()[1:] #para que no tome la primera columna
+
+    # Calculate mean of sums
+    mean_of_sums = column_sums.mean()
+    print(column_sums)
+
+    return mean_of_sums/10 #sobre el total de N corridos, para normalizarlo
+
+## }}}
+
+## de las métricas nuevas, el accuracy acumulado es:
+1 = 0.3143
+2 = 0.8362
+3 = 0.6779
+4 = 0.8319
+5 = 0.8251
+6 = 0.1694
+7 = falta correr este
