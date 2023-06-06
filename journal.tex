@@ -98,6 +98,15 @@ Commit Message: a especificidad_del_gen le agrego la feature type_of_func, para 
 \paragraph{Commit: dac3246}
 Commit Message: todo funcionando. Las pruebas de métricas nuevas van yendo bien y se están descubriendo cosas interesantes. La especificidad descubrimos que la penalización de k tiene que se logarítmica. Queda por ver la similaridad.
 
+\paragraph{Commit: 09addae}
+Commit Message: generé todos los gráficos de rendimiento para especificidad similaridad capitalidad y para algunos a parte. A parte para i y k no corrí porque son complementarios de j, no tendría sentido hacerlo
+
+\paragraph{Commit: d743385}
+Commit Message: agrego la función accumulated_accuracy para calcular el accuracy acumulado a lo largo de N y así poder elegir cuantitativamente con cuál métrica me quedo
+
+\paragraph{Commit: 90286d2}
+Commit Message: dejo especificidad logarítmica, similaridad logarítmica y capitalid logarítmica, que son las que más accuracy acumulado obtuviewron
+
 %CommitsEnd
 \subsection{Figures}
 
@@ -107,6 +116,11 @@ Commit Message: todo funcionando. Las pruebas de métricas nuevas van yendo bien
 \begin{figure}[h] \centering \includegraphics{docs/j-i-k.png} \caption{Caption for docs/j-i-k.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/j-i.png} \caption{Caption for docs/j-i.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/jsobre1+i+k.png} \caption{Caption for docs/jsobre1+i+k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_exponencial.png} \caption{Caption for docs/capitalidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_logaritmico.png} \caption{Caption for docs/capitalidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j_solo.png} \caption{Caption for docs/j_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_exponencial.png} \caption{Caption for docs/similaridad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/similaridad_accuracy_logaritmico.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -161,6 +175,15 @@ Commit Message: a especificidad_del_gen le agrego la feature type_of_func, para 
 \paragraph{Commit: dac3246}
 Commit Message: todo funcionando. Las pruebas de métricas nuevas van yendo bien y se están descubriendo cosas interesantes. La especificidad descubrimos que la penalización de k tiene que se logarítmica. Queda por ver la similaridad.
 
+\paragraph{Commit: 09addae}
+Commit Message: generé todos los gráficos de rendimiento para especificidad similaridad capitalidad y para algunos a parte. A parte para i y k no corrí porque son complementarios de j, no tendría sentido hacerlo
+
+\paragraph{Commit: d743385}
+Commit Message: agrego la función accumulated_accuracy para calcular el accuracy acumulado a lo largo de N y así poder elegir cuantitativamente con cuál métrica me quedo
+
+\paragraph{Commit: 90286d2}
+Commit Message: dejo especificidad logarítmica, similaridad logarítmica y capitalid logarítmica, que son las que más accuracy acumulado obtuviewron
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_exponencial.png} \caption{Caption for docs/especificidad_accuracy_exponencial.png.} \end{figure}
@@ -168,6 +191,11 @@ Commit Message: todo funcionando. Las pruebas de métricas nuevas van yendo bien
 \begin{figure}[h] \centering \includegraphics{docs/j-i-k.png} \caption{Caption for docs/j-i-k.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/j-i.png} \caption{Caption for docs/j-i.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/jsobre1+i+k.png} \caption{Caption for docs/jsobre1+i+k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_exponencial.png} \caption{Caption for docs/capitalidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_logaritmico.png} \caption{Caption for docs/capitalidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j_solo.png} \caption{Caption for docs/j_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_exponencial.png} \caption{Caption for docs/similaridad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/similaridad_accuracy_logaritmico.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -207,6 +235,15 @@ Commit Message: a especificidad_del_gen le agrego la feature type_of_func, para 
 \paragraph{Commit: dac3246}
 Commit Message: todo funcionando. Las pruebas de métricas nuevas van yendo bien y se están descubriendo cosas interesantes. La especificidad descubrimos que la penalización de k tiene que se logarítmica. Queda por ver la similaridad.
 
+\paragraph{Commit: 09addae}
+Commit Message: generé todos los gráficos de rendimiento para especificidad similaridad capitalidad y para algunos a parte. A parte para i y k no corrí porque son complementarios de j, no tendría sentido hacerlo
+
+\paragraph{Commit: d743385}
+Commit Message: agrego la función accumulated_accuracy para calcular el accuracy acumulado a lo largo de N y así poder elegir cuantitativamente con cuál métrica me quedo
+
+\paragraph{Commit: 90286d2}
+Commit Message: dejo especificidad logarítmica, similaridad logarítmica y capitalid logarítmica, que son las que más accuracy acumulado obtuviewron
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_exponencial.png} \caption{Caption for docs/especificidad_accuracy_exponencial.png.} \end{figure}
@@ -214,6 +251,25 @@ Commit Message: todo funcionando. Las pruebas de métricas nuevas van yendo bien
 \begin{figure}[h] \centering \includegraphics{docs/j-i-k.png} \caption{Caption for docs/j-i-k.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/j-i.png} \caption{Caption for docs/j-i.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/jsobre1+i+k.png} \caption{Caption for docs/jsobre1+i+k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_exponencial.png} \caption{Caption for docs/capitalidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_logaritmico.png} \caption{Caption for docs/capitalidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j_solo.png} \caption{Caption for docs/j_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_exponencial.png} \caption{Caption for docs/similaridad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/similaridad_accuracy_logaritmico.png.} \end{figure}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{06-06-2023}
+\subsection{Commits}
+\paragraph{Commit: d743385}
+Commit Message: agrego la función accumulated_accuracy para calcular el accuracy acumulado a lo largo de N y así poder elegir cuantitativamente con cuál métrica me quedo
+
+\paragraph{Commit: 90286d2}
+Commit Message: dejo especificidad logarítmica, similaridad logarítmica y capitalid logarítmica, que son las que más accuracy acumulado obtuviewron
+
+%CommitsEnd
+\subsection{Figures}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}

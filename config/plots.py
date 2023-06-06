@@ -154,7 +154,7 @@ for alpha,beta,gamma in [(1,0,0),(0,1,0),(0,0,1)]:
             top_10_metrics.to_csv(f)
 
 ## {{{ PLOT
-with open(f"{PATH}output/top_10_metrics_0_0_0_si_6.csv", "r") as f:
+with open(f"{PATH}output/top_10_metrics_1_1_0_no_1.csv", "r") as f:
     top_10_metrics = pd.read_csv(f)
 
 x = np.linspace(0, 10, 100)
@@ -173,9 +173,10 @@ with plt.style.context(['science','ieee','nature']):
     ax1.plot(np.arange(1,11), top_10_metrics['clean_set'], label='clean_set',
             color='black')
     ax1.legend(loc='lower right', fontsize=4)
+    ax1.text(5, 0.8, 'acum. accuracy$= 0.9018$',fontsize=4)
     ax1.set_xlabel('Total observed phenotypes (N)', fontsize=4)
     ax1.set_ylabel('Accuracy',fontsize=4)
-    ax1.set_title('$-k$', fontsize=4)
+    ax1.set_title('$\\frac{j}{j+i}+\\frac{j}{j+\\log(1+k)}$', fontsize=7)
     ax1.tick_params(axis='both', which='major', labelsize=3)
     # ax1.axhline(y=0.9, color='green', linestyle='--', linewidth=1,alpha=0.5)
     # ax1.axvline(x=5, color='green', linestyle='--', linewidth=1,alpha=0.5)
@@ -238,7 +239,7 @@ def accuracy(type_of_noise,alpha,beta,gamma,nueva_metrica,n_metrica):
 Acá vamos a calcular el accuracy acumulado total, para elegir las tres métricas
 que mejor se desempeñen para luego probar de a pares.
 """
-with open(f'{PATH}output/top_10_metrics_0_0_0_si_7.csv', 'r') as f:
+with open(f'{PATH}output/top_10_metrics_0_1_1_no_3.csv', 'r') as f:
     top_10_metrics = pd.read_csv(f)
 
 
@@ -256,14 +257,40 @@ error)
     print(column_sums)
 
     return mean_of_sums/10 #sobre el total de N corridos, para normalizarlo
+acumulated_accuracy(top_10_metrics)
 
 ## }}}
 
 ## de las métricas nuevas, el accuracy acumulado es:
-1 = 0.3143
-2 = 0.8362
-3 = 0.6779
-4 = 0.8319
-5 = 0.8251
-6 = 0.1694
-7 = falta correr este
+
+# 1 = 0.3143  j-i-k
+# 2 = 0.8362  j-i
+# 3 = 0.6779  j/(1+i+k)
+# 4 = 0.8319  j #Queda
+# 5 = 0.8251  -i
+# 6 = 0.1694  -k
+# 7 = 0.2442  -i-k
+
+# sim_lin = 0.6663
+# sim_log = 0.9054 #Queda
+# sim_log = 0.2023
+
+# cap_lin = 0.8333 #Queda
+# cap_log = 0.8321
+# cap_log = 0.8272
+
+# esp_lin = 0.4791
+# esp_log = 0.8606 #Queda
+# esp_log = 0.1999
+
+
+# Quizás capitalidad podemos eliminar y quedarnos solo con j. Luego similaridad
+# y especificidad agregan otro tipo de información -i es lo mismo que j
+
+# esp + cap = 0.9018
+# esp + sim = 0.9022
+# cap + sim = 0.9060
+
+# esp + cap + sim = 0.9046
+## Después quedaría calcular también las de similaridad capitalidad y
+## especificidad
