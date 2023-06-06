@@ -172,12 +172,12 @@ with plt.style.context(['science','ieee','nature']):
         ax1.plot(np.arange(1,11), top_10_metrics[label], label=label, color=cmap(i), linestyle=styles[i % len(styles)])
     ax1.plot(np.arange(1,11), top_10_metrics['clean_set'], label='clean_set',
             color='black')
-    ax1.legend(loc='lower right', fontsize=4)
-    ax1.text(5, 0.8, 'acum. accuracy$= 0.9018$',fontsize=4)
-    ax1.set_xlabel('Total observed phenotypes (N)', fontsize=4)
-    ax1.set_ylabel('Accuracy',fontsize=4)
-    ax1.set_title('$\\frac{j}{j+i}+\\frac{j}{j+\\log(1+k)}$', fontsize=7)
-    ax1.tick_params(axis='both', which='major', labelsize=3)
+    ax1.legend(loc='lower right', fontsize=5)
+    ax1.text(5, 0.8, 'acum. accuracy$=0.1999$',fontsize=4)
+    ax1.set_xlabel('Total observed phenotypes (N)', fontsize=7)
+    ax1.set_ylabel('Accuracy',fontsize=7)
+    ax1.set_title('$\\frac{j}{j+10^k}$', fontsize=7)
+    ax1.tick_params(axis='both', which='major', labelsize=5)
     # ax1.axhline(y=0.9, color='green', linestyle='--', linewidth=1,alpha=0.5)
     # ax1.axvline(x=5, color='green', linestyle='--', linewidth=1,alpha=0.5)
     ax1.set_ylim(0,1)
@@ -273,15 +273,15 @@ acumulated_accuracy(top_10_metrics)
 
 # sim_lin = 0.6663
 # sim_log = 0.9054 #Queda
-# sim_log = 0.2023
+# sim_exp = 0.2023
 
 # cap_lin = 0.8333 #Queda
 # cap_log = 0.8321
-# cap_log = 0.8272
+# cap_exp = 0.8272
 
 # esp_lin = 0.4791
 # esp_log = 0.8606 #Queda
-# esp_log = 0.1999
+# esp_exp = 0.1999
 
 
 # Quizás capitalidad podemos eliminar y quedarnos solo con j. Luego similaridad
