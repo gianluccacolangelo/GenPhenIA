@@ -111,9 +111,9 @@ with open(f'{db}phenotye_gene_dict','r') as file:
 
 
 def fen_reales_del_gen(gen_id,precision):
-    if precision = True:
+    if precision == True:
         fen_reales = gene_phenotype_dict[str(gen_id)]
-    elif presicion = False:
+    elif presicion == False:
         fen_reales = phenotype_gene_dict[str(gen_id)]
     return set(fen_reales)
 
