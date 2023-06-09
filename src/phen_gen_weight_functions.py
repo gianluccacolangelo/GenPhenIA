@@ -104,16 +104,16 @@ La tercera opción sería combinar ambas cosas. Pero paso a paso.
 
 # Abrimos gene_phenotype_dict
 db=f'{PATH}data/simulated/'
-with open(f'{db}gene_phenotype_dict','r') as file:
+with open(f'{db}gene_phenotype_dict.json','r') as file:
     gene_phenotype_dict = json.load(file)
-with open(f'{db}phenotye_gene_dict','r') as file:
+with open(f'{db}phenotype_gene_dict.json','r') as file:
     phenotype_gene_dict = json.load(file)
 
 
 def fen_reales_del_gen(gen_id,precision):
     if precision == True:
         fen_reales = gene_phenotype_dict[str(gen_id)]
-    elif presicion == False:
+    elif precision == False:
         fen_reales = phenotype_gene_dict[str(gen_id)]
     return set(fen_reales)
 
