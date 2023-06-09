@@ -10,6 +10,7 @@ import linear_model_lab as lml
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import json
 PATH = "/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/"
 ## }}}
 
@@ -294,3 +295,67 @@ acumulated_accuracy(top_10_metrics)
 # esp + cap + sim = 0.9046
 ## Después quedaría calcular también las de similaridad capitalidad y
 ## especificidad
+
+
+
+
+
+## {{{ hardcoding
+db = f'{PATH}data/real/clinvar.json'
+
+with open(db,'r') as f:
+    db_real_clinvar = json.load(f)
+
+db = f'{PATH}data/real/bitgenia.json'
+
+with open(db,'r') as f:
+    db_real_bitgenia = json.load(f)
+
+bitgenia_metrics = lml.model_real_evaluating(db_real_bitgenia,1,1,1,"no",1,precision=False)
+
+clinvar_metrics = lml.model_real_evaluating(db_real_clinvar,1,1,1,"no",1,precision=False)
+
+bitgenia_metrics_setpreciso = lml.model_real_evaluating(db_real_bitgenia,1,1,1,"no",1,precision=True)
+
+clinvar_metrics_setpreciso = lml.model_real_evaluating(db_real_clinvar,1,1,1,"no",1,precision=True)
+##  }}}
+
+##{{{
+
+
+porcentaje_incluido_bitgenia = [lml.percent_below_x(bitgenia_metrics,i) for i in range(1,2000,50)]
+num_hc = range(1,2000,50)
+
+porcentaje_incluido_clinvar = [lml.percent_below_x(clinvar_metrics,i) for i
+        in range(1,2000,50)]
+
+
+porcentaje_incluido_bitgenia_setpreciso = [lml.percent_below_x(bitgenia_metrics_setpreciso,i) for i in range(1,2000,50)]
+
+porcentaje_incluido_clinvar_setpreciso = [lml.percent_below_x(clinvar_metrics_setpreciso,i) for i in range(1,2000,50)]
+
+with plt.style.context(['science','ieee','nature']):
+    fig, (ax1,ax2) = plt.subplots(1,2)
+    # ax.plot(x,y)
+    # ax.set_xlim(0,2000)
+    ax1.plot(num_hc,porcentaje_incluido_clinvar,label='clinvar')
+    ax1.plot(num_hc,porcentaje_incluido_bitgenia,label='bitgenia')
+    ax1.set_xlabel('Top N\%')
+    ax1.set_ylabel('Porcentaje capturado')
+    ax1.legend()
+    ax1.tick_params(axis='both', which='major', labelsize=3)
+    ax1.set_title('Set vago')
+    ax1.vlines(500,0,0.8,linestyles='dashed',colors='grey')
+    ax1.hlines(0.8,0,500,linestyles='dashed',colors='grey')
+
+    ax2.plot(num_hc,porcentaje_incluido_clinvar_setpreciso,label='clinvar')
+    ax2.plot(num_hc,porcentaje_incluido_bitgenia_setpreciso,label='bitgenia')
+    ax2.set_xlabel('Top N\%')
+    ax2.legend()
+    ax2.tick_params(axis='both', which='major', labelsize=3)
+    ax2.set_title('Set preciso')
+    ax2.vlines(500,0,0.8,linestyles='dashed',colors='grey')
+    ax2.hlines(0.8,0,500,linestyles='dashed',colors='grey')
+
+
+## }}}
