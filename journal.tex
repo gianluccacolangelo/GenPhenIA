@@ -110,6 +110,27 @@ Commit Message: dejo especificidad logarítmica, similaridad logarítmica y capi
 \paragraph{Commit: 3a1e9e0}
 Commit Message: en este punto están todas las combinaciones algebraicas hechas y también todas las combinaciones de a pares de métricas. Conclusión, la similaridad logarítmica sola es la que mejor desempeña hasta ahora. Agregarle métricaslo mantiene igual
 
+\paragraph{Commit: 3a43cc3}
+Commit Message: vuelvo a plotear con los labels y títulos más grandes
+
+\paragraph{Commit: 34e653b}
+Commit Message: arreglo los sets reales, recuperando los términos hpo originales, para que sea consistente con las funciones anteriormente escritas, y elimino los anteriores
+
+\paragraph{Commit: 8b6ce8d}
+Commit Message: en phen_gen_weight functions agrego la propiedad precision en la función fen_reales_del_gen. Cuando es True, me toma de la base de datos exacta, cuando es False, me toma de la base de datos vaga
+
+\paragraph{Commit: ab6f479}
+Commit Message: lo mismo que el anterior commit pero debuuggeado
+
+\paragraph{Commit: eba267b}
+Commit Message: creo vage_gene_phenotype_dict.json a partir de phenotype_gene_dict
+
+\paragraph{Commit: bea3b8e}
+Commit Message: termino de tunear fen_reales_del_gen. Ya está listo para usarse
+
+\paragraph{Commit: d85db3b}
+Commit Message: en plots.py ahora también agrego la evaluación de sets reales y su gráfico
+
 %CommitsEnd
 \subsection{Figures}
 
@@ -131,6 +152,46 @@ Commit Message: en este punto están todas las combinaciones algebraicas hechas 
 \begin{figure}[h] \centering \includegraphics{docs/cap_mas_sim.png} \caption{Caption for docs/cap_mas_sim.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/esp_mas_cap.png} \caption{Caption for docs/esp_mas_cap.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/esp_mas_sim.png} \caption{Caption for docs/esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-i-k.png} \caption{Caption for docs/-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-i_solo.png} \caption{Caption for docs/-i_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-k_solo.png} \caption{Caption for docs/-k_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/Accuracy_capitalidad.png} \caption{Caption for docs/Accuracy_capitalidad.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/Accuracy_especificidad.png} \caption{Caption for docs/Accuracy_especificidad.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/Accuracy_similaridad.png} \caption{Caption for docs/Accuracy_similaridad.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_esp_mas_sim.png} \caption{Caption for docs/cap_mas_esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_sim.png} \caption{Caption for docs/cap_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_exponencial.png} \caption{Caption for docs/capitalidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_logaritmico.png} \caption{Caption for docs/capitalidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_cap.png} \caption{Caption for docs/esp_mas_cap.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_sim.png} \caption{Caption for docs/esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_exponencial.png} \caption{Caption for docs/especificidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_logaritmico.png} \caption{Caption for docs/especificidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j-i-k.png} \caption{Caption for docs/j-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j-i.png} \caption{Caption for docs/j-i.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j_solo.png} \caption{Caption for docs/j_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/jsobre1+i+k.png} \caption{Caption for docs/jsobre1+i+k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/-i-k.png} \caption{Caption for docs/metrics_evaluation/-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/-i_solo.png} \caption{Caption for docs/metrics_evaluation/-i_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/-k_solo.png} \caption{Caption for docs/metrics_evaluation/-k_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/cap_mas_esp_mas_sim.png} \caption{Caption for docs/metrics_evaluation/cap_mas_esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/cap_mas_sim.png} \caption{Caption for docs/metrics_evaluation/cap_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/capitalidad_accuracy_exponencial.png} \caption{Caption for docs/metrics_evaluation/capitalidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/capitalidad_accuracy_lineal.png} \caption{Caption for docs/metrics_evaluation/capitalidad_accuracy_lineal.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/capitalidad_accuracy_logaritmico.png} \caption{Caption for docs/metrics_evaluation/capitalidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/esp_mas_cap.png} \caption{Caption for docs/metrics_evaluation/esp_mas_cap.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/esp_mas_sim.png} \caption{Caption for docs/metrics_evaluation/esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/especificidad_accuracy_exponencial.png} \caption{Caption for docs/metrics_evaluation/especificidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/especificidad_accuracy_lineal.png} \caption{Caption for docs/metrics_evaluation/especificidad_accuracy_lineal.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/especificidad_accuracy_logaritmico.png} \caption{Caption for docs/metrics_evaluation/especificidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/j-i-k.png} \caption{Caption for docs/metrics_evaluation/j-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/j-i.png} \caption{Caption for docs/metrics_evaluation/j-i.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/j_solo.png} \caption{Caption for docs/metrics_evaluation/j_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/jsobre1+i+k.png} \caption{Caption for docs/metrics_evaluation/jsobre1+i+k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_accuracy_exponencial.png} \caption{Caption for docs/metrics_evaluation/similaridad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/metrics_evaluation/similaridad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_lineal.png} \caption{Caption for docs/metrics_evaluation/similaridad_lineal.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_exponencial.png} \caption{Caption for docs/similaridad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/similaridad_accuracy_logaritmico.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -197,6 +258,27 @@ Commit Message: dejo especificidad logarítmica, similaridad logarítmica y capi
 \paragraph{Commit: 3a1e9e0}
 Commit Message: en este punto están todas las combinaciones algebraicas hechas y también todas las combinaciones de a pares de métricas. Conclusión, la similaridad logarítmica sola es la que mejor desempeña hasta ahora. Agregarle métricaslo mantiene igual
 
+\paragraph{Commit: 3a43cc3}
+Commit Message: vuelvo a plotear con los labels y títulos más grandes
+
+\paragraph{Commit: 34e653b}
+Commit Message: arreglo los sets reales, recuperando los términos hpo originales, para que sea consistente con las funciones anteriormente escritas, y elimino los anteriores
+
+\paragraph{Commit: 8b6ce8d}
+Commit Message: en phen_gen_weight functions agrego la propiedad precision en la función fen_reales_del_gen. Cuando es True, me toma de la base de datos exacta, cuando es False, me toma de la base de datos vaga
+
+\paragraph{Commit: ab6f479}
+Commit Message: lo mismo que el anterior commit pero debuuggeado
+
+\paragraph{Commit: eba267b}
+Commit Message: creo vage_gene_phenotype_dict.json a partir de phenotype_gene_dict
+
+\paragraph{Commit: bea3b8e}
+Commit Message: termino de tunear fen_reales_del_gen. Ya está listo para usarse
+
+\paragraph{Commit: d85db3b}
+Commit Message: en plots.py ahora también agrego la evaluación de sets reales y su gráfico
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_exponencial.png} \caption{Caption for docs/especificidad_accuracy_exponencial.png.} \end{figure}
@@ -216,6 +298,46 @@ Commit Message: en este punto están todas las combinaciones algebraicas hechas 
 \begin{figure}[h] \centering \includegraphics{docs/cap_mas_sim.png} \caption{Caption for docs/cap_mas_sim.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/esp_mas_cap.png} \caption{Caption for docs/esp_mas_cap.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/esp_mas_sim.png} \caption{Caption for docs/esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-i-k.png} \caption{Caption for docs/-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-i_solo.png} \caption{Caption for docs/-i_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-k_solo.png} \caption{Caption for docs/-k_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/Accuracy_capitalidad.png} \caption{Caption for docs/Accuracy_capitalidad.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/Accuracy_especificidad.png} \caption{Caption for docs/Accuracy_especificidad.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/Accuracy_similaridad.png} \caption{Caption for docs/Accuracy_similaridad.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_esp_mas_sim.png} \caption{Caption for docs/cap_mas_esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_sim.png} \caption{Caption for docs/cap_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_exponencial.png} \caption{Caption for docs/capitalidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_logaritmico.png} \caption{Caption for docs/capitalidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_cap.png} \caption{Caption for docs/esp_mas_cap.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_sim.png} \caption{Caption for docs/esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_exponencial.png} \caption{Caption for docs/especificidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_logaritmico.png} \caption{Caption for docs/especificidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j-i-k.png} \caption{Caption for docs/j-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j-i.png} \caption{Caption for docs/j-i.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j_solo.png} \caption{Caption for docs/j_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/jsobre1+i+k.png} \caption{Caption for docs/jsobre1+i+k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/-i-k.png} \caption{Caption for docs/metrics_evaluation/-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/-i_solo.png} \caption{Caption for docs/metrics_evaluation/-i_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/-k_solo.png} \caption{Caption for docs/metrics_evaluation/-k_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/cap_mas_esp_mas_sim.png} \caption{Caption for docs/metrics_evaluation/cap_mas_esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/cap_mas_sim.png} \caption{Caption for docs/metrics_evaluation/cap_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/capitalidad_accuracy_exponencial.png} \caption{Caption for docs/metrics_evaluation/capitalidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/capitalidad_accuracy_lineal.png} \caption{Caption for docs/metrics_evaluation/capitalidad_accuracy_lineal.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/capitalidad_accuracy_logaritmico.png} \caption{Caption for docs/metrics_evaluation/capitalidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/esp_mas_cap.png} \caption{Caption for docs/metrics_evaluation/esp_mas_cap.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/esp_mas_sim.png} \caption{Caption for docs/metrics_evaluation/esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/especificidad_accuracy_exponencial.png} \caption{Caption for docs/metrics_evaluation/especificidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/especificidad_accuracy_lineal.png} \caption{Caption for docs/metrics_evaluation/especificidad_accuracy_lineal.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/especificidad_accuracy_logaritmico.png} \caption{Caption for docs/metrics_evaluation/especificidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/j-i-k.png} \caption{Caption for docs/metrics_evaluation/j-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/j-i.png} \caption{Caption for docs/metrics_evaluation/j-i.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/j_solo.png} \caption{Caption for docs/metrics_evaluation/j_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/jsobre1+i+k.png} \caption{Caption for docs/metrics_evaluation/jsobre1+i+k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_accuracy_exponencial.png} \caption{Caption for docs/metrics_evaluation/similaridad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/metrics_evaluation/similaridad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_lineal.png} \caption{Caption for docs/metrics_evaluation/similaridad_lineal.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_exponencial.png} \caption{Caption for docs/similaridad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/similaridad_accuracy_logaritmico.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -267,6 +389,27 @@ Commit Message: dejo especificidad logarítmica, similaridad logarítmica y capi
 \paragraph{Commit: 3a1e9e0}
 Commit Message: en este punto están todas las combinaciones algebraicas hechas y también todas las combinaciones de a pares de métricas. Conclusión, la similaridad logarítmica sola es la que mejor desempeña hasta ahora. Agregarle métricaslo mantiene igual
 
+\paragraph{Commit: 3a43cc3}
+Commit Message: vuelvo a plotear con los labels y títulos más grandes
+
+\paragraph{Commit: 34e653b}
+Commit Message: arreglo los sets reales, recuperando los términos hpo originales, para que sea consistente con las funciones anteriormente escritas, y elimino los anteriores
+
+\paragraph{Commit: 8b6ce8d}
+Commit Message: en phen_gen_weight functions agrego la propiedad precision en la función fen_reales_del_gen. Cuando es True, me toma de la base de datos exacta, cuando es False, me toma de la base de datos vaga
+
+\paragraph{Commit: ab6f479}
+Commit Message: lo mismo que el anterior commit pero debuuggeado
+
+\paragraph{Commit: eba267b}
+Commit Message: creo vage_gene_phenotype_dict.json a partir de phenotype_gene_dict
+
+\paragraph{Commit: bea3b8e}
+Commit Message: termino de tunear fen_reales_del_gen. Ya está listo para usarse
+
+\paragraph{Commit: d85db3b}
+Commit Message: en plots.py ahora también agrego la evaluación de sets reales y su gráfico
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_exponencial.png} \caption{Caption for docs/especificidad_accuracy_exponencial.png.} \end{figure}
@@ -286,6 +429,46 @@ Commit Message: en este punto están todas las combinaciones algebraicas hechas 
 \begin{figure}[h] \centering \includegraphics{docs/cap_mas_sim.png} \caption{Caption for docs/cap_mas_sim.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/esp_mas_cap.png} \caption{Caption for docs/esp_mas_cap.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/esp_mas_sim.png} \caption{Caption for docs/esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-i-k.png} \caption{Caption for docs/-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-i_solo.png} \caption{Caption for docs/-i_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-k_solo.png} \caption{Caption for docs/-k_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/Accuracy_capitalidad.png} \caption{Caption for docs/Accuracy_capitalidad.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/Accuracy_especificidad.png} \caption{Caption for docs/Accuracy_especificidad.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/Accuracy_similaridad.png} \caption{Caption for docs/Accuracy_similaridad.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_esp_mas_sim.png} \caption{Caption for docs/cap_mas_esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_sim.png} \caption{Caption for docs/cap_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_exponencial.png} \caption{Caption for docs/capitalidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_logaritmico.png} \caption{Caption for docs/capitalidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_cap.png} \caption{Caption for docs/esp_mas_cap.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_sim.png} \caption{Caption for docs/esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_exponencial.png} \caption{Caption for docs/especificidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_logaritmico.png} \caption{Caption for docs/especificidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j-i-k.png} \caption{Caption for docs/j-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j-i.png} \caption{Caption for docs/j-i.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j_solo.png} \caption{Caption for docs/j_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/jsobre1+i+k.png} \caption{Caption for docs/jsobre1+i+k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/-i-k.png} \caption{Caption for docs/metrics_evaluation/-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/-i_solo.png} \caption{Caption for docs/metrics_evaluation/-i_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/-k_solo.png} \caption{Caption for docs/metrics_evaluation/-k_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/cap_mas_esp_mas_sim.png} \caption{Caption for docs/metrics_evaluation/cap_mas_esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/cap_mas_sim.png} \caption{Caption for docs/metrics_evaluation/cap_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/capitalidad_accuracy_exponencial.png} \caption{Caption for docs/metrics_evaluation/capitalidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/capitalidad_accuracy_lineal.png} \caption{Caption for docs/metrics_evaluation/capitalidad_accuracy_lineal.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/capitalidad_accuracy_logaritmico.png} \caption{Caption for docs/metrics_evaluation/capitalidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/esp_mas_cap.png} \caption{Caption for docs/metrics_evaluation/esp_mas_cap.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/esp_mas_sim.png} \caption{Caption for docs/metrics_evaluation/esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/especificidad_accuracy_exponencial.png} \caption{Caption for docs/metrics_evaluation/especificidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/especificidad_accuracy_lineal.png} \caption{Caption for docs/metrics_evaluation/especificidad_accuracy_lineal.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/especificidad_accuracy_logaritmico.png} \caption{Caption for docs/metrics_evaluation/especificidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/j-i-k.png} \caption{Caption for docs/metrics_evaluation/j-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/j-i.png} \caption{Caption for docs/metrics_evaluation/j-i.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/j_solo.png} \caption{Caption for docs/metrics_evaluation/j_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/jsobre1+i+k.png} \caption{Caption for docs/metrics_evaluation/jsobre1+i+k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_accuracy_exponencial.png} \caption{Caption for docs/metrics_evaluation/similaridad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/metrics_evaluation/similaridad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_lineal.png} \caption{Caption for docs/metrics_evaluation/similaridad_lineal.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_exponencial.png} \caption{Caption for docs/similaridad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/similaridad_accuracy_logaritmico.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -301,6 +484,27 @@ Commit Message: dejo especificidad logarítmica, similaridad logarítmica y capi
 \paragraph{Commit: 3a1e9e0}
 Commit Message: en este punto están todas las combinaciones algebraicas hechas y también todas las combinaciones de a pares de métricas. Conclusión, la similaridad logarítmica sola es la que mejor desempeña hasta ahora. Agregarle métricaslo mantiene igual
 
+\paragraph{Commit: 3a43cc3}
+Commit Message: vuelvo a plotear con los labels y títulos más grandes
+
+\paragraph{Commit: 34e653b}
+Commit Message: arreglo los sets reales, recuperando los términos hpo originales, para que sea consistente con las funciones anteriormente escritas, y elimino los anteriores
+
+\paragraph{Commit: 8b6ce8d}
+Commit Message: en phen_gen_weight functions agrego la propiedad precision en la función fen_reales_del_gen. Cuando es True, me toma de la base de datos exacta, cuando es False, me toma de la base de datos vaga
+
+\paragraph{Commit: ab6f479}
+Commit Message: lo mismo que el anterior commit pero debuuggeado
+
+\paragraph{Commit: eba267b}
+Commit Message: creo vage_gene_phenotype_dict.json a partir de phenotype_gene_dict
+
+\paragraph{Commit: bea3b8e}
+Commit Message: termino de tunear fen_reales_del_gen. Ya está listo para usarse
+
+\paragraph{Commit: d85db3b}
+Commit Message: en plots.py ahora también agrego la evaluación de sets reales y su gráfico
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/-i-k.png} \caption{Caption for docs/-i-k.png.} \end{figure}
@@ -310,6 +514,72 @@ Commit Message: en este punto están todas las combinaciones algebraicas hechas 
 \begin{figure}[h] \centering \includegraphics{docs/cap_mas_sim.png} \caption{Caption for docs/cap_mas_sim.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/esp_mas_cap.png} \caption{Caption for docs/esp_mas_cap.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/esp_mas_sim.png} \caption{Caption for docs/esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-i-k.png} \caption{Caption for docs/-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-i_solo.png} \caption{Caption for docs/-i_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/-k_solo.png} \caption{Caption for docs/-k_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/Accuracy_capitalidad.png} \caption{Caption for docs/Accuracy_capitalidad.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/Accuracy_especificidad.png} \caption{Caption for docs/Accuracy_especificidad.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/Accuracy_similaridad.png} \caption{Caption for docs/Accuracy_similaridad.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_esp_mas_sim.png} \caption{Caption for docs/cap_mas_esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/cap_mas_sim.png} \caption{Caption for docs/cap_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_exponencial.png} \caption{Caption for docs/capitalidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/capitalidad_accuracy_logaritmico.png} \caption{Caption for docs/capitalidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_cap.png} \caption{Caption for docs/esp_mas_cap.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/esp_mas_sim.png} \caption{Caption for docs/esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_exponencial.png} \caption{Caption for docs/especificidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_logaritmico.png} \caption{Caption for docs/especificidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j-i-k.png} \caption{Caption for docs/j-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j-i.png} \caption{Caption for docs/j-i.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/j_solo.png} \caption{Caption for docs/j_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/jsobre1+i+k.png} \caption{Caption for docs/jsobre1+i+k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/-i-k.png} \caption{Caption for docs/metrics_evaluation/-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/-i_solo.png} \caption{Caption for docs/metrics_evaluation/-i_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/-k_solo.png} \caption{Caption for docs/metrics_evaluation/-k_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/cap_mas_esp_mas_sim.png} \caption{Caption for docs/metrics_evaluation/cap_mas_esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/cap_mas_sim.png} \caption{Caption for docs/metrics_evaluation/cap_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/capitalidad_accuracy_exponencial.png} \caption{Caption for docs/metrics_evaluation/capitalidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/capitalidad_accuracy_lineal.png} \caption{Caption for docs/metrics_evaluation/capitalidad_accuracy_lineal.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/capitalidad_accuracy_logaritmico.png} \caption{Caption for docs/metrics_evaluation/capitalidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/esp_mas_cap.png} \caption{Caption for docs/metrics_evaluation/esp_mas_cap.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/esp_mas_sim.png} \caption{Caption for docs/metrics_evaluation/esp_mas_sim.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/especificidad_accuracy_exponencial.png} \caption{Caption for docs/metrics_evaluation/especificidad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/especificidad_accuracy_lineal.png} \caption{Caption for docs/metrics_evaluation/especificidad_accuracy_lineal.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/especificidad_accuracy_logaritmico.png} \caption{Caption for docs/metrics_evaluation/especificidad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/j-i-k.png} \caption{Caption for docs/metrics_evaluation/j-i-k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/j-i.png} \caption{Caption for docs/metrics_evaluation/j-i.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/j_solo.png} \caption{Caption for docs/metrics_evaluation/j_solo.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/jsobre1+i+k.png} \caption{Caption for docs/metrics_evaluation/jsobre1+i+k.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_accuracy_exponencial.png} \caption{Caption for docs/metrics_evaluation/similaridad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/metrics_evaluation/similaridad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_lineal.png} \caption{Caption for docs/metrics_evaluation/similaridad_lineal.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_exponencial.png} \caption{Caption for docs/similaridad_accuracy_exponencial.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/similaridad_accuracy_logaritmico.png.} \end{figure}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{09-06-2023}
+\subsection{Commits}
+\paragraph{Commit: 34e653b}
+Commit Message: arreglo los sets reales, recuperando los términos hpo originales, para que sea consistente con las funciones anteriormente escritas, y elimino los anteriores
+
+\paragraph{Commit: 8b6ce8d}
+Commit Message: en phen_gen_weight functions agrego la propiedad precision en la función fen_reales_del_gen. Cuando es True, me toma de la base de datos exacta, cuando es False, me toma de la base de datos vaga
+
+\paragraph{Commit: ab6f479}
+Commit Message: lo mismo que el anterior commit pero debuuggeado
+
+\paragraph{Commit: eba267b}
+Commit Message: creo vage_gene_phenotype_dict.json a partir de phenotype_gene_dict
+
+\paragraph{Commit: bea3b8e}
+Commit Message: termino de tunear fen_reales_del_gen. Ya está listo para usarse
+
+\paragraph{Commit: d85db3b}
+Commit Message: en plots.py ahora también agrego la evaluación de sets reales y su gráfico
+
+%CommitsEnd
+\subsection{Figures}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}

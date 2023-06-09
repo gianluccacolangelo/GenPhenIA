@@ -32,7 +32,7 @@ que lo causan.
     gene_ids = set.union(*(phen_to_genes.get(phen, set()) for phen in set_of_phens))
     return gene_ids
 
-def calculate_gene_parameters(set_of_phens,alpha,beta,gamma,n_metrica,nueva_metrica):
+def calculate_gene_parameters(set_of_phens,alpha,beta,gamma,n_metrica,nueva_metrica,precision=True):
     """
 Esta función toma un conjunto de fenotipos observados, y calcula:
     especificidad
@@ -50,7 +50,10 @@ Esta función toma un conjunto de fenotipos observados, y calcula:
     for gene in genes:
         i+=1
 
-        real_gene_phens = pgw.fen_reales_del_gen(gene)
+        if precision == True:
+            real_gene_phens = pgw.fen_reales_del_gen(gene,True)
+        elif precision == False:
+            real_gene_phens = pgw.fen_reales_del_gen(gene,False)
         # calculate the parameters for this gene
         especificidad = pgw.especificidad_del_gen(set_of_phens,real_gene_phens)
         capitalidad = pgw.capitalidad_del_gen(set_of_phens,real_gene_phens)
@@ -138,8 +141,35 @@ genes reales evaluados
     return metrics
 
 
+def model_real_evaluating(db_real,alpha,beta,gamma,nueva_metrica,n_metrica,precision):
+    """
+Esta función intenta ser lo mismo que la anterior pero para los sets reales.
+    """
+    metrics = []
+    i=1
+    for gen in db_real:
+        fen_observados = set(db_real[gen])
+        df = calculate_gene_parameters(fen_observados,
+                alpha,beta,gamma,
+                nueva_metrica=nueva_metrica,
+                n_metrica=n_metrica,precision=precision)
+        try:
+            metrics.append(df.loc[df['gene']==int(gen)].index[0]+1)
+            print(f"                      ranking = {metrics[i-1]}\n")
+            i+=1
+        except:
+            continue
+
+    return metrics
+
+
+
+
+
 def percent_below_x(lst,x):
     count = sum(1 for i in lst if i <= x)
     return (count / len(lst))
 ## }}}
+
+
 
