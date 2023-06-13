@@ -312,46 +312,75 @@ with open(db,'r') as f:
     db_real_bitgenia = json.load(f)
 
 bitgenia_metrics = lml.model_real_evaluating(db_real_bitgenia,1,1,1,"no",1,precision=False)
+esp_bitgenia_metrics = lml.model_real_evaluating(db_real_bitgenia,1,0,0,"no",1,precision=False)
+cap_bitgenia_metrics = lml.model_real_evaluating(db_real_bitgenia,0,1,0,"no",1,precision=False)
+sim_bitgenia_metrics = lml.model_real_evaluating(db_real_bitgenia,0,0,1,"no",1,precision=False)
+j_bitgenia_metrics = lml.model_real_evaluating(db_real_bitgenia,0,0,0,"si",4,precision=False)
 
-clinvar_metrics = lml.model_real_evaluating(db_real_clinvar,1,1,1,"no",1,precision=False)
+
+# clinvar_metrics = lml.model_real_evaluating(db_real_clinvar,1,1,1,"no",1,precision=False)
 
 bitgenia_metrics_setpreciso = lml.model_real_evaluating(db_real_bitgenia,1,1,1,"no",1,precision=True)
+esp_bitgenia_metrics_setpreciso = lml.model_real_evaluating(db_real_bitgenia,1,0,0,"no",1,precision=True)
+cap_bitgenia_metrics_setpreciso = lml.model_real_evaluating(db_real_bitgenia,0,1,0,"no",1,precision=True)
+sim_bitgenia_metrics_setpreciso = lml.model_real_evaluating(db_real_bitgenia,0,0,1,"no",1,precision=True)
+j_bitgenia_metrics_setpreciso = lml.model_real_evaluating(db_real_bitgenia,0,0,0,"si",4,precision=True)
 
-clinvar_metrics_setpreciso = lml.model_real_evaluating(db_real_clinvar,1,1,1,"no",1,precision=True)
+
+# clinvar_metrics_setpreciso = lml.model_real_evaluating(db_real_clinvar,1,1,1,"no",1,precision=True)
 ##  }}}
 
 ##{{{
 
 
 porcentaje_incluido_bitgenia = [lml.percent_below_x(bitgenia_metrics,i) for i in range(1,2000,50)]
+porcentaje_incluido_bitgenia_esp = [lml.percent_below_x(esp_bitgenia_metrics,i) for i in range(1,2000,50)]
+porcentaje_incluido_bitgenia_cap = [lml.percent_below_x(cap_bitgenia_metrics,i) for i in range(1,2000,50)]
+porcentaje_incluido_bitgenia_sim = [lml.percent_below_x(sim_bitgenia_metrics,i) for i in range(1,2000,50)]
+porcentaje_incluido_bitgenia_j = [lml.percent_below_x(j_bitgenia_metrics,i) for i in range(1,2000,50)]
+
 num_hc = range(1,2000,50)
 
-porcentaje_incluido_clinvar = [lml.percent_below_x(clinvar_metrics,i) for i
-        in range(1,2000,50)]
+# porcentaje_incluido_clinvar = [lml.percent_below_x(clinvar_metrics,i) for i
+        # in range(1,2000,50)]
 
 
 porcentaje_incluido_bitgenia_setpreciso = [lml.percent_below_x(bitgenia_metrics_setpreciso,i) for i in range(1,2000,50)]
+porcentaje_incluido_bitgenia_esp_setpreciso = [lml.percent_below_x(esp_bitgenia_metrics_setpreciso,i) for i in range(1,2000,50)]
+porcentaje_incluido_bitgenia_cap_setpreciso = [lml.percent_below_x(cap_bitgenia_metrics_setpreciso,i) for i in range(1,2000,50)]
+porcentaje_incluido_bitgenia_sim_setpreciso = [lml.percent_below_x(sim_bitgenia_metrics_setpreciso,i) for i in range(1,2000,50)]
+porcentaje_incluido_bitgenia_j_setpreciso = [lml.percent_below_x(j_bitgenia_metrics_setpreciso,i) for i in range(1,2000,50)]
 
-porcentaje_incluido_clinvar_setpreciso = [lml.percent_below_x(clinvar_metrics_setpreciso,i) for i in range(1,2000,50)]
+
+
+# porcentaje_incluido_clinvar_setpreciso = [lml.percent_below_x(clinvar_metrics_setpreciso,i) for i in range(1,2000,50)]
 
 with plt.style.context(['science','ieee','nature']):
     fig, (ax1,ax2) = plt.subplots(1,2)
     # ax.plot(x,y)
     # ax.set_xlim(0,2000)
-    ax1.plot(num_hc,porcentaje_incluido_clinvar,label='clinvar')
+    # ax1.plot(num_hc,porcentaje_incluido_clinvar,label='clinvar')
     ax1.plot(num_hc,porcentaje_incluido_bitgenia,label='bitgenia')
+    ax1.plot(num_hc,porcentaje_incluido_bitgenia_esp,label='bitgenia $\\frac{j}{j+\\log(k)}$')
+    ax1.plot(num_hc,porcentaje_incluido_bitgenia_cap,label='bitgenia $\\frac{j}{j+i}$')
+    ax1.plot(num_hc,porcentaje_incluido_bitgenia_sim,label='bitgenia $\\frac{j}{j+i+\\log(k)}$')
+    ax1.plot(num_hc,porcentaje_incluido_bitgenia_j,color='cyan',label='bitgenia $j$',alpha=.5)
     ax1.set_xlabel('Top N\%')
     ax1.set_ylabel('Porcentaje capturado')
-    ax1.legend()
+    ax1.legend(fontsize=4.5)
     ax1.tick_params(axis='both', which='major', labelsize=3)
     ax1.set_title('Set vago')
     ax1.vlines(500,0,0.8,linestyles='dashed',colors='grey')
     ax1.hlines(0.8,0,500,linestyles='dashed',colors='grey')
 
-    ax2.plot(num_hc,porcentaje_incluido_clinvar_setpreciso,label='clinvar')
+    # ax2.plot(num_hc,porcentaje_incluido_clinvar_setpreciso,label='clinvar')
     ax2.plot(num_hc,porcentaje_incluido_bitgenia_setpreciso,label='bitgenia')
+    ax2.plot(num_hc,porcentaje_incluido_bitgenia_esp_setpreciso,label='bitgenia $\\frac{j}{j+\\log(k)}$')
+    ax2.plot(num_hc,porcentaje_incluido_bitgenia_cap_setpreciso,label='bitgenia $\\frac{j}{j+i}$')
+    ax2.plot(num_hc,porcentaje_incluido_bitgenia_sim_setpreciso,label='bitgenia $\\frac{j}{j+i+\\log(k)}$')
+    ax2.plot(num_hc,porcentaje_incluido_bitgenia_j_setpreciso,color='cyan',label='bitgenia $j$',alpha=0.5)
     ax2.set_xlabel('Top N\%')
-    ax2.legend()
+    ax2.legend(fontsize=4.5)
     ax2.tick_params(axis='both', which='major', labelsize=3)
     ax2.set_title('Set preciso')
     ax2.vlines(500,0,0.8,linestyles='dashed',colors='grey')
