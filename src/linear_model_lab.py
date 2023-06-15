@@ -159,6 +159,8 @@ Esta función intenta ser lo mismo que la anterior pero para los sets reales.
             i+=1
         except:
             continue
+    print(f'La media de rankings fue de: {np.mean(metrics)} y la mediana de {np.median(metrics)}')
+    print(f'Y la cantidad de genes reales en el TOP 50: {percent_below_x(metrics,50)}')
 
     return metrics
 
