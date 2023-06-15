@@ -389,3 +389,90 @@ with plt.style.context(['science','ieee','nature']):
 
 ## }}}
 
+## {{{ probando alpha beta y gamma para el heatmap
+
+abg = []
+
+for i in np.arange(0,1.1,0.05):
+    for j in np.arange(0,1.1,0.05):
+        for k in np.arange(0,1.1,0.05):
+            if i+j+k == 1:
+                abg.append((i,j,k))
+
+## }}}
+
+
+## {{{
+db = f'{PATH}data/real/bitgenia.json'
+
+with open(db,'r') as f:
+    db_real_bitgenia = json.load(f)
+
+# This is a placeholder for your model, replace with your actual model
+def evaluate_model(alpha, beta, gamma):
+    bitgenia_metrics = lml.model_real_evaluating(db_real_bitgenia,alpha,beta,gamma,"si",1,precision=False)
+    percent_below_50 = lml.percent_below_x(bitgenia_metrics,50)
+    return percent_below_50
+
+##}}}
+
+## {{{
+
+# Generate range of values for alpha, beta, and gamma
+alpha_values = np.linspace(0, 1, 10)
+beta_values = np.linspace(0, 1, 10)
+
+# Prepare arrays to hold parameter values and corresponding accuracies
+alphas = []
+betas = []
+gammas = []
+accuracies = []
+
+# Calculate model accuracy for each combination of alpha, beta and gamma
+for alpha in alpha_values:
+    for beta in beta_values:
+        # Ensure alpha + beta + gamma <= 1
+        if alpha + beta <= 1:
+            gamma = 1 - alpha - beta
+            accuracy = evaluate_model(alpha, beta, gamma)
+
+            # Store values
+            alphas.append(alpha)
+            betas.append(beta)
+            gammas.append(gamma)
+            accuracies.append(accuracy)
+
+# Convert lists to numpy arrays for use with Matplotlib
+alphas = np.array(alphas)
+betas = np.array(betas)
+gammas = np.array(gammas)
+accuracies = np.array(accuracies)
+
+## }}}
+
+## {{{
+# Create 3D scatter plot
+with plt.style.context(['science','ieee','nature']):
+    fig = plt.figure(figsize=(10, 8))
+    ax = fig.add_subplot(111, projection='3d')
+
+    sc = ax.scatter(alphas, betas, gammas, c=accuracies,
+            cmap='RdBu',alpha=1)
+
+
+    ax.set_xlabel('$\\alpha$', labelpad=-13, size=7)
+    ax.set_ylabel('$\\beta$', labelpad=-13, size=7)
+    ax.set_zlabel('$\\gamma$', labelpad=-13, size=7)
+
+    ax.tick_params(axis='both', which='major', labelsize=4,
+            pad=-5,labelcolor='#4A4A4A')
+
+    # Add a color bar to the plot
+
+    cbar = plt.colorbar(sc)
+    cbar.ax.tick_params(labelsize=4)  # Make colorbar labels smaller
+    plt.title('$\\alpha \\frac{j}{j+\\log{k}} + \\beta\\frac{j}{j+i}+\\gamma\\frac{j}{i+j+\\log{k}}$',size=4.5)
+
+    plt.show()
+
+## }}}
