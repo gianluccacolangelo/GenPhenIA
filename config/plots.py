@@ -471,7 +471,10 @@ with plt.style.context(['science','ieee','nature']):
 
     cbar = plt.colorbar(sc)
     cbar.ax.tick_params(labelsize=4)  # Make colorbar labels smaller
-    plt.title('$\\alpha \\frac{j}{j+\\log{k}} + \\beta\\frac{j}{j+i}+\\gamma\\frac{j}{i+j+\\log{k}}$',size=4.5)
+    cbar.set_label('Porcentaje en el Top 50',
+            size=5,rotation=180+90,labelpad=5.5)  # Label the colorbar
+
+    plt.title('$\\alpha j  - \\beta i -\\gamma k$',size=4.5)
 
     plt.show()
 
