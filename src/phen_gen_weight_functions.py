@@ -15,6 +15,10 @@ PATH = '/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/'
 
 
 ## {{{ funciones de peso de genes candidatos
+
+with open(f'{PATH}config/phen_promiscuity_dict.json','r') as file:
+    phen_promiscuity_dict = json.load(file)
+
 def especificidad_del_gen(fenotipos_observados,fenotipos_del_gen):
     """
 fenotipos_observados y fenotipos_del_gen tienen que ser sets (conjuntos), esta
@@ -59,29 +63,38 @@ Recordar que siempre hablamos del gen candidato para el conj de fenotipos obs.
     j = len(j)
     return j/(j+i+np.log10(1+k))
 
-def parametro(fenotipos_observados,fenotipos_del_gen,nuevo_parametro):
+def parametro(fenotipos_observados,fenotipos_del_gen,nuevo_parametro,alpha=1,beta=1,gamma=1):
     """
 Esta función está para probar nuevas métricas, donde nuevo_parametro es un
 entero de la nueva métrica
     """
     j = fenotipos_observados.intersection(fenotipos_del_gen)
+    weighted_j = sum([phen_promiscuity_dict[phen] for phen in j])
     i = set(fenotipos_observados)-j
+    weighted_i = sum([phen_promiscuity_dict[phen] for phen in i])
     k = set(fenotipos_del_gen)-j
+    weighted_k = sum([phen_promiscuity_dict[phen] for phen in k])
+
     if nuevo_parametro==1:
-        result = len(j)-len(i)-len(k)
+        result = alpha*weighted_j-beta*weighted_i-gamma*weighted_k
     elif nuevo_parametro==2:
-        result = len(j)-len(i)
+        result = weighted_j-weighted_i
     elif nuevo_parametro==3:
-        result = len(j)/(1+len(i)+len(k))
+        result = weighted_j/(1+weighted_i+weighted_k)
     elif nuevo_parametro==4:
-        result = len(j)
+        result = weighted_j
     elif nuevo_parametro==5:
-        result = -len(i)
+        result = -weighted_i
     elif nuevo_parametro==6:
-        result = -len(k)
+        result = -weighted_k
     elif nuevo_parametro == 7:
-        result = -len(i)-len(k)
+        result = -weighted_i-weighted_k
     return result
+
+
+## }}}
+
+## {{{ funciones de peso de fenotipos
 
 
 ## }}}
