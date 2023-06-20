@@ -161,6 +161,8 @@ with open(f'{PATH}/config/phen_properties.csv','r') as file:
     phen_prop = pd.read_csv(file,comment='#',sep='\t')
     phen_childrens = phen_prop.set_index('Unnamed: 0')['num_children'].to_dict()
     phen_ancestors = phen_prop.set_index('Unnamed: 0')['num_ancestors'].to_dict()
+    phen_weights = phen_prop.set_index('Unnamed: 0')['a/(a+c)'].to_dict()
+    phen_freqs = phen_prop.set_index('Unnamed: 0')['frecuencia relativa'].to_dict()
 
 with open(f'{PATH}data/simulated/gene_phenotype_dict.json','r') as file:
     gold_standard = json.load(file)
@@ -180,6 +182,22 @@ for phens in bitgenia.values():
             bitgenia_ancestors.append(phen_ancestors[phen])
         except:
             continue
+bitgenia_weights = []
+for phens in bitgenia.values():
+    for phen in phens:
+        try:
+            bitgenia_weights.append(phen_weights[phen])
+        except:
+            continue
+bitgenia_freqs = []
+for phens in bitgenia.values():
+    for phen in phens:
+        try:
+            bitgenia_freqs.append(phen_freqs[phen])
+        except:
+            continue
+
+
 
 clinvar_childrens = []
 for phens in clinvar.values():
@@ -197,6 +215,24 @@ for phens in clinvar.values():
         except:
             continue
 
+clinvar_weights = []
+for phens in clinvar.values():
+    for phen in phens:
+        try:
+            clinvar_weights.append(phen_weights[phen])
+        except:
+            continue
+
+clinvar_freqs = []
+for phens in clinvar.values():
+    for phen in phens:
+        try:
+            clinvar_freqs.append(phen_freqs[phen])
+        except:
+            continue
+
+
+
 gold_standard_childrens = []
 for phens in gold_standard.values():
     for phen in phens:
@@ -213,6 +249,21 @@ for phens in gold_standard.values():
         except:
             continue
 
+gold_standard_weights = []
+for phens in gold_standard.values():
+    for phen in phens:
+        try:
+            gold_standard_weights.append(phen_weights[phen])
+        except:
+            continue
+gold_standard_freqs = []
+for phens in gold_standard.values():
+    for phen in phens:
+        try:
+            gold_standard_freqs.append(phen_freqs[phen])
+        except:
+            continue
+
 ## }}}
 
 ## {{{
@@ -222,9 +273,9 @@ for phens in gold_standard.values():
 
 
 # Pre-calculated means
-bitgenia = [np.mean(bitgenia_childrens), np.mean(bitgenia_ancestors)]
-clinvar = [np.mean(clinvar_childrens), np.mean(clinvar_ancestors)]
-gold_standard = [np.nanmean(gold_standard_childrens), np.nanmean(gold_standard_ancestors)]
+bitgenia = [np.mean(bitgenia_childrens),np.mean(bitgenia_ancestors),np.nanmean(bitgenia_weights),np.nanmean(bitgenia_freqs)]
+clinvar = [np.mean(clinvar_childrens),np.mean(clinvar_ancestors),np.nanmean(clinvar_weights),np.nanmean(clinvar_freqs)]
+gold_standard = [np.nanmean(gold_standard_childrens), np.nanmean(gold_standard_ancestors), np.nanmean(gold_standard_weights),np.nanmean(gold_standard_freqs)]
 
 
 bitgenia_std = [np.std(bitgenia_childrens), np.std(bitgenia_ancestors)]
@@ -238,28 +289,44 @@ bar_width = 0.3
 # Setting the positions of the bars on x axis
 r = np.arange(len(bitgenia))
 
+# with plt.style.context(['science','ieee','nature']):
+    # fig,ax = plt.subplots()
+    # ax.bar(0, bitgenia[0],  width=bar_width,
+            # label='Media hijos',alpha=.7)
+    # ax.bar(0.3, bitgenia[1], width=bar_width,
+            # label='Media ancestros',alpha=.7)
+    # ax.bar(1, clinvar[0], width=bar_width,
+            # alpha=.7,color='black')
+    # ax.bar(1.3, clinvar[1], width=bar_width,
+            # alpha=.7,color='r')
+    # ax.bar(2, gold_standard[0], width=bar_width,
+            # alpha=.7,color='black')
+    # ax.bar(2.3, gold_standard[1], width=bar_width,
+            # alpha=.7,color='r')
+
+    # # Adding xticks
+    # # ax.set_xlabel('Groups', fontweight='bold')
+    # ax.set_xticks([0.15,1.15,2.15], ['Bitgenia', 'Clinvar','Gold standard'])
+
+    # ax.legend(fontsize=4.5)
+
+    # # ax.show()
+# with plt.style.context(['science','ieee','nature']):
+    # fig,ax = plt.subplots()
+    # ax.bar('Bitgenia', bitgenia[2],  width=bar_width,alpha=.7,
+            # yerr=np.nanstd(bitgenia_weights))
+    # ax.bar('Clinvar', clinvar[2], width=bar_width,
+            # alpha=.7,color='black',
+            # yerr=np.nanstd(clinvar_weights))
+    # ax.bar('Gold\nStandard', gold_standard[2], width=bar_width,
+            # alpha=.7,color='black',
+            # yerr=np.nanstd(gold_standard_weights))
+    # ax.set_title('Media de $a/(a+c)$ para cada base de datos',fontsize=6)
+
 with plt.style.context(['science','ieee','nature']):
     fig,ax = plt.subplots()
-    ax.bar(0, bitgenia[0],  width=bar_width,
-            label='Nodos hijos',alpha=.7)
-    ax.bar(0.3, bitgenia[1], width=bar_width,
-            label='Nodos ancestros',alpha=.7)
-    ax.bar(1, clinvar[0], width=bar_width,
-            alpha=.7,color='black')
-    ax.bar(1.3, clinvar[1], width=bar_width,
-            alpha=.7,color='r')
-    ax.bar(2, gold_standard[0], width=bar_width,
-            alpha=.7,color='black')
-    ax.bar(2.3, gold_standard[1], width=bar_width,
-            alpha=.7,color='r')
-
-    # Adding xticks
-    # ax.set_xlabel('Groups', fontweight='bold')
-    ax.set_xticks([0.15,1.15,2.15], ['Bitgenia', 'Clinvar','Gold standard'])
-
-    ax.legend(fontsize=4.5)
-
-    # ax.show()
-
-
+    ax.bar('Bitgenia', bitgenia[3],  width=bar_width,alpha=.7)
+    ax.bar('Clinvar', clinvar[3], width=bar_width,alpha=.7,color='black')
+    ax.bar('Gold\nStandard', gold_standard[3], width=bar_width,alpha=.7,color='black')
+    ax.set_title('Media de la frecuencia de aparición \nde los fenotipos registrados',fontsize=5)
 ## }}}
