@@ -148,3 +148,118 @@ with plt.style.context(['science','ieee','nature']):
     ax1.text(1.5,0.84,f"iph $= {np.round(np.mean(iph),3)}\pm {np.round(np.std(iph),3)}$",fontsize=4)
 
 ## }}}
+
+
+## {{{ Explorando especificidad de los fenotipos reales
+with open(f'{PATH}data/real/clinvar.json','r') as f:
+    clinvar = json.load(f)
+
+with open(f'{PATH}data/real/bitgenia.json','r') as f:
+    bitgenia = json.load(f)
+
+with open(f'{PATH}/config/phen_properties.csv','r') as file:
+    phen_prop = pd.read_csv(file,comment='#',sep='\t')
+    phen_childrens = phen_prop.set_index('Unnamed: 0')['num_children'].to_dict()
+    phen_ancestors = phen_prop.set_index('Unnamed: 0')['num_ancestors'].to_dict()
+
+with open(f'{PATH}data/simulated/gene_phenotype_dict.json','r') as file:
+    gold_standard = json.load(file)
+# bitgenia_childrens = [children for children in phen_childrens.values()]
+
+bitgenia_childrens = []
+for phens in bitgenia.values():
+    for phen in phens:
+        try:
+            bitgenia_childrens.append(phen_childrens[phen])
+        except:
+            continue
+bitgenia_ancestors = []
+for phens in bitgenia.values():
+    for phen in phens:
+        try:
+            bitgenia_ancestors.append(phen_ancestors[phen])
+        except:
+            continue
+
+clinvar_childrens = []
+for phens in clinvar.values():
+    for phen in phens:
+        try:
+            clinvar_childrens.append(phen_childrens[phen])
+        except:
+            continue
+
+clinvar_ancestors = []
+for phens in clinvar.values():
+    for phen in phens:
+        try:
+            clinvar_ancestors.append(phen_ancestors[phen])
+        except:
+            continue
+
+gold_standard_childrens = []
+for phens in gold_standard.values():
+    for phen in phens:
+        try:
+            gold_standard_childrens.append(phen_childrens[phen])
+        except:
+            continue
+
+gold_standard_ancestors = []
+for phens in gold_standard.values():
+    for phen in phens:
+        try:
+            gold_standard_ancestors.append(phen_ancestors[phen])
+        except:
+            continue
+
+## }}}
+
+## {{{
+
+
+
+
+
+# Pre-calculated means
+bitgenia = [np.mean(bitgenia_childrens), np.mean(bitgenia_ancestors)]
+clinvar = [np.mean(clinvar_childrens), np.mean(clinvar_ancestors)]
+gold_standard = [np.nanmean(gold_standard_childrens), np.nanmean(gold_standard_ancestors)]
+
+
+bitgenia_std = [np.std(bitgenia_childrens), np.std(bitgenia_ancestors)]
+clinvar_std = [np.std(clinvar_childrens), np.std(clinvar_ancestors)]
+
+
+
+# Setting the bar widths
+bar_width = 0.3
+
+# Setting the positions of the bars on x axis
+r = np.arange(len(bitgenia))
+
+with plt.style.context(['science','ieee','nature']):
+    fig,ax = plt.subplots()
+    ax.bar(0, bitgenia[0],  width=bar_width,
+            label='Nodos hijos',alpha=.7)
+    ax.bar(0.3, bitgenia[1], width=bar_width,
+            label='Nodos ancestros',alpha=.7)
+    ax.bar(1, clinvar[0], width=bar_width,
+            alpha=.7,color='black')
+    ax.bar(1.3, clinvar[1], width=bar_width,
+            alpha=.7,color='r')
+    ax.bar(2, gold_standard[0], width=bar_width,
+            alpha=.7,color='black')
+    ax.bar(2.3, gold_standard[1], width=bar_width,
+            alpha=.7,color='r')
+
+    # Adding xticks
+    # ax.set_xlabel('Groups', fontweight='bold')
+    ax.set_xticks([0.15,1.15,2.15], ['Bitgenia', 'Clinvar','Gold standard'])
+
+    ax.legend(fontsize=4.5)
+
+    # ax.show()
+
+
+## }}}
