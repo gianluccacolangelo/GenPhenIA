@@ -8,6 +8,9 @@ import numpy as np
 import json
 import pandas as pd
 import matplotlib.pyplot as plt
+import xml.etree.ElementTree as ET
+from lxml import etree
+
 PATH = '/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/'
 ## }}}
 
@@ -16,8 +19,40 @@ PATH = '/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/'
 
 ## {{{ funciones de peso de genes candidatos
 
-with open(f'{PATH}config/phen_promiscuity_dict.json','r') as file:
-    phen_promiscuity_dict = json.load(file)
+with open(f'{PATH}config/phen_properties.csv','r') as file:
+    phen_promiscuity_dict = pd.read_csv(file,comment='#',sep='\t')
+    # weight_dict = phen_promiscuity_dict.set_index('Unnamed: 0')['c/(a+c)'].to_dict()
+    weight_dict = phen_promiscuity_dict.set_index('Unnamed: 0')['exp(-c)'].to_dict()
+
+#link tree abre el xml que asocia cada orphacode con un mimcode
+link_tree = ET.parse(f'{PATH}data/ORPHA/alignments_omim_orpha.xml')
+link_root = link_tree.getroot()
+mim_orpha_dict = {}
+
+for disorder in link_root.findall('.//Disorder'):
+
+    ext_ref_list = disorder.find('ExternalReferenceList')
+    orphacode = disorder.find('OrphaCode').text
+
+    if ext_ref_list is not None:
+        # Iterate over all 'ExternalReference' elements in the list
+        for ext_ref in ext_ref_list.findall('ExternalReference'):
+            # Extract and print information from each 'ExternalReference'
+            source = ext_ref.find('Source').text if ext_ref.find('Source') is not None else None
+            reference = ext_ref.find('Reference').text if ext_ref.find('Reference') is not None else None
+
+            if source=='OMIM':
+                mim_orpha_dict[reference] = [orphacode]
+
+gene_disease_tree = ET.parse(f'{PATH}data/ORPHA/gene_disease.xml')
+gene_disease_root = gene_disease_tree.getroot()
+
+phen_disease_tree = ET.parse(f'{PATH}data/ORPHA/phen_disease.xml')
+phen_disease_root = phen_disease_tree.getroot()
+
+epidemiology_tree = ET.parse(f'{PATH}data/ORPHA/epidemiology.xml')
+epidemiology_root = epidemiology_tree.getroot()
+
 
 def especificidad_del_gen(fenotipos_observados,fenotipos_del_gen):
     """
@@ -68,15 +103,20 @@ def parametro(fenotipos_observados,fenotipos_del_gen,nuevo_parametro,alpha=1,bet
 Esta función está para probar nuevas métricas, donde nuevo_parametro es un
 entero de la nueva métrica
     """
-    j = fenotipos_observados.intersection(fenotipos_del_gen)
-    weighted_j = sum([phen_promiscuity_dict[phen] for phen in j])
-    i = set(fenotipos_observados)-j
-    weighted_i = sum([phen_promiscuity_dict[phen] for phen in i])
-    k = set(fenotipos_del_gen)-j
-    weighted_k = sum([phen_promiscuity_dict[phen] for phen in k])
 
-    if nuevo_parametro==1:
+
+    j = fenotipos_observados.intersection(fenotipos_del_gen)
+    i = set(fenotipos_observados) - j
+    k = set(fenotipos_del_gen) - j
+
+    weighted_j = sum([weight_dict.get(phen, 0)  for phen in j])
+    weighted_i = sum([weight_dict.get(phen, 0)  for phen in i])
+    weighted_k = sum([weight_dict.get(phen, 0)  for phen in k])
+
+    if nuevo_parametro==0:
         result = alpha*weighted_j-beta*weighted_i-gamma*weighted_k
+    elif nuevo_parametro==1:
+        result = alpha*len(j)-beta*len(i)-gamma*len(k)
     elif nuevo_parametro==2:
         result = weighted_j-weighted_i
     elif nuevo_parametro==3:
@@ -184,6 +224,88 @@ DEVUELVE: un set de fenotipos
 
     return set(n_fen_observados)
 
+def gene_diseases(gene_symbol):
+    """
+A esta función le damos un gen y nos devuelve la lista de enfermedades
+asociadas
+    """
+    # Find all 'Gene' elements with the given symbol
+    genes = gene_disease_root.findall(f".//Gene[Symbol='{gene_symbol}']")
+
+    # Initialize a list to store the associated diseases
+    diseases = []
+
+    # Iterate over all found 'Gene' elements
+    for gene in genes:
+        # Navigate up the tree structure to find the 'Name' of the disease
+        disorder_gene_association = parent_map[gene]
+        disorder_gene_association_list = parent_map[disorder_gene_association]
+        disorder = parent_map[disorder_gene_association_list]
+        disease_name = disorder.find('OrphaCode').text
+
+        # Add the disease name to the list
+        diseases.append(disease_name)
+
+    return diseases
+
+def disease_genes(disease):
+    """
+    A esta función le damos una enfermedad y nos devuelve la lista de genes
+    asociados
+    """
+
+    disorders = gene_disease_root.findall(f".//Disorder[OrphaCode='{disease}']")
+
+    # Initialize a list to store the associated genes
+    genes = []
+
+    # Iterate over all found 'Disorder' elements
+    for disorder in disorders:
+        # Find all 'Gene' elements associated with the disorder
+        disorder_gene_associations = disorder.findall('.//DisorderGeneAssociation')
+        for disorder_gene_association in disorder_gene_associations:
+            gene = disorder_gene_association.find('.//Gene')
+            if gene is not None:
+                # Get the 'Symbol' of the gene
+                gene_symbol = gene.find('Symbol').text
+                # Add the gene symbol to the list
+                genes.append(gene_symbol)
+
+    return genes
+
+def disease_phens(disease,weight=True):
+    """
+A esta función le damos una enfermedad y nos devuelve la lista de fenotipos
+pesados.
+    """
+
+
+    # Find all 'Disorder' elements with the given disease name
+    disorders = phen_disease_root.findall(f".//Disorder[OrphaCode='{disease}']")
+
+    # Initialize a list to store the associated phenotypes
+    phenotypes = []
+
+    # Iterate over all found 'Disorder' elements
+    for disorder in disorders:
+        # Find all 'HPODisorderAssociation' elements associated with the disorder
+        hpo_disorder_associations = disorder.findall('.//HPODisorderAssociation')
+        for hpo_disorder_association in hpo_disorder_associations:
+            # Get the 'HPOTerm' and 'HPOFrequency' of the phenotype
+            hpo_term = hpo_disorder_association.find('.//HPOId').text
+            hpo_frequency = hpo_disorder_association.find('.//HPOFrequency/Name').text if weight else None
+            hpo_diagnostic_criteria = hpo_disorder_association.find('.//DiagnosticCriteria').text
+            # Add the phenotype and its frequency to the list
+            phenotypes.append((hpo_term, hpo_frequency,hpo_diagnostic_criteria))
+
+    return phenotypes
+
+
+def phen_diseases(phen_id):
+    """
+Esta función devuelve todas las enfermedades asociadas a al menos 1 fenotipo
+de una lista
+    """
 ## }}}
 
 

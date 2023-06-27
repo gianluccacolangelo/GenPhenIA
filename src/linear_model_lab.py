@@ -58,7 +58,10 @@ Esta función toma un conjunto de fenotipos observados, y calcula:
         especificidad = pgw.especificidad_del_gen(set_of_phens,real_gene_phens)
         capitalidad = pgw.capitalidad_del_gen(set_of_phens,real_gene_phens)
         similaridad = pgw.similaridad_del_gen(set_of_phens,real_gene_phens)
-        metrica = pgw.parametro(set_of_phens,real_gene_phens,n_metrica)
+        metrica = pgw.parametro(set_of_phens,real_gene_phens,n_metrica,
+                alpha=alpha,
+                beta=beta,
+                gamma=gamma)
 
         # add the gene and its parameters to the list
         data.append({'gene': gene,
