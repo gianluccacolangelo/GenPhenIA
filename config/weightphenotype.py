@@ -24,7 +24,7 @@ promiscuity_dict = {}
 total_unique_genes = len(set(gene for genes in phenotype_gene_dict.values() for gene in genes))
 
 for hpo_term, genes in phenotype_gene_dict.items():
-    promiscuity = len(genes) / total_unique_genes
+    promiscuity = 1- len(genes) / total_unique_genes
     promiscuity_dict[hpo_term] = promiscuity
 
 # with open(f'{PATH}config/phen_promiscuity_dict.json', 'w') as f:
@@ -56,18 +56,31 @@ for node in G.nodes():
 num_ancestors = {node: len(nx.ancestors(G, node)) for node in G.nodes()}
 num_children = {node: len(nx.descendants(G, node)) for node in G.nodes()}
 weights = {node: num_ancestors[node] / (num_ancestors[node] + num_children[node]) if num_ancestors[node] + num_children[node] > 0 else 0 for node in G.nodes()}
+weights_2 = {node: num_children[node] / (num_ancestors[node] + num_children[node]) if num_ancestors[node] + num_children[node] > 0 else 0 for node in G.nodes()}
+exp_childrens = {node: np.exp(-num_children[node]) for node in G.nodes()}
+log_ancestors = {node: np.log10(1 + num_ancestors[node]) for node in G.nodes()}
+
 
 
 # Convert dictionaries to a pandas DataFrame
 df = pd.DataFrame({'num_ancestors': pd.Series(num_ancestors),
                    'num_children': pd.Series(num_children),
                    'a/(a+c)': pd.Series(weights),
-                   'frecuencia relativa': pd.Series(promiscuity_dict)})
+                   'frecuencia relativa': pd.Series(promiscuity_dict),
+                   'c/(a+c)': pd.Series(weights_2),
+                   'exp(-c)': pd.Series(exp_childrens),
+                   'log(1+a)': pd.Series(log_ancestors)})
 
 
 # Save the DataFrame to a CSV file
 df.to_csv('phen_properties.csv',sep='\t')
 
+
+
+## }}}
+
+
+## {{{
 
 
 ## }}}
