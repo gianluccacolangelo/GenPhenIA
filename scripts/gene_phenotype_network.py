@@ -10,169 +10,181 @@ import networkx as nx
 import json
 import community as community_louvain
 import numpy as np
+import pandas as pd
+import sys
+sys.path.insert(0,'/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/src')
+import phen_gen_weight_functions as pgw
+from networkx.algorithms import bipartite
+import matplotlib.pyplot as plt
+import community as community_louvain
+
+
 PATH = "/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/"
-# Load your gene-phenotype associations
-with open(f'{PATH}data/simulated/gene_phenotype_dict.json', 'r') as f:
-    gene_to_phenotype = json.load(f)
 ## }}}
+
+
+## {{{
+with open(f"{PATH}data/genes_to_phenotype.txt",'r') as f:
+    genes_to_phenotypes = pd.read_csv(f, sep='\t', header=None)
+
+all_genes = list(genes_to_phenotypes[1].unique())
+
+## }}}
+
 
 ## {{{
 
-# Create a new bipartite graph
+#with the function pgw.gene_diseases(gene_symbol) create a dictionary of genes
+#and their diseases, noting that a gene can cause multiple diseases.
+
+genes_diseases = {}
+i=0
+for gene in all_genes:
+    gene_diseases = pgw.gene_diseases(gene)
+    for disease in gene_diseases:
+       classification = pgw.disease_classification(disease,1)
+       if classification is not None:
+            if gene not in genes_diseases:
+                genes_diseases[gene] = set()
+            genes_diseases[gene].add(classification[1])
+
+## }}}
+
+
+## {{{
+# Convert sets back to lists
+for gene in genes_diseases:
+    genes_diseases[gene] = list(genes_diseases[gene])
+#Now create a bipartite network of genes and diseases from the dictionary created
+
 B = nx.Graph()
 
-# Add nodes with the bipartite attribute
-for gene in gene_to_phenotype.keys():
-    B.add_node(gene, bipartite=0)
-for phenotype in set([p for phenotypes in gene_to_phenotype.values() for p in phenotypes]):
-    B.add_node(phenotype, bipartite=1)
+B.add_nodes_from(genes_diseases.keys(), bipartite=0) # add genes as one partition
 
-# Add edges
-for gene, phenotypes in gene_to_phenotype.items():
-    for phenotype in phenotypes:
-        B.add_edge(gene, phenotype)
+all_diseases = set([disease for diseases in genes_diseases.values() for disease in diseases])
 
-# Check if the graph is connected
-print(nx.is_connected(B))
-
-# Get the set of genes and phenotypes
-genes = set(n for n, d in B.nodes(data=True) if d['bipartite']==0)
-phenotypes = set(B) - genes
+B.add_nodes_from(all_diseases, bipartite=1) # add diseases as second partition
 
 
+for gene, diseases in genes_diseases.items():
+    for disease in diseases:
+        B.add_edge(gene, disease)
 
-# Create the weighted projected graph
-G = nx.bipartite.weighted_projected_graph(B, genes)
 
-# Apply a threshold
-# threshold = 30  # adjust this value based on your specific needs
-# edges_below_threshold = [(u, v) for u, v, d in G.edges(data=True) if d['weight'] < threshold]
-# G.remove_edges_from(edges_below_threshold)
+# assert bipartite.is_bipartite(B)
 
-# Print some statistics about the graph
-# print(nx.info(G))
-
+G_genes = bipartite.projected_graph(B, genes_diseases.keys())
+G_diseases = bipartite.projected_graph(B, all_diseases)
 ## }}}
 
-##{{{
-largest_component = max(nx.connected_components(G), key=len)
-components_sorted_by_size = sorted(nx.connected_components(G), key=len, reverse=True)
-## }}}
 
 ## {{{
 
-def compute_metrics(G, threshold):
-    # Remove edges with weight less than the threshold
-    G_thresholded = G.copy()
-    for u, v, data in G.edges(data=True):
-        if data['weight'] < threshold:
-            G_thresholded.remove_edge(u, v)
+# Create weighted projected graphs
+G_genes = bipartite.weighted_projected_graph(B, genes_diseases.keys())
+G_diseases = bipartite.weighted_projected_graph(B, all_diseases)
+## }}}
 
-    # Find the largest component
-    largest_component = max(nx.connected_components(G_thresholded), key=len)
 
-    # Compute the modularity
-    partition = community_louvain.best_partition(G_thresholded)
-    modularity = community_louvain.modularity(partition, G_thresholded)
+## {{{
+partition = community_louvain.best_partition(G_diseases)
 
-    return modularity, len(largest_component)
-
-def find_optimal_threshold(G, thresholds):
-    # Compute the metrics for each threshold
-    metrics = [compute_metrics(G, t) for t in thresholds]
-
-    # Find the threshold that maximizes the modularity and the size of the largest component
-    optimal_threshold = thresholds[np.argmax([m[0] + m[1] for m in metrics])]
-
-    return optimal_threshold
 
 ## }}}
 
 
 ## {{{
-thresholds = np.linspace(2, 10, 9)  # adjust this range based on your specific needs
-optimal_threshold = find_optimal_threshold(G, thresholds)
-print('Optimal threshold:', optimal_threshold)
-##}}}
+threshold = 3
 
+# Iterate through the edges of the graph
+for u, v, data in list(G_genes.edges(data=True)):
+    # If the weight is below the threshold, remove the edge
+    if data['weight'] < threshold:
+        G_genes.remove_edge(u, v)
+
+# Similarly for the diseases graph
+for u, v, data in list(G_diseases.edges(data=True)):
+    if data['weight'] < threshold:
+        G_diseases.remove_edge(u, v)
+
+## }}}
 
 
 
 ## {{{
+# Get the degree of the nodes in the bipartite graph B
+degree_dict = dict(B.degree(all_diseases))
+degrees = [degree_dict[node] for node in G_diseases.nodes()]
 
-largest_cc = max(nx.connected_components(G), key=len)
+# draw the graph
+pos = nx.spring_layout(G_diseases)
+plt.figure(figsize=(18, 18))
+# plt.axis('off')
 
-# Create a subgraph of G consisting only of this component
-Gc = G.subgraph(largest_cc)
+labels = {node: pgw.disease_classification(node)[0] for node in G_diseases.nodes()}
 
-# Compute the best partition of this subgraph
-partition = community_louvain.best_partition(Gc)
-modularity = community_louvain.modularity(partition, Gc)
-print(modularity)
-# Create a color map (one color for each community)
-colors = [partition[node] for node in Gc.nodes]
+for key in labels.keys():
+    labels[key] = labels[key].replace('Rare', '').replace('genetic',
+            '').replace(' ','\n').strip()
 
-# Draw the nodes with a smaller size
-nx.draw_networkx_nodes(Gc, pos=nx.spring_layout(Gc), node_color=colors,
-        node_size=40,
-        alpha=.5)
 
-# Draw the edges
-nx.draw_networkx_edges(Gc, pos=nx.spring_layout(Gc), alpha=0.01,width=1)
+# Draw nodes in partition-specific colors
 
+# Draw nodes in partition-specific colors
+for community in set(partition.values()):
+    node_list = [node for node in partition.keys() if partition[node] == community]
+    node_sizes = [degree_dict[node] * 10 for node in node_list]  # Get degrees for the current community nodes
+    nx.draw_networkx_nodes(G_diseases, pos, node_list,
+                           node_color=plt.cm.nipy_spectral(community / len(set(partition.values()))),
+                           node_size=node_sizes,alpha=.5)  # Use the new node_sizes list
+nx.draw_networkx_edges(G_diseases, pos, alpha=0.15)
+label_sizes = {node: 10 + np.log(degree_dict[node])  for node in G_diseases.nodes()}  # Create a dictionary with label sizes proportional to node degree (adjust the divisor for better results)
+
+# nx.draw_networkx_labels(G_diseases, pos,
+        # labels,font_weight='bold',font_size=label_sizes)
+plt.rc('font', **{'family': 'serif', 'serif': ['Computer Modern Roman']})
+plt.rc('text', usetex=True)
+plt.rcParams['font.weight'] = 'bold'
+
+
+
+for node, (x, y) in pos.items():
+    plt.text(x, y,
+             s=labels[node],
+             fontsize=label_sizes[node],
+             ha='center', va='center',
+             fontweight='bold')
 plt.show()
 
-## }}}
+#In this code, community_louvain.best_partition(G) is used to find the community structure of the graph G that maximizes the modularity, using the Louvain method. Each community will be colored differently on the graph. The labels of the nodes are the gene names. The position of each node (gene) is determined using the spring layout, which treats edges as springs holding nodes close, while treating nodes as repelling objects. Adjusting the spring layout can help make the graph more understandable.
 
-## {{{
-#Definamos una función que, dada una red y una partición, nos devuelva un plot del clustering de cada nodo
-def silhouette(Red,particion): # La función nos pide la Red y la partición como diccionario
-  S=[]
-  limites=[0]
-  # Recorro los clusters sin repetir
-  for cluster in set(particion.values()):
-    #Filtro los nodos que pertenecen a este cluster
-    nodos_en_cluster = [nodo for (nodo, value) in particion.items() if value == cluster]
-    S_cluster=[]
-    # Recorro los nodos del cluster
-    for nodo in nodos_en_cluster:
-      distancias_dentro=[]
-      distancias_fuera=[]
-      # Recorro los nodos del mismo cluster
-      for nodo_en_cluster in nodos_en_cluster:
-        if nodo != nodo_en_cluster:
-          # Calculo y guardo la distancia, si no es consigo mismo
-          distancias_dentro.append(nx.shortest_path_length(Red, source=nodo, target=nodo_en_cluster, weight=None))
-      # Recorro los nodos de los otros clusters
-      for nodo_fuera in Red.nodes():
-        if particion[nodo_fuera] != cluster:
-          # Calculo y guardo la distancia
-          distancias_fuera.append(nx.shortest_path_length(Red, source=nodo, target=nodo_fuera, weight=None))
-      # Calculo la distancia media para los del mismo cluster
-      distancia_media_dentro = np.mean(distancias_dentro)
-      # Calculo la distancia mínima para los nodos fuera del cluster
-      distancia_mean_fuera = np.mean(distancias_fuera)
-      # Calculo y guardo la Silhouette del nodo
-      S_cluster.append((distancia_mean_fuera - distancia_media_dentro)/np.max([distancia_mean_fuera,distancia_media_dentro]))
-    # Ordeno las Silhouette del mismo cluster por valor, para graficar lindo
-    S_cluster=sorted(S_cluster)
-    # Me guardo en qué nodo termina cada cluster, para graficar clusters por colores
-    limites.append(len(S_cluster)+limites[-1])
-    # Agrego las Silhouette de este cluster a la lista de todas
-    S = S + S_cluster
-  # Calculo la Silhouette media
-  S_media = np.mean(S)
-  # Grafico todas con colores por clusters
-  for i in range(len(limites)-1):
-    plt.barh(range(limites[i],limites[i+1]), S[limites[i]:limites[i+1]])
-#    plt.plot(range(limites[i],limites[i+1]),S[limites[i]:limites[i+1]])
-  plt.axvline(S_media)
-  return S, S_media
+
+
+
+
 
 ## }}}
 
+
+
 ## {{{
-s, s_media = silhouette(Gc, partition)
-plt.title(nombres[3])
+pos = nx.bipartite_layout(B, genes_diseases.keys())
+plt.figure(figsize=(10, 10))
+nx.draw(B, pos, with_labels=True,
+        nodelist=genes_diseases.keys(),
+        node_color='blue',
+        # node_size=[B.degree(gene) * 500 for gene in genes_diseases.keys()],
+        alpha=0.2)
+
+nx.draw_networkx_nodes(B, pos,
+                       nodelist=all_diseases,
+                       node_color='red',
+                       node_size=[B.degree(disease) * 50 for disease in all_diseases],
+                       alpha=0.2)
+
+
+nx.draw_networkx_edges(B, pos, alpha=0.01)
+
+nx.draw_networkx_labels(B, pos)
 plt.show()
 ## }}}
