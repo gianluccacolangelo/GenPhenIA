@@ -128,50 +128,53 @@ t_gene_partition = community_louvain.best_partition(t_G_genes)
 # Get the degree of the nodes in the bipartite graph B
 
 
-degree_dict = dict(B.degree(genes_diseases.keys()))
-degrees = [degree_dict[node] for node in G_genes.nodes()]
+degree_dict = dict(B.degree(all_diseases))
+degrees = [degree_dict[node] for node in G_diseases.nodes()]
 
-#get the giant component of G_genes
+#get the giant component of G_diseases
 
 # draw the graph
-pos = nx.spring_layout(G_genes)
+pos = nx.spring_layout(G_diseases)
 plt.figure(figsize=(18, 18))
 # plt.axis('off')
+top10_dis = dict(sorted(dict(G_diseases.degree).items(),key=lambda x: x[1],reverse=True)[:10])
+#
+labels = {node: pgw.disease_classification(node,2)[0] for node in top10_dis.keys()}
 
-# labels = {node: pgw.disease_classification(node)[0] for node in G_genes.nodes()}
-
-# for key in labels.keys():
-    # labels[key] = labels[key].replace('Rare', '').replace('genetic',
-            # '').replace(' ','\n').strip()
+for key in labels.keys():
+    labels[key] = labels[key].replace('Rare','').replace('genetic','').replace(' ','\n').strip()
 
 
-# Draw nodes in gene_partition-specific colors
+# Draw nodes in disease_partition-specific colors
 
-# Draw nodes in gene_partition-specific colors
-for community in set(gene_partition.values()):
-    node_list = [node for node in gene_partition.keys() if gene_partition[node] == community]
+# Draw nodes in disease_partition-specific colors
+for community in set(disease_partition.values()):
+    node_list = [node for node in disease_partition.keys() if disease_partition[node] == community]
     node_sizes = [degree_dict[node] * 100 for node in node_list]  # Get degrees for the current community nodes
-    nx.draw_networkx_nodes(G_genes, pos, node_list,
+    nx.draw_networkx_nodes(G_diseases, pos, node_list,
             node_color = plt.cm.Accent(community /
-                float(max(gene_partition.values()))),
+                float(max(disease_partition.values()))),
             node_size=node_sizes,alpha=.5)  # Use the new node_sizes list
-nx.draw_networkx_edges(G_genes, pos, alpha=0.0595)
-# label_sizes = {node: 10 + np.log(degree_dict[node])  for node in G_genes.nodes()}  # Create a dictionary with label sizes proportional to node degree (adjust the divisor for better results)
+nx.draw_networkx_edges(G_diseases, pos, alpha=0.05)
+# label_sizes = {node: 10 + np.log(degree_dict[node])  for node in G_diseases.nodes()}  # Create a dictionary with label sizes proportional to node degree (adjust the divisor for better results)
 
-# # nx.draw_networkx_labels(G_genes, pos,
-        # # labels,font_weight='bold',font_size=label_sizes)
+# nx.draw_networkx_labels(G_diseases, pos,
+        # labels,font_weight='bold',font_size=label_sizes)
 # plt.rc('font', **{'family': 'serif', 'serif': ['Computer Modern Roman']})
 # plt.rc('text', usetex=True)
 # plt.rcParams['font.weight'] = 'bold'
 
 
 
-# for node, (x, y) in pos.items():
-    # plt.text(x, y,
-             # s=labels[node],
-             # fontsize=label_sizes[node],
-             # ha='center', va='center',
-             # fontweight='bold')
+for node, (x, y) in pos.items():
+    try:
+        plt.text(x, y,
+                 s=labels[node],
+                 fontsize=20,
+                 ha='center', va='center',
+                 fontweight='bold')
+    except:
+        continue
 plt.show()
 
 #In this code, community_louvain.best_partition(G) is used to find the community structure of the graph G that maximizes the modularity, using the Louvain method. Each community will be colored differently on the graph. The labels of the nodes are the gene names. The position of each node (gene) is determined using the spring layout, which treats edges as springs holding nodes close, while treating nodes as repelling objects. Adjusting the spring layout can help make the graph more understandable.
