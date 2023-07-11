@@ -227,6 +227,7 @@ DEVUELVE: un set de fenotipos
 
     return set(n_fen_observados)
 
+parent_map = {c: p for p in gene_disease_root.iter() for c in p}
 def gene_diseases(gene_symbol):
     """
 A esta función le damos un gen y nos devuelve la lista de enfermedades
@@ -237,7 +238,6 @@ asociadas
 
     # Initialize a list to store the associated diseases
     diseases = []
-    parent_map = {c: p for p in gene_disease_root.iter() for c in p}
 
 
     # Iterate over all found 'Gene' elements
@@ -305,30 +305,54 @@ pesados.
 
     return phenotypes
 
-def disease_classification(orphacode):
+
+class_parent_map = {c: p for p in classification_root.iter() for c in p}
+
+
+# obtenemos los 32 elementos de clasificaciones en una lista
+l1_classifications_elements = classification_root.find('.//ClassificationNodeChildList').findall('ClassificationNode')
+
+l2_classifications_elements = []
+l3_classifications_elements = []
+
+for node in l1_classifications_elements:
+ # Level 2: Find all 'ClassificationNode' elements within the current 'ClassificationNode'
+    l2_classifications_elements.extend(node.findall('.//ClassificationNodeChildList/ClassificationNode'))
+
+for node in l2_classifications_elements:
+    # Level 3: Find all 'ClassificationNode' elements within the current 'ClassificationNode'
+    l3_classifications_elements.extend(node.findall('.//ClassificationNodeChildList/ClassificationNode'))
+
+def disease_classification(orphacode,level=1):
     """
 A esta función le damos un orphacode y nos devuelve su clasificación en el
 nivel que le pidamos. El 0 corresponde a 'Rare genetic disease' y el segundo a
 32 clasificaciones diferentes.
     """
 
-
-    parent_map = {c: p for p in classification_root.iter() for c in p}
-
     disorder = classification_root.find(f".//Disorder[OrphaCode='{orphacode}']")
 
     if disorder is None:
         return None
 
-    # obtenemos los 32 elementos de clasificaciones en una lista
-    classifications_elements = classification_root.find('.//ClassificationNodeChildList').findall('ClassificationNode')
-
     node = disorder
 
     #usamos un while para que siga iterando hasta que llegue al nivel que nos
     #interesa
+    if level==1:
+        classifications_elements = l1_classifications_elements
+    elif level==2:
+        classifications_elements = l2_classifications_elements
+    elif level==3:
+        classifications_elements = l3_classifications_elements
+
+    i=0
     while node not in classifications_elements:
-        node = parent_map.get(node)
+        if i==20:
+            return None
+        node = class_parent_map.get(node)
+        i+=1
+
 
     return (node.find('.//Name').text,node.find('.//OrphaCode').text)
 

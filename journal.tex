@@ -131,6 +131,60 @@ Commit Message: termino de tunear fen_reales_del_gen. Ya está listo para usarse
 \paragraph{Commit: d85db3b}
 Commit Message: en plots.py ahora también agrego la evaluación de sets reales y su gráfico
 
+\paragraph{Commit: 60f1b2a}
+Commit Message: sesión de pruebas en set reales terminada
+
+\paragraph{Commit: f885698}
+Commit Message: hago el plot evaluando en set reales con diferentes métricas
+
+\paragraph{Commit: 41c5e56}
+Commit Message: agrego las dos métricas que vamos a usar de ahora en más a model_real_evaluating, el top 50 y la media y mediana de rankings
+
+\paragraph{Commit: 1c731da}
+Commit Message: plot de espacio de parametros para j, i y k
+
+\paragraph{Commit: a846b8e}
+Commit Message: espacio de parámetros para i j y k normalizadas
+
+\paragraph{Commit: 98d1c1c}
+Commit Message: plot para el espacio de parámetros de las comunes i j y k
+
+\paragraph{Commit: 698cfb4}
+Commit Message: pesos universales de fenotipos
+
+\paragraph{Commit: 61e4da9}
+Commit Message: en la función parámetro ahora le agrego los pesos universales de fenotiupos
+
+\paragraph{Commit: da05a08}
+Commit Message: código y .csv con propiedades de los fenotipos como nodos: hijos, ancestros, y frecuencia relativa.
+
+\paragraph{Commit: f1728ed}
+Commit Message: calculo para clinvar, bitgenia y gold standard de la profundidad de los fenotipos en la forma de media de nodos hijos y nodos ancestros
+
+\paragraph{Commit: 1dfbf10}
+Commit Message: agrego también el cálculo de la media de la frecuencia de aparición de cada fenotipo observado en cada base de datos
+
+\paragraph{Commit: 8609fa5}
+Commit Message: agrego owl.py, donde vamos a poder explorar muchos más atributos de fenotipos, enfermedades y genes
+
+\paragraph{Commit: a087ad7}
+Commit Message: escribo funciones básicas para obtener genes fenotipos y enfermedades de orpha
+
+\paragraph{Commit: dd0bc73}
+Commit Message: termino de escribir las funciones que usan los xml de orpha, ahora también tenemos la clasificación más alta para cada enfermedad
+
+\paragraph{Commit: 797aa68}
+Commit Message: gene_phenotype_network antes de ser cambiada a gene_disease_network.py
+
+\paragraph{Commit: ef9d645}
+Commit Message: plot de la red de enfermedades
+
+\paragraph{Commit: 84fb6f7}
+Commit Message: ploteo de la red de genes en nivel 2
+
+\paragraph{Commit: 5ff862d}
+Commit Message: ploteo de la red de diseases de nivel 2
+
 %CommitsEnd
 \subsection{Figures}
 
@@ -192,6 +246,7 @@ Commit Message: en plots.py ahora también agrego la evaluación de sets reales 
 \begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_lineal.png} \caption{Caption for docs/metrics_evaluation/similaridad_lineal.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_exponencial.png} \caption{Caption for docs/similaridad_accuracy_exponencial.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/similaridad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation.png} \caption{Caption for docs/real_sets_evaluation.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -279,6 +334,60 @@ Commit Message: termino de tunear fen_reales_del_gen. Ya está listo para usarse
 \paragraph{Commit: d85db3b}
 Commit Message: en plots.py ahora también agrego la evaluación de sets reales y su gráfico
 
+\paragraph{Commit: 60f1b2a}
+Commit Message: sesión de pruebas en set reales terminada
+
+\paragraph{Commit: f885698}
+Commit Message: hago el plot evaluando en set reales con diferentes métricas
+
+\paragraph{Commit: 41c5e56}
+Commit Message: agrego las dos métricas que vamos a usar de ahora en más a model_real_evaluating, el top 50 y la media y mediana de rankings
+
+\paragraph{Commit: 1c731da}
+Commit Message: plot de espacio de parametros para j, i y k
+
+\paragraph{Commit: a846b8e}
+Commit Message: espacio de parámetros para i j y k normalizadas
+
+\paragraph{Commit: 98d1c1c}
+Commit Message: plot para el espacio de parámetros de las comunes i j y k
+
+\paragraph{Commit: 698cfb4}
+Commit Message: pesos universales de fenotipos
+
+\paragraph{Commit: 61e4da9}
+Commit Message: en la función parámetro ahora le agrego los pesos universales de fenotiupos
+
+\paragraph{Commit: da05a08}
+Commit Message: código y .csv con propiedades de los fenotipos como nodos: hijos, ancestros, y frecuencia relativa.
+
+\paragraph{Commit: f1728ed}
+Commit Message: calculo para clinvar, bitgenia y gold standard de la profundidad de los fenotipos en la forma de media de nodos hijos y nodos ancestros
+
+\paragraph{Commit: 1dfbf10}
+Commit Message: agrego también el cálculo de la media de la frecuencia de aparición de cada fenotipo observado en cada base de datos
+
+\paragraph{Commit: 8609fa5}
+Commit Message: agrego owl.py, donde vamos a poder explorar muchos más atributos de fenotipos, enfermedades y genes
+
+\paragraph{Commit: a087ad7}
+Commit Message: escribo funciones básicas para obtener genes fenotipos y enfermedades de orpha
+
+\paragraph{Commit: dd0bc73}
+Commit Message: termino de escribir las funciones que usan los xml de orpha, ahora también tenemos la clasificación más alta para cada enfermedad
+
+\paragraph{Commit: 797aa68}
+Commit Message: gene_phenotype_network antes de ser cambiada a gene_disease_network.py
+
+\paragraph{Commit: ef9d645}
+Commit Message: plot de la red de enfermedades
+
+\paragraph{Commit: 84fb6f7}
+Commit Message: ploteo de la red de genes en nivel 2
+
+\paragraph{Commit: 5ff862d}
+Commit Message: ploteo de la red de diseases de nivel 2
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_exponencial.png} \caption{Caption for docs/especificidad_accuracy_exponencial.png.} \end{figure}
@@ -338,6 +447,7 @@ Commit Message: en plots.py ahora también agrego la evaluación de sets reales 
 \begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_lineal.png} \caption{Caption for docs/metrics_evaluation/similaridad_lineal.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_exponencial.png} \caption{Caption for docs/similaridad_accuracy_exponencial.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/similaridad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation.png} \caption{Caption for docs/real_sets_evaluation.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -410,6 +520,60 @@ Commit Message: termino de tunear fen_reales_del_gen. Ya está listo para usarse
 \paragraph{Commit: d85db3b}
 Commit Message: en plots.py ahora también agrego la evaluación de sets reales y su gráfico
 
+\paragraph{Commit: 60f1b2a}
+Commit Message: sesión de pruebas en set reales terminada
+
+\paragraph{Commit: f885698}
+Commit Message: hago el plot evaluando en set reales con diferentes métricas
+
+\paragraph{Commit: 41c5e56}
+Commit Message: agrego las dos métricas que vamos a usar de ahora en más a model_real_evaluating, el top 50 y la media y mediana de rankings
+
+\paragraph{Commit: 1c731da}
+Commit Message: plot de espacio de parametros para j, i y k
+
+\paragraph{Commit: a846b8e}
+Commit Message: espacio de parámetros para i j y k normalizadas
+
+\paragraph{Commit: 98d1c1c}
+Commit Message: plot para el espacio de parámetros de las comunes i j y k
+
+\paragraph{Commit: 698cfb4}
+Commit Message: pesos universales de fenotipos
+
+\paragraph{Commit: 61e4da9}
+Commit Message: en la función parámetro ahora le agrego los pesos universales de fenotiupos
+
+\paragraph{Commit: da05a08}
+Commit Message: código y .csv con propiedades de los fenotipos como nodos: hijos, ancestros, y frecuencia relativa.
+
+\paragraph{Commit: f1728ed}
+Commit Message: calculo para clinvar, bitgenia y gold standard de la profundidad de los fenotipos en la forma de media de nodos hijos y nodos ancestros
+
+\paragraph{Commit: 1dfbf10}
+Commit Message: agrego también el cálculo de la media de la frecuencia de aparición de cada fenotipo observado en cada base de datos
+
+\paragraph{Commit: 8609fa5}
+Commit Message: agrego owl.py, donde vamos a poder explorar muchos más atributos de fenotipos, enfermedades y genes
+
+\paragraph{Commit: a087ad7}
+Commit Message: escribo funciones básicas para obtener genes fenotipos y enfermedades de orpha
+
+\paragraph{Commit: dd0bc73}
+Commit Message: termino de escribir las funciones que usan los xml de orpha, ahora también tenemos la clasificación más alta para cada enfermedad
+
+\paragraph{Commit: 797aa68}
+Commit Message: gene_phenotype_network antes de ser cambiada a gene_disease_network.py
+
+\paragraph{Commit: ef9d645}
+Commit Message: plot de la red de enfermedades
+
+\paragraph{Commit: 84fb6f7}
+Commit Message: ploteo de la red de genes en nivel 2
+
+\paragraph{Commit: 5ff862d}
+Commit Message: ploteo de la red de diseases de nivel 2
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_exponencial.png} \caption{Caption for docs/especificidad_accuracy_exponencial.png.} \end{figure}
@@ -469,6 +633,7 @@ Commit Message: en plots.py ahora también agrego la evaluación de sets reales 
 \begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_lineal.png} \caption{Caption for docs/metrics_evaluation/similaridad_lineal.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_exponencial.png} \caption{Caption for docs/similaridad_accuracy_exponencial.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/similaridad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation.png} \caption{Caption for docs/real_sets_evaluation.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -505,6 +670,60 @@ Commit Message: termino de tunear fen_reales_del_gen. Ya está listo para usarse
 \paragraph{Commit: d85db3b}
 Commit Message: en plots.py ahora también agrego la evaluación de sets reales y su gráfico
 
+\paragraph{Commit: 60f1b2a}
+Commit Message: sesión de pruebas en set reales terminada
+
+\paragraph{Commit: f885698}
+Commit Message: hago el plot evaluando en set reales con diferentes métricas
+
+\paragraph{Commit: 41c5e56}
+Commit Message: agrego las dos métricas que vamos a usar de ahora en más a model_real_evaluating, el top 50 y la media y mediana de rankings
+
+\paragraph{Commit: 1c731da}
+Commit Message: plot de espacio de parametros para j, i y k
+
+\paragraph{Commit: a846b8e}
+Commit Message: espacio de parámetros para i j y k normalizadas
+
+\paragraph{Commit: 98d1c1c}
+Commit Message: plot para el espacio de parámetros de las comunes i j y k
+
+\paragraph{Commit: 698cfb4}
+Commit Message: pesos universales de fenotipos
+
+\paragraph{Commit: 61e4da9}
+Commit Message: en la función parámetro ahora le agrego los pesos universales de fenotiupos
+
+\paragraph{Commit: da05a08}
+Commit Message: código y .csv con propiedades de los fenotipos como nodos: hijos, ancestros, y frecuencia relativa.
+
+\paragraph{Commit: f1728ed}
+Commit Message: calculo para clinvar, bitgenia y gold standard de la profundidad de los fenotipos en la forma de media de nodos hijos y nodos ancestros
+
+\paragraph{Commit: 1dfbf10}
+Commit Message: agrego también el cálculo de la media de la frecuencia de aparición de cada fenotipo observado en cada base de datos
+
+\paragraph{Commit: 8609fa5}
+Commit Message: agrego owl.py, donde vamos a poder explorar muchos más atributos de fenotipos, enfermedades y genes
+
+\paragraph{Commit: a087ad7}
+Commit Message: escribo funciones básicas para obtener genes fenotipos y enfermedades de orpha
+
+\paragraph{Commit: dd0bc73}
+Commit Message: termino de escribir las funciones que usan los xml de orpha, ahora también tenemos la clasificación más alta para cada enfermedad
+
+\paragraph{Commit: 797aa68}
+Commit Message: gene_phenotype_network antes de ser cambiada a gene_disease_network.py
+
+\paragraph{Commit: ef9d645}
+Commit Message: plot de la red de enfermedades
+
+\paragraph{Commit: 84fb6f7}
+Commit Message: ploteo de la red de genes en nivel 2
+
+\paragraph{Commit: 5ff862d}
+Commit Message: ploteo de la red de diseases de nivel 2
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/-i-k.png} \caption{Caption for docs/-i-k.png.} \end{figure}
@@ -554,6 +773,7 @@ Commit Message: en plots.py ahora también agrego la evaluación de sets reales 
 \begin{figure}[h] \centering \includegraphics{docs/metrics_evaluation/similaridad_lineal.png} \caption{Caption for docs/metrics_evaluation/similaridad_lineal.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_exponencial.png} \caption{Caption for docs/similaridad_accuracy_exponencial.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/similaridad_accuracy_logaritmico.png} \caption{Caption for docs/similaridad_accuracy_logaritmico.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation.png} \caption{Caption for docs/real_sets_evaluation.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -577,6 +797,371 @@ Commit Message: termino de tunear fen_reales_del_gen. Ya está listo para usarse
 
 \paragraph{Commit: d85db3b}
 Commit Message: en plots.py ahora también agrego la evaluación de sets reales y su gráfico
+
+\paragraph{Commit: 60f1b2a}
+Commit Message: sesión de pruebas en set reales terminada
+
+\paragraph{Commit: f885698}
+Commit Message: hago el plot evaluando en set reales con diferentes métricas
+
+\paragraph{Commit: 41c5e56}
+Commit Message: agrego las dos métricas que vamos a usar de ahora en más a model_real_evaluating, el top 50 y la media y mediana de rankings
+
+\paragraph{Commit: 1c731da}
+Commit Message: plot de espacio de parametros para j, i y k
+
+\paragraph{Commit: a846b8e}
+Commit Message: espacio de parámetros para i j y k normalizadas
+
+\paragraph{Commit: 98d1c1c}
+Commit Message: plot para el espacio de parámetros de las comunes i j y k
+
+\paragraph{Commit: 698cfb4}
+Commit Message: pesos universales de fenotipos
+
+\paragraph{Commit: 61e4da9}
+Commit Message: en la función parámetro ahora le agrego los pesos universales de fenotiupos
+
+\paragraph{Commit: da05a08}
+Commit Message: código y .csv con propiedades de los fenotipos como nodos: hijos, ancestros, y frecuencia relativa.
+
+\paragraph{Commit: f1728ed}
+Commit Message: calculo para clinvar, bitgenia y gold standard de la profundidad de los fenotipos en la forma de media de nodos hijos y nodos ancestros
+
+\paragraph{Commit: 1dfbf10}
+Commit Message: agrego también el cálculo de la media de la frecuencia de aparición de cada fenotipo observado en cada base de datos
+
+\paragraph{Commit: 8609fa5}
+Commit Message: agrego owl.py, donde vamos a poder explorar muchos más atributos de fenotipos, enfermedades y genes
+
+\paragraph{Commit: a087ad7}
+Commit Message: escribo funciones básicas para obtener genes fenotipos y enfermedades de orpha
+
+\paragraph{Commit: dd0bc73}
+Commit Message: termino de escribir las funciones que usan los xml de orpha, ahora también tenemos la clasificación más alta para cada enfermedad
+
+\paragraph{Commit: 797aa68}
+Commit Message: gene_phenotype_network antes de ser cambiada a gene_disease_network.py
+
+\paragraph{Commit: ef9d645}
+Commit Message: plot de la red de enfermedades
+
+\paragraph{Commit: 84fb6f7}
+Commit Message: ploteo de la red de genes en nivel 2
+
+\paragraph{Commit: 5ff862d}
+Commit Message: ploteo de la red de diseases de nivel 2
+
+%CommitsEnd
+\subsection{Figures}
+\begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation.png} \caption{Caption for docs/real_sets_evaluation.png.} \end{figure}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{13-06-2023}
+\subsection{Commits}
+\paragraph{Commit: f885698}
+Commit Message: hago el plot evaluando en set reales con diferentes métricas
+
+\paragraph{Commit: 41c5e56}
+Commit Message: agrego las dos métricas que vamos a usar de ahora en más a model_real_evaluating, el top 50 y la media y mediana de rankings
+
+\paragraph{Commit: 1c731da}
+Commit Message: plot de espacio de parametros para j, i y k
+
+\paragraph{Commit: a846b8e}
+Commit Message: espacio de parámetros para i j y k normalizadas
+
+\paragraph{Commit: 98d1c1c}
+Commit Message: plot para el espacio de parámetros de las comunes i j y k
+
+\paragraph{Commit: 698cfb4}
+Commit Message: pesos universales de fenotipos
+
+\paragraph{Commit: 61e4da9}
+Commit Message: en la función parámetro ahora le agrego los pesos universales de fenotiupos
+
+\paragraph{Commit: da05a08}
+Commit Message: código y .csv con propiedades de los fenotipos como nodos: hijos, ancestros, y frecuencia relativa.
+
+\paragraph{Commit: f1728ed}
+Commit Message: calculo para clinvar, bitgenia y gold standard de la profundidad de los fenotipos en la forma de media de nodos hijos y nodos ancestros
+
+\paragraph{Commit: 1dfbf10}
+Commit Message: agrego también el cálculo de la media de la frecuencia de aparición de cada fenotipo observado en cada base de datos
+
+\paragraph{Commit: 8609fa5}
+Commit Message: agrego owl.py, donde vamos a poder explorar muchos más atributos de fenotipos, enfermedades y genes
+
+\paragraph{Commit: a087ad7}
+Commit Message: escribo funciones básicas para obtener genes fenotipos y enfermedades de orpha
+
+\paragraph{Commit: dd0bc73}
+Commit Message: termino de escribir las funciones que usan los xml de orpha, ahora también tenemos la clasificación más alta para cada enfermedad
+
+\paragraph{Commit: 797aa68}
+Commit Message: gene_phenotype_network antes de ser cambiada a gene_disease_network.py
+
+\paragraph{Commit: ef9d645}
+Commit Message: plot de la red de enfermedades
+
+\paragraph{Commit: 84fb6f7}
+Commit Message: ploteo de la red de genes en nivel 2
+
+\paragraph{Commit: 5ff862d}
+Commit Message: ploteo de la red de diseases de nivel 2
+
+%CommitsEnd
+\subsection{Figures}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{15-06-2023}
+\subsection{Commits}
+\paragraph{Commit: 41c5e56}
+Commit Message: agrego las dos métricas que vamos a usar de ahora en más a model_real_evaluating, el top 50 y la media y mediana de rankings
+
+\paragraph{Commit: 1c731da}
+Commit Message: plot de espacio de parametros para j, i y k
+
+\paragraph{Commit: a846b8e}
+Commit Message: espacio de parámetros para i j y k normalizadas
+
+\paragraph{Commit: 98d1c1c}
+Commit Message: plot para el espacio de parámetros de las comunes i j y k
+
+\paragraph{Commit: 698cfb4}
+Commit Message: pesos universales de fenotipos
+
+\paragraph{Commit: 61e4da9}
+Commit Message: en la función parámetro ahora le agrego los pesos universales de fenotiupos
+
+\paragraph{Commit: da05a08}
+Commit Message: código y .csv con propiedades de los fenotipos como nodos: hijos, ancestros, y frecuencia relativa.
+
+\paragraph{Commit: f1728ed}
+Commit Message: calculo para clinvar, bitgenia y gold standard de la profundidad de los fenotipos en la forma de media de nodos hijos y nodos ancestros
+
+\paragraph{Commit: 1dfbf10}
+Commit Message: agrego también el cálculo de la media de la frecuencia de aparición de cada fenotipo observado en cada base de datos
+
+\paragraph{Commit: 8609fa5}
+Commit Message: agrego owl.py, donde vamos a poder explorar muchos más atributos de fenotipos, enfermedades y genes
+
+\paragraph{Commit: a087ad7}
+Commit Message: escribo funciones básicas para obtener genes fenotipos y enfermedades de orpha
+
+\paragraph{Commit: dd0bc73}
+Commit Message: termino de escribir las funciones que usan los xml de orpha, ahora también tenemos la clasificación más alta para cada enfermedad
+
+\paragraph{Commit: 797aa68}
+Commit Message: gene_phenotype_network antes de ser cambiada a gene_disease_network.py
+
+\paragraph{Commit: ef9d645}
+Commit Message: plot de la red de enfermedades
+
+\paragraph{Commit: 84fb6f7}
+Commit Message: ploteo de la red de genes en nivel 2
+
+\paragraph{Commit: 5ff862d}
+Commit Message: ploteo de la red de diseases de nivel 2
+
+%CommitsEnd
+\subsection{Figures}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{16-06-2023}
+\subsection{Commits}
+\paragraph{Commit: 698cfb4}
+Commit Message: pesos universales de fenotipos
+
+\paragraph{Commit: 61e4da9}
+Commit Message: en la función parámetro ahora le agrego los pesos universales de fenotiupos
+
+\paragraph{Commit: da05a08}
+Commit Message: código y .csv con propiedades de los fenotipos como nodos: hijos, ancestros, y frecuencia relativa.
+
+\paragraph{Commit: f1728ed}
+Commit Message: calculo para clinvar, bitgenia y gold standard de la profundidad de los fenotipos en la forma de media de nodos hijos y nodos ancestros
+
+\paragraph{Commit: 1dfbf10}
+Commit Message: agrego también el cálculo de la media de la frecuencia de aparición de cada fenotipo observado en cada base de datos
+
+\paragraph{Commit: 8609fa5}
+Commit Message: agrego owl.py, donde vamos a poder explorar muchos más atributos de fenotipos, enfermedades y genes
+
+\paragraph{Commit: a087ad7}
+Commit Message: escribo funciones básicas para obtener genes fenotipos y enfermedades de orpha
+
+\paragraph{Commit: dd0bc73}
+Commit Message: termino de escribir las funciones que usan los xml de orpha, ahora también tenemos la clasificación más alta para cada enfermedad
+
+\paragraph{Commit: 797aa68}
+Commit Message: gene_phenotype_network antes de ser cambiada a gene_disease_network.py
+
+\paragraph{Commit: ef9d645}
+Commit Message: plot de la red de enfermedades
+
+\paragraph{Commit: 84fb6f7}
+Commit Message: ploteo de la red de genes en nivel 2
+
+\paragraph{Commit: 5ff862d}
+Commit Message: ploteo de la red de diseases de nivel 2
+
+%CommitsEnd
+\subsection{Figures}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{19-06-2023}
+\subsection{Commits}
+\paragraph{Commit: da05a08}
+Commit Message: código y .csv con propiedades de los fenotipos como nodos: hijos, ancestros, y frecuencia relativa.
+
+\paragraph{Commit: f1728ed}
+Commit Message: calculo para clinvar, bitgenia y gold standard de la profundidad de los fenotipos en la forma de media de nodos hijos y nodos ancestros
+
+\paragraph{Commit: 1dfbf10}
+Commit Message: agrego también el cálculo de la media de la frecuencia de aparición de cada fenotipo observado en cada base de datos
+
+\paragraph{Commit: 8609fa5}
+Commit Message: agrego owl.py, donde vamos a poder explorar muchos más atributos de fenotipos, enfermedades y genes
+
+\paragraph{Commit: a087ad7}
+Commit Message: escribo funciones básicas para obtener genes fenotipos y enfermedades de orpha
+
+\paragraph{Commit: dd0bc73}
+Commit Message: termino de escribir las funciones que usan los xml de orpha, ahora también tenemos la clasificación más alta para cada enfermedad
+
+\paragraph{Commit: 797aa68}
+Commit Message: gene_phenotype_network antes de ser cambiada a gene_disease_network.py
+
+\paragraph{Commit: ef9d645}
+Commit Message: plot de la red de enfermedades
+
+\paragraph{Commit: 84fb6f7}
+Commit Message: ploteo de la red de genes en nivel 2
+
+\paragraph{Commit: 5ff862d}
+Commit Message: ploteo de la red de diseases de nivel 2
+
+%CommitsEnd
+\subsection{Figures}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{20-06-2023}
+\subsection{Commits}
+\paragraph{Commit: f1728ed}
+Commit Message: calculo para clinvar, bitgenia y gold standard de la profundidad de los fenotipos en la forma de media de nodos hijos y nodos ancestros
+
+\paragraph{Commit: 1dfbf10}
+Commit Message: agrego también el cálculo de la media de la frecuencia de aparición de cada fenotipo observado en cada base de datos
+
+\paragraph{Commit: 8609fa5}
+Commit Message: agrego owl.py, donde vamos a poder explorar muchos más atributos de fenotipos, enfermedades y genes
+
+\paragraph{Commit: a087ad7}
+Commit Message: escribo funciones básicas para obtener genes fenotipos y enfermedades de orpha
+
+\paragraph{Commit: dd0bc73}
+Commit Message: termino de escribir las funciones que usan los xml de orpha, ahora también tenemos la clasificación más alta para cada enfermedad
+
+\paragraph{Commit: 797aa68}
+Commit Message: gene_phenotype_network antes de ser cambiada a gene_disease_network.py
+
+\paragraph{Commit: ef9d645}
+Commit Message: plot de la red de enfermedades
+
+\paragraph{Commit: 84fb6f7}
+Commit Message: ploteo de la red de genes en nivel 2
+
+\paragraph{Commit: 5ff862d}
+Commit Message: ploteo de la red de diseases de nivel 2
+
+%CommitsEnd
+\subsection{Figures}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{24-06-2023}
+\subsection{Commits}
+\paragraph{Commit: 8609fa5}
+Commit Message: agrego owl.py, donde vamos a poder explorar muchos más atributos de fenotipos, enfermedades y genes
+
+\paragraph{Commit: a087ad7}
+Commit Message: escribo funciones básicas para obtener genes fenotipos y enfermedades de orpha
+
+\paragraph{Commit: dd0bc73}
+Commit Message: termino de escribir las funciones que usan los xml de orpha, ahora también tenemos la clasificación más alta para cada enfermedad
+
+\paragraph{Commit: 797aa68}
+Commit Message: gene_phenotype_network antes de ser cambiada a gene_disease_network.py
+
+\paragraph{Commit: ef9d645}
+Commit Message: plot de la red de enfermedades
+
+\paragraph{Commit: 84fb6f7}
+Commit Message: ploteo de la red de genes en nivel 2
+
+\paragraph{Commit: 5ff862d}
+Commit Message: ploteo de la red de diseases de nivel 2
+
+%CommitsEnd
+\subsection{Figures}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{27-06-2023}
+\subsection{Commits}
+\paragraph{Commit: a087ad7}
+Commit Message: escribo funciones básicas para obtener genes fenotipos y enfermedades de orpha
+
+\paragraph{Commit: dd0bc73}
+Commit Message: termino de escribir las funciones que usan los xml de orpha, ahora también tenemos la clasificación más alta para cada enfermedad
+
+\paragraph{Commit: 797aa68}
+Commit Message: gene_phenotype_network antes de ser cambiada a gene_disease_network.py
+
+\paragraph{Commit: ef9d645}
+Commit Message: plot de la red de enfermedades
+
+\paragraph{Commit: 84fb6f7}
+Commit Message: ploteo de la red de genes en nivel 2
+
+\paragraph{Commit: 5ff862d}
+Commit Message: ploteo de la red de diseases de nivel 2
+
+%CommitsEnd
+\subsection{Figures}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{28-06-2023}
+\subsection{Commits}
+\paragraph{Commit: dd0bc73}
+Commit Message: termino de escribir las funciones que usan los xml de orpha, ahora también tenemos la clasificación más alta para cada enfermedad
+
+\paragraph{Commit: 797aa68}
+Commit Message: gene_phenotype_network antes de ser cambiada a gene_disease_network.py
+
+\paragraph{Commit: ef9d645}
+Commit Message: plot de la red de enfermedades
+
+\paragraph{Commit: 84fb6f7}
+Commit Message: ploteo de la red de genes en nivel 2
+
+\paragraph{Commit: 5ff862d}
+Commit Message: ploteo de la red de diseases de nivel 2
 
 %CommitsEnd
 \subsection{Figures}
