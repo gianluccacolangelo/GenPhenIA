@@ -29,6 +29,40 @@ gene_root= tree_gene.getroot()
 
 
 ## {{{
+with open(f'{PATH}data/OMIM/genemap2.txt', 'r') as f:
+    for line in f:
+        if line.startswith('# Chromosome'):
+            columns = line.strip('#\n').split('\t')
+            break
+
+# Load the file
+genemap2_df = pd.read_csv(f'{PATH}data/OMIM/genemap2.txt', comment='#', delimiter='\t', names=columns, skiprows=4)
+
+# Drop rows with missing values in 'Gene Symbols' or 'Entrez Gene ID'
+genemap2_df = genemap2_df.dropna(subset=['Approved Gene Symbol', 'Entrez Gene ID'])
+
+# Convert 'Entrez Gene ID' to integer
+genemap2_df['Entrez Gene ID'] = genemap2_df['Entrez Gene ID'].astype(int)
+
+# Create the dictionaries
+gene_to_entrez = pd.Series(genemap2_df['Entrez Gene ID'].values,index=genemap2_df['Approved Gene Symbol']).to_dict()
+entrez_to_gene = pd.Series(genemap2_df['Gene Symbols'].values,index=genemap2_df['Entrez Gene ID']).to_dict()
+
+def translate_gene_to_entrez(gene, gene_to_entrez):
+    """
+    Translate a gene symbol to an Entrez Gene ID.
+    """
+    return gene_to_entrez.get(gene, None)
+
+def translate_entrez_to_gene(entrez, entrez_to_gene):
+    """
+    Translate an Entrez Gene ID to a gene symbol.
+    """
+    return entrez_to_gene.get(entrez, None)
+## }}}
+
+
+## {{{
 
 def frequency_to_weight(frequency):
     """
@@ -49,7 +83,7 @@ def frequency_to_weight(frequency):
     else:
         return None
 
-def parse_xml_to_dict(root):
+def parse_xml_to_dict(root,disorder_name=False):
     """
     Parse the XML tree and return a dictionary where each key is a disease,
     and each value is another dictionary where each key is a phenotype and the value is the empirical weight of that phenotype.
@@ -61,9 +95,15 @@ def parse_xml_to_dict(root):
         disorder = disorder_set_status.find('Disorder')
         if disorder is not None:
             # Get the disease name
-            disease_name = disorder.find('Name')
-            if disease_name is not None:
-                disease_name = disease_name.text
+            if disorder_name == True:
+                disease_name = disorder.find('Name')
+                if disease_name is not None:
+                    disease_name = disease_name.text
+
+            elif disorder_name == False:
+                disease_code = disorder.find('OrphaCode')
+                if disease_code is not None:
+                    disease_name = disease_code.text
 
                 # Initialize the inner dictionary for this disease
                 data[disease_name] = {}
@@ -90,23 +130,61 @@ def parse_xml_to_dict(root):
 
     return data
 
-# Parse the XML file to a dictionary
-# data = parse_xml_to_dict(root)
-
-# # Print the first few entries in the dictionary to verify that it's correct
-# for disease, phenotypes in list(data.items())[:1]:
-    # print(disease, phenotypes)
 
 
-def rank_diseases(observed_phenotypes, data, threshold=3):
+def parse_xml_to_gene_dict(root,disorder_name=False):
+
     """
-    Rank diseases based on observed phenotypes.
+    Parse the XML tree and return a dictionary where each key is a disease,
+    and each value is a list of genes associated with that disease.
+    """
+
+    data = {}
+
+    # Iterate over all disorders
+    for disorder in root.find('DisorderList'):
+        # Get the disease name
+        if disorder_name == True:
+            disease_name = disorder.find('Name')
+            if disease_name is not None:
+                disease_name = disease_name.text
+        elif disorder_name == False:
+            disease_name = disorder.find('OrphaCode')
+            if disease_name is not None:
+                disease_name = disease_name.text
+
+            # Initialize the list for this disease
+            data[disease_name] = []
+
+            # Iterate over all DisorderGeneAssociation elements for this disease
+            for disorder_gene_association in disorder.find('DisorderGeneAssociationList'):
+                gene = disorder_gene_association.find('Gene')
+
+                if gene is not None:
+                    # Get the gene symbol
+                    gene_symbol = gene.find('Symbol')
+                    if gene_symbol is not None:
+                        gene_symbol = gene_symbol.text
+
+                    # Add the gene symbol to the list for this disease
+                    if gene_symbol is not None:
+                        data[disease_name].append(gene_symbol)
+
+    return data
+
+
+def rank_diseases(observed_phenotypes, phen_disease_dict, threshold=3):
+    """
+    Rank diseases based on observed phenotypes. From the dictionary where
+    diseases are keys and the values are dictionaries of phenotypes and
+    weights. The threshold is the minimum number of observed phenotypes that
+    must be present in a disease to be considered.
     """
     # Initialize a dictionary to store the total weight for each disease
     total_weights = {}
 
-    # Iterate over all diseases in the data
-    for disease, phenotypes in data.items():
+    # Iterate over all diseases in the phen_disease_dict
+    for disease, phenotypes in phen_disease_dict.items():
         # Initialize the total weight for this disease
         total_weight = 0
 
@@ -130,6 +208,23 @@ def rank_diseases(observed_phenotypes, data, threshold=3):
     return ranked_diseases
 
 
+
+## }}}
+
+
+
+## {{{
+
+# Parse the XML file to a dictionary
+phen_disease_dict = parse_xml_to_dict(phen_root,disorder_name=False)
+
+# Print the first few entries in the dictionary to verify that it's correct
+for disease, phenotypes in list(phen_disease_dict.items())[:1]:
+    print(disease, phenotypes)
+
+
+
+
 observed_phenotypes = ["HP:0011451",
         "HP:0000252",
         "HP:0001298",
@@ -151,50 +246,84 @@ observed_phenotypes = ["HP:0011451",
         "HP:0040196",
         "HP:0001250",
         "HP:0200134"]
-ranked_diseases = rank_diseases(observed_phenotypes, data, threshold=1)
-# for disease, weight in ranked_diseases[:5]:
-    # print(f"Disease: {disease}, Total Weight: {weight}")
-    # print(gene_data[disease])
-
-
-def parse_xml_to_gene_dict(root):
-    """
-    Parse the XML tree and return a dictionary where each key is a disease,
-    and each value is a list of genes associated with that disease.
-    """
-    data = {}
-
-    # Iterate over all disorders
-    for disorder in root.find('DisorderList'):
-        # Get the disease name
-        disease_name = disorder.find('Name')
-        if disease_name is not None:
-            disease_name = disease_name.text
-
-            # Initialize the list for this disease
-            data[disease_name] = []
-
-            # Iterate over all DisorderGeneAssociation elements for this disease
-            for disorder_gene_association in disorder.find('DisorderGeneAssociationList'):
-                gene = disorder_gene_association.find('Gene')
-
-                if gene is not None:
-                    # Get the gene symbol
-                    gene_symbol = gene.find('Symbol')
-                    if gene_symbol is not None:
-                        gene_symbol = gene_symbol.text
-
-                    # Add the gene symbol to the list for this disease
-                    if gene_symbol is not None:
-                        data[disease_name].append(gene_symbol)
-
-    return data
-
 
 # Parse the XML file to a dictionary
-gene_data = parse_xml_to_gene_dict(gene_root)
+gene_disease_dict = parse_xml_to_gene_dict(gene_root)
 
-# # Print the first few entries in the dictionary to verify that it's correct
-# for disease, genes in list(gene_data.items())[10:15]:
-    # print(disease, genes)
+# Print the first few entries in the dictionary to verify that it's correct
+for disease, genes in list(gene_disease_dict.items())[10:15]:
+    print(disease, genes)
+
+
+
+ranked_diseases = rank_diseases(observed_phenotypes, phen_disease_dict, threshold=1)
+for disease, weight in ranked_diseases[:5]:
+    print(f"Disease(OrphaCode): {disease}, Total Weight: {weight}")
+    # print(gene_disease_dict[disease])
+
+
+
+## }}}
+
+## {{
+genes_symbols_list = []
+for disease in ranked_diseases:
+    try:
+        genes_symbols_list.append(gene_disease_dict[disease[0]])
+    except:
+        continue
+
+
+## }}
+
+
+
+
+
+## {{{
+with open(f'{PATH}data/clinical_cases/bitgenia.json','r') as f:
+    clinical_cases = json.load(f)
+
+
+
+def v2_model_evaluation(clinical_cases,top_diseases=50,top_genes=50):
+    encontrados = 0
+    no_encontrados = 0
+
+    for observed_genes in clinical_cases.keys():
+        observed_phenotypes = clinical_cases[observed_genes]
+        ranked_diseases = rank_diseases(observed_phenotypes, phen_disease_dict, threshold=1)
+        candidate_genes = []
+
+        for disease in ranked_diseases:
+
+            try:
+                genes = gene_disease_dict[disease[0]]
+            except:
+                continue
+            if len(genes)>1:
+                for gene in genes:
+                    gene = translate_gene_to_entrez(gene,gene_to_entrez)
+                    if gene not in candidate_genes:
+                        candidate_genes.append(str(gene))
+
+            elif len(genes)==1:
+
+                gene = genes[0]
+                gene = translate_gene_to_entrez(gene,gene_to_entrez)
+
+                if gene not in candidate_genes:
+                    candidate_genes.append(str(gene))
+
+        if observed_genes in candidate_genes:
+            encontrados += 1
+        else:
+            no_encontrados += 1
+        try:
+            print(f'ranking: {candidate_genes.index(observed_genes)}')
+        except:
+            print('mm')
+    return encontrados,no_encontrados
+
+
 ## }}}
