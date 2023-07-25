@@ -22,7 +22,7 @@ PATH = '/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/'
 with open(f'{PATH}config/phen_properties.csv','r') as file:
     phen_promiscuity_dict = pd.read_csv(file,comment='#',sep='\t')
     # weight_dict = phen_promiscuity_dict.set_index('Unnamed: 0')['c/(a+c)'].to_dict()
-    weight_dict = phen_promiscuity_dict.set_index('Unnamed: 0')['exp(-c)'].to_dict()
+    weight_dict = phen_promiscuity_dict.set_index('Unnamed: 0')['frecuencia relativa'].to_dict()
 
 #link tree abre el xml que asocia cada orphacode con un mimcode
 link_tree = ET.parse(f'{PATH}data/ORPHA/alignments_omim_orpha.xml')
@@ -55,6 +55,12 @@ epidemiology_root = epidemiology_tree.getroot()
 
 classification_tree = ET.parse(f'{PATH}data/ORPHA/rare_genetic_diseases_classification.xml')
 classification_root  = classification_tree.getroot()
+
+
+
+
+natural_history_tree = ET.parse(f'{PATH}data/ORPHA/natural_history_of_rare_diseases.xml')
+natural_history_root = natural_history_tree.getroot()
 
 
 def especificidad_del_gen(fenotipos_observados,fenotipos_del_gen):
@@ -355,6 +361,24 @@ nivel que le pidamos. El 0 corresponde a 'Rare genetic disease' y el segundo a
 
 
     return (node.find('.//Name').text,node.find('.//OrphaCode').text)
+
+
+def get_average_age_of_onset(orpha_code):
+    # Iterate over all disorders
+    for disorder in natural_history_root.find('DisorderList'):
+        # Check if the orpha code matches
+        if disorder.find('OrphaCode').text == str(orpha_code):
+            # Get the list of average age of onset
+            average_age_of_onset_list = disorder.find('AverageAgeOfOnsetList')
+            if average_age_of_onset_list is not None:
+                # Extract all the average age of onset
+                ages_of_onset = [average_age_of_onset.find('Name').text.strip() for average_age_of_onset in average_age_of_onset_list]
+                # Filter out empty strings
+                ages_of_onset = list(filter(None, ages_of_onset))
+                # Return the list of average age of onset
+                return ages_of_onset
+    # If no disorder with the specified orpha code was found, return None
+    return None
 
 def phen_diseases(phen_id):
     """
