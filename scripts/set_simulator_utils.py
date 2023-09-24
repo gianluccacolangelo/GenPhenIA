@@ -9,6 +9,7 @@ import random
 import csv
 import json
 import scipy.stats as stats
+PATH = '/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/'
 ## }}}
 
 
@@ -202,5 +203,50 @@ Para el cual tenemos tres opciones de distribución:
 
 ## }}}
 
+## {{{
+
+with open(f'{PATH}data/clinical_cases/bitgenia.json','r') as f:
+    bitgenia = json.load(f)
+
+with open(f'{PATH}data/clinical_cases/clinvar.json','r') as f:
+    clinvar = json.load(f)
+
+bitgenia_total_phenotypes = [len(phen_set) for phen_set in bitgenia.values()]
+clinvar_total_phenotypes = [len(phen_set) for phen_set in clinvar.values()]
+
+values, counts = np.unique(bitgenia_total_phenotypes, return_counts=True)
+probabilities = counts / len(bitgenia_total_phenotypes)
+
+dist = dict(zip(values,counts))
 
 
+def how_many_observed(distribution=dist,probabilities=probabilities):
+    """
+    Recibe: dist, un diccionario de frecuencias de número de observaciones
+
+    Devuelve: un entero, el número de observaciones que se van a generar
+
+    Este número se genera a partir de una distribución de probabilidad empírica
+    (obtenida observando los casos reales) para el número de fenotipos
+    observados.
+
+    Otra opción, a chequear en caso de que las cosas no funcionen bien, es
+    en lugar de tener una dist de observados netos, tener una distribución de
+    observados respecto al total para cada enfermedad.
+    """
+    values = list(distribution.keys())
+
+    return np.random.choice(values,p=probabilities)
+
+
+## }}}
+
+##{{{
+import matplotlib.pyplot as plt
+
+
+observations = [how_many_observed() for i in range(10000)]
+plt.hist(observations,bins=20)
+
+
+## }}}
