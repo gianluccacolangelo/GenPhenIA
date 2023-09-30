@@ -161,9 +161,10 @@ Esta función intenta ser lo mismo que la anterior pero para los sets reales.
             print(f"                      ranking = {metrics[i-1]}\n")
             i+=1
         except:
+            metrics.append('NaN')
             continue
-    print(f'La media de rankings fue de: {np.mean(metrics)} y la mediana de {np.median(metrics)}')
-    print(f'Y la cantidad de genes reales en el TOP 50: {percent_below_x(metrics,50)}')
+    # print(f'La media de rankings fue de: {np.mean(metrics)} y la mediana de {np.median(metrics)}')
+    # print(f'Y la cantidad de genes reales en el TOP 50: {percent_below_x(metrics,50)}')
 
     return metrics
 

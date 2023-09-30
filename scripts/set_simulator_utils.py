@@ -238,15 +238,67 @@ def how_many_observed(distribution=dist,probabilities=probabilities):
 
     return np.random.choice(values,p=probabilities)
 
+exact_values, exact_counts = (np.array([0.        , 0.03571429, 0.125     , 0.14285714, 0.2       ,0.23809524, 0.25      , 0.27272727, 0.28571429, 0.3       ,0.33333333, 0.375     , 0.4       , 0.42857143, 0.5       ,0.5625    , 0.57142857, 0.6       , 0.625, 0.63636364,0.64705882, 0.66666667, 0.71428571, 0.73333333, 0.75      ,0.8       , 0.83333333, 0.85714286, 0.875, 0.88888889,0.9       , 0.91666667, 0.92857143, 1.]),
+ np.array([31,  1,  2,  1,  3,  1,  6,  1,  1,  1,  5,  1,  4,  2, 13,  1,  3,4,  4,  2,  1,  8,  1,  1,  7,  2,  1,  1,  1,  1,  1,  1,  1, 45]))
+
+exact_probabilities = exact_counts / exact_counts.sum()
+# np.random.choice(exact_values,p=exact_probabilities)
+
+inexact_values,inexact_counts =(np.array([0.25      , 0.625     , 0.72727273, 0.76470588, 0.79487179, 0.8       , 0.83333333, 0.84848485, 0.86666667, 0.9       ,
+        0.90410959, 0.91549296, 0.92857143, 0.93617021, 0.93902439, 0.94067797, 0.94444444, 0.94642857, 0.94871795, 0.94897959, 0.95      , 0.95081967, 0.95918367, 0.95945946, 0.95977011, 0.95982143, 0.96      , 0.96261682, 0.96551724, 0.96761134, 0.97087379, 0.97169811, 0.97385621, 0.97402597, 0.97457627, 0.975     , 0.97560976, 0.97647059, 0.97777778, 0.97945205, 0.97959184, 0.98039216, 0.98060942, 0.98076923, 0.98095238, 0.98230088, 0.98245614, 0.98369565, 0.98387097, 0.98445596, 0.98545455, 0.98550725, 0.9869281 , 0.98695652, 0.98734177, 0.9875    , 0.98866856, 0.98876404, 0.98901099, 0.9893617 , 0.98972603, 0.98976982, 0.99      , 0.99009901, 0.99054374, 0.99090909, 0.99112426, 0.99117647, 0.99122807, 0.99159664, 0.99168975, 0.9919571 , 0.99275362, 0.99280576, 0.9929078 , 0.99300699, 0.99310345, 0.99342105, 0.99367089, 0.99371069, 0.99382716, 0.99383984, 0.99393939, 0.9939759 , 0.99411765, 0.99415205, 0.99425287, 0.99444444, 0.99459459, 0.99473684, 0.99484536, 0.99515738, 0.99516908, 0.99521531, 0.99526066, 0.99593496, 0.99595142, 0.996139  , 0.99616858, 0.99626866, 0.99656357, 0.99688474, 0.99691358, 0.99696049, 0.99700599, 0.99706745, 0.99733333, 0.99833611, 0.9984127 , 1.        ]), np.array([ 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 3,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 3,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 1,  1,  1,  2,  1,  1,  1, 45]))
+
+inexact_probabilities = inexact_counts / inexact_counts.sum()
+
+def observed_distributions(total_observed,exact_prob=exact_probabilities,inexact_prob=inexact_probabilities):
+    obs_exact_proportion = np.random.choice(exact_values,p=exact_prob)
+    exact = int(np.round(obs_exact_proportion * total_observed))
+    inexactos_netos = total_observed - exact
+    inexact_inespecific=int(np.round(np.random.choice(inexact_values,p=inexact_prob)*inexactos_netos))
+    inexact_error = inexactos_netos-inexact_inespecific
+
+    return (exact,inexact_inespecific,inexact_error)
+
+
+def simulate_v1(exact_prob=exact_probabilities,inexact_prob=inexact_probabilities):
+    total_obs = how_many_observed()
+    return observed_distributions(total_obs)
+
+with open(f'{PATH}data/simulated/gene_phenotype_dict.json','r') as file:
+    gold_standard = json.load(file)
+
+with open (f"{PATH}data/simulated/vague_gene_phenotype_dict.json",'r') as f:
+    vague_gene_phenotype = json.load(f)
+
+def single_disease_simulator(gene_number):
+    """
+    Esta función crea fenotipos observados para un gen, siguiendo las
+    distribuciones observadas en los casos reales.
+    """
+    synthetic_observations = []
+    n_exact,n_inexact,n_err = simulate_v1() #tomamos la dist de fenotipos exact, inexact y err
+    exact_pool = set(gold_standard[str(gene_number)])
+    vague_pool = set(vague_gene_phenotype[str(gene_number)])
+    inexact_pool = exact_pool.union(vague_pool) - exact_pool.intersection(vague_pool)
+
+    if n_exact>0:
+        exact_phens = np.random.choice(list(exact_pool),n_exact)
+        synthetic_observations.append(list(exact_phens))
+
+    if n_inexact>0:
+        inexact_phens = np.random.choice(list(inexact_pool),n_inexact)
+        synthetic_observations.append(list(inexact_phens))
+
+    if n_err>0:
+        random_gene = np.random.choice(list(gold_standard.keys()))
+        err_pool = vague_gene_phenotype[random_gene]
+        err_phens = np.random.choice(err_pool,n_err)
+        synthetic_observations.append(list(err_phens))
+
+    synthetic_observations = [item for sublist in synthetic_observations for item in sublist]
+
+    return synthetic_observations
+
+
 
 ## }}}
 
-##{{{
-import matplotlib.pyplot as plt
-
-
-observations = [how_many_observed() for i in range(10000)]
-plt.hist(observations,bins=20)
-
-
-## }}}

@@ -5,12 +5,15 @@ En este archivo están los plots de todos los gráficos.
 ## {{{ importaciones
 import sys
 sys.path.insert(0,'/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/src')
+sys.path.insert(0,'/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/scripts')
+import incorporating_orpha as orpha
 import phen_gen_weight_functions as pgw
 import linear_model_lab as lml
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import json
+import random
 PATH = "/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/"
 ## }}}
 
@@ -260,6 +263,8 @@ error)
     return mean_of_sums/10 #sobre el total de N corridos, para normalizarlo
 acumulated_accuracy(top_10_metrics)
 
+:q
+
 ## }}}
 
 ## de las métricas nuevas, el accuracy acumulado es:
@@ -477,6 +482,472 @@ with plt.style.context(['science','ieee','nature']):
     plt.title('$\\alpha j  - \\beta i -\\gamma k$',size=4.5)
 
     plt.show()
+
+
+## }}}
+
+
+
+
+
+## {{{ corriendo control de métricas y gráfico de accuracy vs top
+
+with open(f'{PATH}data/clinical_cases/synthetic_a_over_a_plus_c.json','r') as f:
+    synth_clinical_cases = json.load(f)
+    synth_clinical_cases_genes = random.sample([gene for gene in
+        synth_clinical_cases],165)
+    synth_clinical_cases = {gene:synth_clinical_cases[gene][:5] for gene in
+            synth_clinical_cases_genes}
+
+with open(f'{PATH}data/clinical_cases/bitgenia.json','r') as f:
+    bitgenia_clinical_cases = json.load(f)
+
+with open(f'{PATH}data/simulated/vague_gene_phenotype_dict.json','r') as f:
+    gold_standard_dataset = json.load(f)
+
+
+# control = lml.model_real_evaluating(synth_clinical_cases,1,0,0,
+        # "si",0,precision=False)
+ranking_freq_realtiva = lml.model_real_evaluating(bitgenia_clinical_cases,1,0,0,"si",0,precision=False)
+# orpha = orpha.v2_model_evaluation(bitgenia_clinical_cases)
+
+## }}}
+
+##{{{
+frq_relativa  = [24,
+ 9,
+ 932,
+ 5,
+ 121,
+ 38,
+ 730,
+ 4,
+ 394,
+ 116,
+ 181,
+ 23,
+ 2702,
+ 5,
+ 11,
+ 1,
+ 751,
+ 8,
+ 2238,
+ 242,
+ 2041,
+ 28,
+ 1034,
+ 27,
+ 612,
+ 75,
+ 22,
+ 110,
+ 71,
+ 1,
+ 56,
+ 350,
+ 1119,
+ 1583,
+ 303,
+ 6,
+ 502,
+ 46,
+ 3,
+ 118,
+ 22,
+ 6,
+ 104,
+ 694,
+ 1,
+ 5,
+ 20,
+ 40,
+ 12,
+ 1,
+ 6,
+ 1095,
+ 148,
+ 30,
+ 122,
+ 84,
+ 92,
+ 154,
+ 318,
+ 653,
+ 2,
+ 135,
+ 1,
+ 14,
+ 356,
+ 138,
+ 347,
+ 390,
+ 398,
+ 145,
+ 1,
+ 294,
+ 1,
+ 67,
+ 332,
+ 12,
+ 1844,
+ 3,
+ 17,
+ 92,
+ 1,
+ 39,
+ 12,
+ 110,
+ 512,
+ 659,
+ 6,
+ 10,
+ 100,
+ 200,
+ 15,
+ 26,
+ 361,
+ 96,
+ 263,
+ 1717,
+ 332,
+ 20,
+ 2055,
+ 325,
+ 344,
+ 3,
+ 423,
+ 384,
+ 1,
+ 174,
+ 326,
+ 1277,
+ 70,
+ 168,
+ 30,
+ 20,
+ 1220,
+ 147,
+ 59,
+ 334,
+ 273,
+ 70,
+ 707,
+ 6,
+ 876,
+ 1295,
+ 579,
+ 93,
+ 59,
+ 1427,
+ 14,
+ 744]
+
+a_over_a_plus_c = [10,41,791,13,5,
+ 38,
+ 729,
+ 5,
+ 752,
+ 51,
+ 86,
+ 14,
+ 2770,
+ 3,
+ 4,
+ 4,
+ 419,
+ 8,
+ 1515,
+ 240,
+ 311,
+ 40,
+ 256,
+ 58,
+ 61,
+ 107,
+ 41,
+ 109,
+ 103,
+ 1,
+ 56,
+ 118,
+ 586,
+ 1722,
+ 303,
+ 11,
+ 500,
+ 508,
+ 25,
+ 118,
+ 7,
+ 5,
+ 66,
+ 693,
+ 2,
+ 32,
+ 27,
+ 17,
+ 12,
+ 1,
+ 6,
+ 510,
+ 61,
+ 10,
+ 81,
+ 103,
+ 81,
+ 153,
+ 335,
+ 366,
+ 40,
+ 135,
+ 1,
+ 3,
+ 356,
+ 137,
+ 345,
+ 390,
+ 398,
+ 256,
+ 1,
+ 292,
+ 4,
+ 3,
+ 269,
+ 34,
+ 96,
+ 14,
+ 17,
+ 5,
+ 1,
+ 39,
+ 42,
+ 110,
+ 673,
+ 490,
+ 11,
+ 16,
+ 160,
+ 7,
+ 15,
+ 2,
+ 104,
+ 104,
+ 1,
+ 1729,
+ 181,
+ 10,
+ 161,
+ 314,
+ 244,
+ 3,
+ 63,
+ 390,
+ 1,
+ 395,
+ 15,
+ 1350,
+ 29,
+ 78,
+ 31,
+ 19,
+ 1356,
+ 147,
+ 9,
+ 301,
+ 261,
+ 97,
+ 169,
+ 3,
+ 122,
+ 1469,
+ 577,
+ 243,
+ 59,
+ 343,
+ 4,
+ 743]
+
+## }}}
+
+
+
+## {{{
+
+top_range = [i for i in range(1,101)]
+orpha_acc = [lml.percent_below_x(orpha,i) for i in range(1,101)]
+control_acc = [lml.percent_below_x(control,i) for i in range(1,101)]
+ranking_acc = [lml.percent_below_x(ranking_freq_realtiva,i) for i in range(1,101)]
+a_over_a_plus_c_acc = [lml.percent_below_x(a_over_a_plus_c,i) for i in range(1,101)]
+
+
+## }}}
+
+##{{{
+sin_peso = lml.model_real_evaluating(bitgenia_clinical_cases,1,0,0,"si",1,precision=False)
+sin_peso_acc = [lml.percent_below_x(sin_peso,i) for i in np.linspace(1,100,100)]
+## }}}
+
+## {{{
+with plt.style.context(['science','ieee','nature']):
+    fig, ax = plt.subplots()
+    ax.plot(range,orpha_acc,label='Peso empírico (ORPHA)')
+    ax.plot(range,control_acc,label='Control')
+    ax.plot(range,ranking_acc,label='Promiscuidad')
+    ax.plot(range,a_over_a_plus_c_acc,label='a/(a+c)')
+    ax.plot(range,sin_peso_acc,label='Sin peso',linestyle='--')
+    ax.set_xlabel('TOP\\#')
+    ax.set_ylabel('\\% dentro del TOP\\#')
+    ax.legend(fontsize=5)
+
+## }}}
+
+
+
+
+## {{{
+
+"""
+Acá voy a hacer los plots para el informe de genphenia, el gráfico sin peso el
+gráfico con peso empírico y el gráfico con penalización hpo.
+
+"""
+
+with open(f'{PATH}output/rendimientos_de_orpha_specific_filtered.json','r') as f:
+    filtered_rendimientos = json.load(f)
+
+
+
+
+
+rendimientos = [    list(filtered_rendimientos['sin_pesos'].values()),
+                   list(filtered_rendimientos['orpha_sin_penalizacion'].values()),
+                   list(filtered_rendimientos['orpha_penalizando'].values())]
+
+recall_at_N = []
+
+for model in rendimientos:
+    model_recall = []
+    for i in range(1,101):
+        recall = lml.percent_below_x(model,i)
+        model_recall.append(recall)
+    recall_at_N.append(model_recall)
+
+with plt.style.context(['science','ieee','nature']):
+    fig,ax = plt.subplots()
+    ax.plot(range(1,101),recall_at_N[0],label='Sin pesos')
+    ax.plot(range(1,101),recall_at_N[1],label='Peso empírico')
+    ax.plot(range(1,101),recall_at_N[2],label='Peso empírico + \nPenalización HPO')
+    ax.set_xlabel('TOP\\#')
+    ax.set_ylabel('\\% dentro del TOP\\#')
+    ax.legend(fontsize=5)
+
+
+
+
+## Lo de abajo crea los boxplots de distribución de rankings
+# rendimientos = [[value for value in category if value <= 400] for category in rendimientos]
+
+# Creating the boxplots using the provided template
+# with plt.style.context(['science', 'ieee', 'nature']):
+    # fig, ax = plt.subplots()
+    # ax.boxplot(rendimientos, meanline=True,
+               # flierprops=dict(markerfacecolor='r',
+                   # markersize=0.4),showfliers=False)
+    # ax.set_xlabel('', fontsize=4)
+    # ax.set_ylabel('Ranking', fontsize=4)
+    # ax.set_title(f'Distribución de rankings para cada feature | Bitgenia', fontsize=4)
+    # # plt.subplots_adjust(top=0.9, bottom=0.15,
+                        # # left=0.176, right=0.952,
+                        # # hspace=0., wspace=0.1)
+
+    # ax.tick_params(axis='both', which='major', labelsize=4)
+    # plt.xticks([1, 2, 3], ['Sin pesos', 'Pesos empíricos', 'Pesos empíricos + \n penalización'], rotation=45, fontsize=4)
+
+# # Displaying the plot
+# plt.show()
+
+
+
+
+## }}}
+
+
+
+## {{{ Distribución de distancias en el grafo HPO de los fenotipos no encontrados a la primera
+with open(f'{PATH}data/clinical_cases/clinvar.json','r') as f:
+    clinical_cases = json.load(f)
+
+
+distances = orpha.v2_model_evaluation(clinical_cases)[1]
+
+## }}}
+
+
+## {{{ plot de lo de arriba
+distances_cleaned = [i for sublist in distances for i in sublist if i>=1]
+
+with plt.style.context(['science','ieee','nature']):
+    fig,ax = plt.subplots()
+    ax.hist(distances_cleaned,bins=8)
+    ax.set_xlabel('Distancia al término más específico')
+    ax.set_ylabel('Frecuencia')
+    ax.set_title('Fenotipos observados en casos clínicos de Clinvar',fontsize=5)
+
+
+##}}}
+
+
+##{{{ Distribución de pesos empíricos en los fenotipos observados
+with open(f'{PATH}data/clinical_cases/bitgenia.json','r') as f:
+    clinical_cases = json.load(f)
+
+weights = orpha.v2_model_evaluation(clinical_cases)[2]
+
+## }}}
+
+##{{{ Distribución de pesos empíricos en los fenotipos observados
+with open(f'{PATH}data/clinical_cases/clinvar.json','r') as f:
+    clinical_cases_clinvar = json.load(f)
+
+weights_clinvar = orpha.v2_model_evaluation(clinical_cases_clinvar)[2]
+
+## }}}
+
+##{{{
+weight_distances_cleaned = [i for sublist in weights_clinvar for i in sublist if i>=1]
+
+with plt.style.context(['science','ieee','nature']):
+    fig,ax = plt.subplots()
+    ax.hist(weight_distances_cleaned)
+    ax.set_xlabel('Pesos empíricos de ORPHA')
+    ax.set_ylabel('Frecuencia')
+    ax.set_title('Pesos empíricos en fenotipos observados de Clinvar',fontsize=5)
+    ax.set_xticks([2,17,54,89])
+    tick_labels = [2.5, 17.0, 54.5, 89.5]
+    ax.set_xticklabels(tick_labels)
+
+
+
+
+## }}}
+
+
+##{{{
+distances_cleaned = [i for sublist in weights for i in sublist if i>=1]
+
+with plt.style.context(['science','ieee','nature']):
+    fig,ax = plt.subplots()
+    ax.hist(distances_cleaned,bins=6)
+    ax.set_xlabel('Pesos empíricos de ORPHA')
+    ax.set_ylabel('Frecuencia')
+    ax.set_title('Pesos empíricos en fenotipos observados de Bitgenia',fontsize=5)
+    ax.set_xticks([2,17,54,89])
+    tick_labels = [2.5, 17.0, 54.5, 89.5]
+    ax.set_xticklabels(tick_labels)
+
+
+
 
 
 ## }}}

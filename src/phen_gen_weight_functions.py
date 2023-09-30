@@ -10,6 +10,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import xml.etree.ElementTree as ET
 from lxml import etree
+import sys
+sys.path.insert(0,'/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/scripts/')
+import incorporating_orpha as orpha
 
 PATH = '/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/'
 ## }}}
@@ -363,7 +366,10 @@ nivel que le pidamos. El 0 corresponde a 'Rare genetic disease' y el segundo a
     return (node.find('.//Name').text,node.find('.//OrphaCode').text)
 
 
-def get_average_age_of_onset(orpha_code):
+def get_average_age_of_onset(gene_code):
+    gene_symbol = orpha.translate_entrez_to_gene(gene_code).split(", ")[0]
+    orpha_code = int(gene_diseases(gene_symbol)[0])
+
     # Iterate over all disorders
     for disorder in natural_history_root.find('DisorderList'):
         # Check if the orpha code matches
