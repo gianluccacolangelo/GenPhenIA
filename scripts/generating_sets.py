@@ -2,6 +2,7 @@
 import set_simulator_utils as simulator
 import json
 import incorporating_orpha as orpha
+import numpy as np
 
 PATH = '/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/'
 ## }}}
@@ -36,6 +37,16 @@ result = orpha.v2_model_evaluation(synthetic_phens)
 bitgenia_results = orpha.v2_model_evaluation(simulated_data)
 ## }}}
 
+##{{{
+#TODO now
+# [x] tomar distribuciones de pesos empíricos
+# [] agregar feature de pesos empíricos a single_disease_simulator
+# el algoritmo tiene que primero elegir un peso en base a la distribución, y
+# luego elegir de manera random los términos que tengan ese peso para esa enf.
+empirical_weights = [i for x in bitgenia_results[2] for i in x]
+phen_freq, counts = np.unique(empirical_weights,return_counts=True)
+
+## }}}
 ## {{{
 import matplotlib.pyplot as plt
 

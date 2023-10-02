@@ -249,6 +249,9 @@ inexact_values,inexact_counts =(np.array([0.25      , 0.625     , 0.72727273, 0.
 
 inexact_probabilities = inexact_counts / inexact_counts.sum()
 
+phen_weight_freq, phen_weight_counts = (array([ 2.5, 17. , 54.5, 89.5]),array([ 8, 54, 73, 67]))
+weight_probabilities = phen_weight_counts / phen_weight_counts.sum()
+
 def observed_distributions(total_observed,exact_prob=exact_probabilities,inexact_prob=inexact_probabilities):
     obs_exact_proportion = np.random.choice(exact_values,p=exact_prob)
     exact = int(np.round(obs_exact_proportion * total_observed))
