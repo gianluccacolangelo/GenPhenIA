@@ -9,7 +9,13 @@ import random
 import csv
 import json
 import scipy.stats as stats
+from collections import Counter
 PATH = '/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/'
+import sys
+sys.path.insert(0,'/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/src')
+import incorporating_orpha as orpha
+import phen_gen_weight_functions as pgw
+
 ## }}}
 
 
@@ -249,8 +255,9 @@ inexact_values,inexact_counts =(np.array([0.25      , 0.625     , 0.72727273, 0.
 
 inexact_probabilities = inexact_counts / inexact_counts.sum()
 
-phen_weight_freq, phen_weight_counts = (array([ 2.5, 17. , 54.5, 89.5]),array([ 8, 54, 73, 67]))
+phen_weight_freq, phen_weight_counts = (np.array([ 2.5, 17. , 54.5, 89.5]),np.array([ 8, 54, 73, 67]))
 weight_probabilities = phen_weight_counts / phen_weight_counts.sum()
+categories = ['Very rare (<4-1%)', 'Occasional (29-5%)', 'Frequent (79-30%)', 'Very frequent (99-80%)']
 
 def observed_distributions(total_observed,exact_prob=exact_probabilities,inexact_prob=inexact_probabilities):
     obs_exact_proportion = np.random.choice(exact_values,p=exact_prob)
@@ -260,6 +267,37 @@ def observed_distributions(total_observed,exact_prob=exact_probabilities,inexact
     inexact_error = inexactos_netos-inexact_inespecific
 
     return (exact,inexact_inespecific,inexact_error)
+
+def weight_distribution(total_observed,weight_prob=weight_probabilities,categories=categories):
+    """
+    total_observed son los fenotipos exactos totales que se 'observaron'
+    weight_prob son las prob de que se observe un fenotipo de cada categoría
+    categories son las categorías de peso, que son 4
+
+    DEVUELVE: un dict de categories:counts, que sigen la distribución weight_prob
+    """
+    obs_weight_proportion = Counter(np.random.choice(categories,total_observed,p=weight_prob))
+    return obs_weight_proportion
+
+def weight_choosing(phens_dict,weight_proportions):
+    """
+    phen_dict es el diccionario de fenotipos: peso que obtenemos para cada
+    enfermedad
+    weight_proportions es la cantidad de c/u de las proporciones de fenotipos
+    que debemos sacar de phen_dict
+
+    DEVUELVE: una lista de términos de phen_dict que tienen la distribución de
+    pesos weight_proportions
+    """
+    selected_terms = []
+    for category,count in weight_proportions.items():
+        terms = [term for term,weight in phens_dict.items() if weight==category]
+        if len(terms)>=count:
+            selected_terms.extend(np.random.choice(terms,count,replace=False))
+
+    return selected_terms
+
+
 
 
 def simulate_v1(exact_prob=exact_probabilities,inexact_prob=inexact_probabilities):
@@ -279,12 +317,22 @@ def single_disease_simulator(gene_number):
     """
     synthetic_observations = []
     n_exact,n_inexact,n_err = simulate_v1() #tomamos la dist de fenotipos exact, inexact y err
-    exact_pool = set(gold_standard[str(gene_number)])
+    exact_pool = set(gold_standard[str(gene_number)]) #lista de términos exact
     vague_pool = set(vague_gene_phenotype[str(gene_number)])
+    #lista de términos inexactos:
     inexact_pool = exact_pool.union(vague_pool) - exact_pool.intersection(vague_pool)
 
+    gene_symbol = orpha.translate_entrez_to_gene(int(gene_number)).split(", ")[0]
+    disease = pgw.gene_diseases(gene_symbol)[0]
+    orpha_dict_phens = pgw.disease_phens(disease)
+
     if n_exact>0:
-        exact_phens = np.random.choice(list(exact_pool),n_exact)
+        weight_dist = weight_distribution(n_exact)
+        exact_phens = weight_choosing(orpha_dict_phens,weight_dist)
+        if len(exact_phens) < n_exact:
+            exact_pool = exact_pool - set(exact_phens)
+            added_exact_phens = np.random.choice(list(exact_pool),n_exact-len(exact_phens))
+            exact_phens.extend(added_exact_phens)
         synthetic_observations.append(list(exact_phens))
 
     if n_inexact>0:

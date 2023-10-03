@@ -3,8 +3,11 @@ import set_simulator_utils as simulator
 import json
 import incorporating_orpha as orpha
 import numpy as np
-
 PATH = '/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/'
+import sys
+sys.path.insert(0,'/home/brainy/Desktop/1ercuatri2023/Tesis/GenPhenIA/src')
+import phen_gen_weight_functions as pgw
+
 ## }}}
 
 ## {{{
@@ -22,6 +25,7 @@ genes = list(simulated_data.keys())
 
 synthetic_phens = {}
 for gene in genes:
+
     synhtetic_phens =simulator.single_disease_simulator(int(gene))
     synthetic_phens[gene] = synhtetic_phens
 ## }}}
