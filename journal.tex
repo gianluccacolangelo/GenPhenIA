@@ -188,6 +188,33 @@ Commit Message: ploteo de la red de diseases de nivel 2
 \paragraph{Commit: 3d5531e}
 Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y también se agrega el .py de redes yt algunos gráficos
 
+\paragraph{Commit: bb902ab}
+Commit Message: incorporando orpha y funciones modulares. Todo funcionando a la perfección
+
+\paragraph{Commit: 0c0183e}
+Commit Message: casos clínicos corregidos
+
+\paragraph{Commit: f7925a6}
+Commit Message: sigo refinando el modelo v2 con orpha
+
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
 %CommitsEnd
 \subsection{Figures}
 
@@ -264,6 +291,11 @@ Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y t
 \begin{figure}[h] \centering \includegraphics{docs/human_disease_network.png} \caption{Caption for docs/human_disease_network.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation_dif_metrics.png} \caption{Caption for docs/real_sets_evaluation_dif_metrics.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/red.png} \caption{Caption for docs/red.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -408,6 +440,33 @@ Commit Message: ploteo de la red de diseases de nivel 2
 \paragraph{Commit: 3d5531e}
 Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y también se agrega el .py de redes yt algunos gráficos
 
+\paragraph{Commit: bb902ab}
+Commit Message: incorporando orpha y funciones modulares. Todo funcionando a la perfección
+
+\paragraph{Commit: 0c0183e}
+Commit Message: casos clínicos corregidos
+
+\paragraph{Commit: f7925a6}
+Commit Message: sigo refinando el modelo v2 con orpha
+
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_exponencial.png} \caption{Caption for docs/especificidad_accuracy_exponencial.png.} \end{figure}
@@ -482,6 +541,11 @@ Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y t
 \begin{figure}[h] \centering \includegraphics{docs/human_disease_network.png} \caption{Caption for docs/human_disease_network.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation_dif_metrics.png} \caption{Caption for docs/real_sets_evaluation_dif_metrics.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/red.png} \caption{Caption for docs/red.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -611,6 +675,33 @@ Commit Message: ploteo de la red de diseases de nivel 2
 \paragraph{Commit: 3d5531e}
 Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y también se agrega el .py de redes yt algunos gráficos
 
+\paragraph{Commit: bb902ab}
+Commit Message: incorporando orpha y funciones modulares. Todo funcionando a la perfección
+
+\paragraph{Commit: 0c0183e}
+Commit Message: casos clínicos corregidos
+
+\paragraph{Commit: f7925a6}
+Commit Message: sigo refinando el modelo v2 con orpha
+
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/especificidad_accuracy_exponencial.png} \caption{Caption for docs/especificidad_accuracy_exponencial.png.} \end{figure}
@@ -685,6 +776,11 @@ Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y t
 \begin{figure}[h] \centering \includegraphics{docs/human_disease_network.png} \caption{Caption for docs/human_disease_network.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation_dif_metrics.png} \caption{Caption for docs/real_sets_evaluation_dif_metrics.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/red.png} \caption{Caption for docs/red.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -778,6 +874,33 @@ Commit Message: ploteo de la red de diseases de nivel 2
 \paragraph{Commit: 3d5531e}
 Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y también se agrega el .py de redes yt algunos gráficos
 
+\paragraph{Commit: bb902ab}
+Commit Message: incorporando orpha y funciones modulares. Todo funcionando a la perfección
+
+\paragraph{Commit: 0c0183e}
+Commit Message: casos clínicos corregidos
+
+\paragraph{Commit: f7925a6}
+Commit Message: sigo refinando el modelo v2 con orpha
+
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/-i-k.png} \caption{Caption for docs/-i-k.png.} \end{figure}
@@ -842,6 +965,11 @@ Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y t
 \begin{figure}[h] \centering \includegraphics{docs/human_disease_network.png} \caption{Caption for docs/human_disease_network.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation_dif_metrics.png} \caption{Caption for docs/real_sets_evaluation_dif_metrics.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/red.png} \caption{Caption for docs/red.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -923,6 +1051,33 @@ Commit Message: ploteo de la red de diseases de nivel 2
 \paragraph{Commit: 3d5531e}
 Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y también se agrega el .py de redes yt algunos gráficos
 
+\paragraph{Commit: bb902ab}
+Commit Message: incorporando orpha y funciones modulares. Todo funcionando a la perfección
+
+\paragraph{Commit: 0c0183e}
+Commit Message: casos clínicos corregidos
+
+\paragraph{Commit: f7925a6}
+Commit Message: sigo refinando el modelo v2 con orpha
+
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation.png} \caption{Caption for docs/real_sets_evaluation.png.} \end{figure}
@@ -940,6 +1095,11 @@ Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y t
 \begin{figure}[h] \centering \includegraphics{docs/human_disease_network.png} \caption{Caption for docs/human_disease_network.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation_dif_metrics.png} \caption{Caption for docs/real_sets_evaluation_dif_metrics.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/red.png} \caption{Caption for docs/red.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -1000,6 +1160,33 @@ Commit Message: ploteo de la red de diseases de nivel 2
 \paragraph{Commit: 3d5531e}
 Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y también se agrega el .py de redes yt algunos gráficos
 
+\paragraph{Commit: bb902ab}
+Commit Message: incorporando orpha y funciones modulares. Todo funcionando a la perfección
+
+\paragraph{Commit: 0c0183e}
+Commit Message: casos clínicos corregidos
+
+\paragraph{Commit: f7925a6}
+Commit Message: sigo refinando el modelo v2 con orpha
+
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/bipartite_2nd_level.png} \caption{Caption for docs/bipartite_2nd_level.png.} \end{figure}
@@ -1016,6 +1203,11 @@ Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y t
 \begin{figure}[h] \centering \includegraphics{docs/human_disease_network.png} \caption{Caption for docs/human_disease_network.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation_dif_metrics.png} \caption{Caption for docs/real_sets_evaluation_dif_metrics.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/red.png} \caption{Caption for docs/red.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -1073,6 +1265,33 @@ Commit Message: ploteo de la red de diseases de nivel 2
 \paragraph{Commit: 3d5531e}
 Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y también se agrega el .py de redes yt algunos gráficos
 
+\paragraph{Commit: bb902ab}
+Commit Message: incorporando orpha y funciones modulares. Todo funcionando a la perfección
+
+\paragraph{Commit: 0c0183e}
+Commit Message: casos clínicos corregidos
+
+\paragraph{Commit: f7925a6}
+Commit Message: sigo refinando el modelo v2 con orpha
+
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/bipartite_2nd_level.png} \caption{Caption for docs/bipartite_2nd_level.png.} \end{figure}
@@ -1089,6 +1308,11 @@ Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y t
 \begin{figure}[h] \centering \includegraphics{docs/human_disease_network.png} \caption{Caption for docs/human_disease_network.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation_dif_metrics.png} \caption{Caption for docs/real_sets_evaluation_dif_metrics.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/red.png} \caption{Caption for docs/red.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -1134,6 +1358,33 @@ Commit Message: ploteo de la red de diseases de nivel 2
 \paragraph{Commit: 3d5531e}
 Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y también se agrega el .py de redes yt algunos gráficos
 
+\paragraph{Commit: bb902ab}
+Commit Message: incorporando orpha y funciones modulares. Todo funcionando a la perfección
+
+\paragraph{Commit: 0c0183e}
+Commit Message: casos clínicos corregidos
+
+\paragraph{Commit: f7925a6}
+Commit Message: sigo refinando el modelo v2 con orpha
+
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/bipartite_2nd_level.png} \caption{Caption for docs/bipartite_2nd_level.png.} \end{figure}
@@ -1150,6 +1401,11 @@ Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y t
 \begin{figure}[h] \centering \includegraphics{docs/human_disease_network.png} \caption{Caption for docs/human_disease_network.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation_dif_metrics.png} \caption{Caption for docs/real_sets_evaluation_dif_metrics.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/red.png} \caption{Caption for docs/red.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -1189,6 +1445,33 @@ Commit Message: ploteo de la red de diseases de nivel 2
 \paragraph{Commit: 3d5531e}
 Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y también se agrega el .py de redes yt algunos gráficos
 
+\paragraph{Commit: bb902ab}
+Commit Message: incorporando orpha y funciones modulares. Todo funcionando a la perfección
+
+\paragraph{Commit: 0c0183e}
+Commit Message: casos clínicos corregidos
+
+\paragraph{Commit: f7925a6}
+Commit Message: sigo refinando el modelo v2 con orpha
+
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/bipartite_2nd_level.png} \caption{Caption for docs/bipartite_2nd_level.png.} \end{figure}
@@ -1205,6 +1488,11 @@ Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y t
 \begin{figure}[h] \centering \includegraphics{docs/human_disease_network.png} \caption{Caption for docs/human_disease_network.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation_dif_metrics.png} \caption{Caption for docs/real_sets_evaluation_dif_metrics.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/red.png} \caption{Caption for docs/red.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -1241,6 +1529,33 @@ Commit Message: ploteo de la red de diseases de nivel 2
 \paragraph{Commit: 3d5531e}
 Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y también se agrega el .py de redes yt algunos gráficos
 
+\paragraph{Commit: bb902ab}
+Commit Message: incorporando orpha y funciones modulares. Todo funcionando a la perfección
+
+\paragraph{Commit: 0c0183e}
+Commit Message: casos clínicos corregidos
+
+\paragraph{Commit: f7925a6}
+Commit Message: sigo refinando el modelo v2 con orpha
+
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/bipartite_2nd_level.png} \caption{Caption for docs/bipartite_2nd_level.png.} \end{figure}
@@ -1257,6 +1572,11 @@ Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y t
 \begin{figure}[h] \centering \includegraphics{docs/human_disease_network.png} \caption{Caption for docs/human_disease_network.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation_dif_metrics.png} \caption{Caption for docs/real_sets_evaluation_dif_metrics.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/red.png} \caption{Caption for docs/red.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -1287,6 +1607,33 @@ Commit Message: ploteo de la red de diseases de nivel 2
 \paragraph{Commit: 3d5531e}
 Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y también se agrega el .py de redes yt algunos gráficos
 
+\paragraph{Commit: bb902ab}
+Commit Message: incorporando orpha y funciones modulares. Todo funcionando a la perfección
+
+\paragraph{Commit: 0c0183e}
+Commit Message: casos clínicos corregidos
+
+\paragraph{Commit: f7925a6}
+Commit Message: sigo refinando el modelo v2 con orpha
+
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/bipartite_2nd_level.png} \caption{Caption for docs/bipartite_2nd_level.png.} \end{figure}
@@ -1303,6 +1650,11 @@ Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y t
 \begin{figure}[h] \centering \includegraphics{docs/human_disease_network.png} \caption{Caption for docs/human_disease_network.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation_dif_metrics.png} \caption{Caption for docs/real_sets_evaluation_dif_metrics.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/red.png} \caption{Caption for docs/red.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -1330,6 +1682,33 @@ Commit Message: ploteo de la red de diseases de nivel 2
 \paragraph{Commit: 3d5531e}
 Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y también se agrega el .py de redes yt algunos gráficos
 
+\paragraph{Commit: bb902ab}
+Commit Message: incorporando orpha y funciones modulares. Todo funcionando a la perfección
+
+\paragraph{Commit: 0c0183e}
+Commit Message: casos clínicos corregidos
+
+\paragraph{Commit: f7925a6}
+Commit Message: sigo refinando el modelo v2 con orpha
+
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/bipartite_2nd_level.png} \caption{Caption for docs/bipartite_2nd_level.png.} \end{figure}
@@ -1346,6 +1725,11 @@ Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y t
 \begin{figure}[h] \centering \includegraphics{docs/human_disease_network.png} \caption{Caption for docs/human_disease_network.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation_dif_metrics.png} \caption{Caption for docs/real_sets_evaluation_dif_metrics.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/red.png} \caption{Caption for docs/red.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -1370,6 +1754,33 @@ Commit Message: ploteo de la red de diseases de nivel 2
 \paragraph{Commit: 3d5531e}
 Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y también se agrega el .py de redes yt algunos gráficos
 
+\paragraph{Commit: bb902ab}
+Commit Message: incorporando orpha y funciones modulares. Todo funcionando a la perfección
+
+\paragraph{Commit: 0c0183e}
+Commit Message: casos clínicos corregidos
+
+\paragraph{Commit: f7925a6}
+Commit Message: sigo refinando el modelo v2 con orpha
+
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/bipartite_2nd_level.png} \caption{Caption for docs/bipartite_2nd_level.png.} \end{figure}
@@ -1386,6 +1797,11 @@ Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y t
 \begin{figure}[h] \centering \includegraphics{docs/human_disease_network.png} \caption{Caption for docs/human_disease_network.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation_dif_metrics.png} \caption{Caption for docs/real_sets_evaluation_dif_metrics.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/red.png} \caption{Caption for docs/red.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}
@@ -1395,6 +1811,33 @@ Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y t
 \paragraph{Commit: 3d5531e}
 Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y también se agrega el .py de redes yt algunos gráficos
 
+\paragraph{Commit: bb902ab}
+Commit Message: incorporando orpha y funciones modulares. Todo funcionando a la perfección
+
+\paragraph{Commit: 0c0183e}
+Commit Message: casos clínicos corregidos
+
+\paragraph{Commit: f7925a6}
+Commit Message: sigo refinando el modelo v2 con orpha
+
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
 %CommitsEnd
 \subsection{Figures}
 \begin{figure}[h] \centering \includegraphics{docs/bipartite_2nd_level.png} \caption{Caption for docs/bipartite_2nd_level.png.} \end{figure}
@@ -1411,6 +1854,160 @@ Commit Message: agrego la data de orpha, reestrucuro un poco la carpeta data y t
 \begin{figure}[h] \centering \includegraphics{docs/human_disease_network.png} \caption{Caption for docs/human_disease_network.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/real_sets_evaluation_dif_metrics.png} \caption{Caption for docs/real_sets_evaluation_dif_metrics.png.} \end{figure}
 \begin{figure}[h] \centering \includegraphics{docs/red.png} \caption{Caption for docs/red.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{12-07-2023}
+\subsection{Commits}
+\paragraph{Commit: 0c0183e}
+Commit Message: casos clínicos corregidos
+
+\paragraph{Commit: f7925a6}
+Commit Message: sigo refinando el modelo v2 con orpha
+
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
+%CommitsEnd
+\subsection{Figures}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{25-07-2023}
+\subsection{Commits}
+\paragraph{Commit: 4b740da}
+Commit Message: agrego la función get_average_age_of_onset() que le damos un orphacode y nos devuelve la edad media de aparición de los síntomas
+
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
+%CommitsEnd
+\subsection{Figures}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{24-09-2023}
+\subsection{Commits}
+\paragraph{Commit: 89670d7}
+Commit Message: agrego how_many_observed() para la simulación de datos
+
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
+%CommitsEnd
+\subsection{Figures}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{30-09-2023}
+\subsection{Commits}
+\paragraph{Commit: 5506a79}
+Commit Message: single_disease_simulator funcionando
+
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
+%CommitsEnd
+\subsection{Figures}
+\begin{figure}[h] \centering \includegraphics{docs/clinvar_mph&iph.png} \caption{Caption for docs/clinvar_mph&iph.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/boxplot_rankings_bitgenia.png} \caption{Caption for docs/last_version/boxplot_rankings_bitgenia.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/distancias_distribucion_clinvar.png} \caption{Caption for docs/last_version/distancias_distribucion_clinvar.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/last_version/recall_at_n_3_features.png} \caption{Caption for docs/last_version/recall_at_n_3_features.png.} \end{figure}
+\begin{figure}[h] \centering \includegraphics{docs/resumen_all_in_one.png} \caption{Caption for docs/resumen_all_in_one.png.} \end{figure}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{02-10-2023}
+\subsection{Commits}
+\paragraph{Commit: 5414c3f}
+Commit Message: generating_sets con las primeras pruebas de simulaciones
+
+\paragraph{Commit: 791b3c5}
+Commit Message: agregando la feature para que elija los síntomas según una distribución de pesos empíricos
+
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
+%CommitsEnd
+\subsection{Figures}
+%FiguresEnd
+\subsection{Bibliography}
+\subsection{Thoughts}
+
+\section{03-10-2023}
+\subsection{Commits}
+\paragraph{Commit: 702c39f}
+Commit Message: en set_simulator_utils, agregamos la distribución de pesos empíricos para cada fenotipo simulado en single_disease_simulator
+
+%CommitsEnd
+\subsection{Figures}
 %FiguresEnd
 \subsection{Bibliography}
 \subsection{Thoughts}

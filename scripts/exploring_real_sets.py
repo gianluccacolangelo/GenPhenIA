@@ -23,8 +23,7 @@ import scienceplots
 import matplotlib.pyplot as plt
 import pandas as pd
 import csv
-# import matplotlib
-# matplotlib.use('TkAgg')
+import set_simulator_utils as ssu
 ## }}}
 
 
@@ -377,3 +376,25 @@ with plt.style.context(['science','ieee','nature']):
     ax.set_title('Media de la frecuencia de aparición \nde los fenotipos registrados',fontsize=5)
 ## }}}
 
+
+
+## {{{ Äcá ploteo las distribuciones de datos reales
+
+
+with plt.style.context(['science','ieee','nature']):
+    fig,ax = plt.subplots()
+    bins = np.linspace(ssu.inexact_values.min(), ssu.inexact_values.max(), 10)
+    hist_counts, _ = np.histogram(ssu.inexact_values,bins=bins,weights=ssu.inexact_counts)
+    # Plotting the histogram
+    ax.bar(bins[:-1], hist_counts, width=(bins[1] - bins[0]), align='edge',alpha=.7)
+    ax.set_title('Distribución de los fenotipos \ninexactos registrados en Bitgenia', fontsize=5)
+    ax.set_ylabel('Frecuencia',fontsize=7)
+    ax.set_xlabel('Proporción de fenotipos exactos de los totales',fontsize=5)
+    ax.xaxis.set_tick_params(labelsize=4)
+    ax.xaxis.set_tick_params(labelsize=5)
+
+
+
+
+
+## }}}

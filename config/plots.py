@@ -875,7 +875,7 @@ with plt.style.context(['science','ieee','nature']):
 
 
 ## {{{ Distribución de distancias en el grafo HPO de los fenotipos no encontrados a la primera
-with open(f'{PATH}data/clinical_cases/clinvar.json','r') as f:
+with open(f'{PATH}data/clinical_cases/bitgenia.json','r') as f:
     clinical_cases = json.load(f)
 
 

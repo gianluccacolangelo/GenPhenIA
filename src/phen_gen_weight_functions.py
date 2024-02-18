@@ -310,9 +310,9 @@ pesados.
             hpo_frequency = hpo_disorder_association.find('.//HPOFrequency/Name').text if weight else None
             hpo_diagnostic_criteria = hpo_disorder_association.find('.//DiagnosticCriteria').text
             # Add the phenotype and its frequency to the list
-            phenotypes.append((hpo_term, hpo_frequency,hpo_diagnostic_criteria))
+            phenotypes.append((hpo_term, hpo_frequency))
 
-    return phenotypes
+    return dict(phenotypes)
 
 
 class_parent_map = {c: p for p in classification_root.iter() for c in p}

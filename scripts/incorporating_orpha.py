@@ -483,5 +483,3 @@ closest = find_closest_term("HP:0000001", ["HP:0000005", "HP:0000006"],
 ## }}}
 
 
-
-
