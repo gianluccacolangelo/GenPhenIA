@@ -73,8 +73,8 @@ def store_in_csv(data, file_name="simulated_dataset.csv"):
 ## }}}
 
 ## {{{
-data = get_all_variation_for_all_genes(all_genes, 2)
-store_in_csv(data)
+data = get_all_variation_for_all_genes(all_genes, 400)
+store_in_csv(data, file_name="simulated_dataset_400_per_gene.csv")
 ## }}}
 
 
