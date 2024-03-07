@@ -50,7 +50,11 @@ def get_variation_for_gene(gene, N):
 
 def get_all_variation_for_all_genes(genes, N):
     data = {}
+    count = 0
+    total = len(genes)
     for gene in genes:
+        print(f"{count}/{total}")
+        count += 1
         try:
             data[gene] = get_variation_for_gene(gene, N)
         except:
