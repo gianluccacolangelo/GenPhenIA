@@ -44,7 +44,7 @@ genes = list(simulated_data.keys())
 def get_variation_for_gene(gene, N):
     variations = []
     for _ in range(N):
-        variations.append(simulator.single_disease_simulator(gene))
+        variations.append(simulator.single_disease_simulator(gene, with_orpha=False))
     return variations
 
 
@@ -77,8 +77,8 @@ def store_in_csv(data, file_name="simulated_dataset.csv"):
 ## }}}
 
 ## {{{
-data = get_all_variation_for_all_genes(all_genes, 400)
-store_in_csv(data, file_name="simulated_dataset_400_per_gene.csv")
+data = get_all_variation_for_all_genes(all_genes, 100)
+store_in_csv(data, file_name="simulated_dataset_100_per_gene_without_orpha.csv")
 ## }}}
 
 
