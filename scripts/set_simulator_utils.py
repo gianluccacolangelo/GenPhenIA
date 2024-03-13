@@ -241,6 +241,14 @@ def genphen_simulator(
 
 ## }}}
 
+##{{{
+# import matplotlib.pyplot as plt
+
+# fig, axs = plt.subplots()
+# axs.bar(bitg_values, bitg_counts, alpha=0.5)
+# axs.bar(clinv_values, clinv_counts, alpha=0.5)
+
+##}}}
 ## {{{
 
 with open(f"{PATH}data/clinical_cases/bitgenia.json", "r") as f:
@@ -252,13 +260,18 @@ with open(f"{PATH}data/clinical_cases/clinvar.json", "r") as f:
 bitgenia_total_phenotypes = [len(phen_set) for phen_set in bitgenia.values()]
 clinvar_total_phenotypes = [len(phen_set) for phen_set in clinvar.values()]
 
-values, counts = np.unique(bitgenia_total_phenotypes, return_counts=True)
-probabilities = counts / len(bitgenia_total_phenotypes)
+bitg_values, bitg_counts = np.unique(bitgenia_total_phenotypes, return_counts=True)
+bitg_probabilities = bitg_counts / len(bitgenia_total_phenotypes)
 
-dist = dict(zip(values, counts))
+clinv_values, clinv_counts = np.unique(clinvar_total_phenotypes, return_counts=True)
+clinv_probabilities = clinv_counts / len(clinvar_total_phenotypes)
 
 
-def how_many_observed(distribution=dist, probabilities=probabilities):
+bitg_dist = dict(zip(bitg_values, bitg_counts))
+clinv_dist = dict(zip(clinv_values, clinv_counts))
+
+
+def how_many_observed(distribution=clinv_dist, probabilities=clinv_probabilities):
     """
     Recibe: dist, un diccionario de frecuencias de número de observaciones
 

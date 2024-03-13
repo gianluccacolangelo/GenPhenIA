@@ -26,7 +26,7 @@ import csv
 with open(f"{PATH}/data/clinical_cases/bitgenia.json", "r") as file:
     simulated_data = json.load(file)
 
-all_genes = list(simulator.gold_standard.keys())
+all_genes = list(simulator.gold_standard.keys())[0:500]
 genes = list(simulated_data.keys())
 
 # synthetic_phens = {}
@@ -77,8 +77,8 @@ def store_in_csv(data, file_name="simulated_dataset.csv"):
 ## }}}
 
 ## {{{
-data = get_all_variation_for_all_genes(all_genes, 100)
-store_in_csv(data, file_name="simulated_dataset_100_per_gene_without_orpha.csv")
+data = get_all_variation_for_all_genes(all_genes, 5000)
+store_in_csv(data, file_name="simulated_dataset_10000_per_gene_without_orpha.csv")
 ## }}}
 
 
